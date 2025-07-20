@@ -1,7 +1,7 @@
 # Static Route on Linux (permanent - тұрақты)
 
 ### Топология
-![Topology](Topology_Static_Routing.png)
+![Topology](Topology_Static_Routing_Linux.png)
 
 ## Virtual PC Simulator
 ```shell
