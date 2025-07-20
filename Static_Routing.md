@@ -353,17 +353,5 @@ VPC1> ping 172.16.1.100
 VPC2> ping 192.168.1.100
 ```
 
-## Enable Packet IP Forwarding (IP Routing)
-
-**R1, R2, R3**
-```shell
-$ echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf
-$ sudo sysctl -p
-```
-
-## Verify
-```shell
-VPC1> ping 172.16.1.100
-VPC2> ping 192.168.1.100
 ```
 
