@@ -111,7 +111,13 @@ version: 2
 
 **R2**
 ```shell
+$ ip address
+Lo
+eth0
+eth1
 $ ls /etc/sysconfig/network-scripts/
+ifcfg-eth0
+<img width="815" height="78" alt="image" src="https://github.com/user-attachments/assets/bdf66f22-0144-42bd-a4b4-d1a16584bc98" />
 
 ```
 
