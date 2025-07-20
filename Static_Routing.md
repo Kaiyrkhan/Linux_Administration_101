@@ -272,7 +272,6 @@ $ sudo nmcli conn down ens3 && sudo nmcli conn up ens3
 $ sudo nmcli conn down ens4 && sudo nmcli conn up ens4
 
 $ sudo nmcli connection modify ens4 +ipv4.routes "172.16.1.0/24 10.1.1.102"
-$ sudo nmcli connection reload
 $ sudo nmcli connection up ens4
 $ ip route
 172.16.1.0/24 via 10.1.1.102 dev ens4
