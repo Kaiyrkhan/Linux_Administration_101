@@ -302,7 +302,7 @@ $ ip route
 192.168.1.0/24 via 10.2.2.102 dev ens4
 ```
 
-## Enable IP Forwarding
+## Enable IP Forwarding (IP Routing)
 
 **R1, R2, R3**
 ```shell
