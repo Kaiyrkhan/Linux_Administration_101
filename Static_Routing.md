@@ -3,7 +3,7 @@
 ### Топология
 ![Topology](Topology_Static_Routing.png)
 
-### Virtual PC Simulator
+## Virtual PC Simulator
 ```shell
 VPCS> ip 192.168.1.100/24 192.168.1.1
 VPCS> show ip
@@ -15,7 +15,7 @@ VPCS> show ip
 VPCS> save
 ```
 
-### Static route on Debian
+## Static route on Debian
 
 **R1**
 ```shell
@@ -63,7 +63,7 @@ $ sudo nano /etc/network/interfaces
   up ip route add 192.168.1.0/24 via 10.2.2.102
 ```
 
-### Static route on Ubuntu
+## Static route on Ubuntu
 
 **R1**
 ```shell
@@ -119,7 +119,7 @@ network:
 version: 2
 ```
 
-### Static route on Oracle7 / RHEL7
+## Static route on Oracle7 / RHEL7
 
 **R2**
 ```shell
