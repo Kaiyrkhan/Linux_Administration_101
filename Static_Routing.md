@@ -15,7 +15,7 @@ VPC2> show ip
 VPC2> save
 ```
 
-## Static route on Debian
+## Static Route on Debian
 
 **R1**
 ```shell
@@ -63,7 +63,20 @@ $ sudo nano /etc/network/interfaces
   up ip route add 192.168.1.0/24 via 10.2.2.102
 ```
 
-## Static route on Ubuntu
+#### Enable Packet IP Forwarding (R1, R2, R3)
+```shell
+$ sudo nano /etc/sysctl.conf
+net.ipv4.ip_forward=1
+$ sudo sysctl -p
+```
+
+#### Verify
+```shell
+VPC1> ping 172.16.1.100
+VPC2> ping 192.168.1.100
+```
+
+## Static Route on Ubuntu
 
 **R1**
 ```shell
@@ -119,7 +132,20 @@ network:
 version: 2
 ```
 
-## Static route on Oracle7 / RHEL7
+#### Enable Packet IP Forwarding (R1, R2, R3)
+```shell
+$ sudo nano /etc/sysctl.conf
+net.ipv4.ip_forward=1
+$ sudo sysctl -p
+```
+
+#### Verify
+```shell
+VPC1> ping 172.16.1.100
+VPC2> ping 192.168.1.100
+```
+
+## Static Route on Oracle7 / RHEL7
 
 **R1**
 ```shell
@@ -207,7 +233,20 @@ $ sudo vi /etc/sysconfig/network-scripts/route-eth1
 192.168.1.0/24 via 10.2.2.102 dev eth1
 ```
 
-## Static route on Rocky9 / RHEL9
+#### Enable Packet IP Forwarding (R1, R2, R3)
+```shell
+$ sudo vi /etc/sysctl.conf
+net.ipv4.ip_forward=1
+$ sudo sysctl -p
+```
+
+#### Verify
+```shell
+VPC1> ping 172.16.1.100
+VPC2> ping 192.168.1.100
+```
+
+## Static Route on Rocky9 / RHEL9
 
 **R1**
 ```shell
@@ -302,7 +341,19 @@ $ ip route
 192.168.1.0/24 via 10.2.2.102 dev ens4
 ```
 
-## Enable IP Forwarding (IP Routing)
+#### Enable Packet IP Forwarding (R1, R2, R3)
+```shell
+$ echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf
+$ sudo sysctl -p
+```
+
+#### Verify
+```shell
+VPC1> ping 172.16.1.100
+VPC2> ping 192.168.1.100
+```
+
+## Enable Packet IP Forwarding (IP Routing)
 
 **R1, R2, R3**
 ```shell
