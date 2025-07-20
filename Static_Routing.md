@@ -223,11 +223,10 @@ $ ls /etc/NetworkManager/system-connections/
 ens3.nmconnection
 ens4.nmconnection
 
-$ sudo nmcli conn modify ens3 ipv4.method manual
 $ sudo nmcli conn modify ens3 ipv4.addresses 192.168.1.1/24
-
-$ sudo nmcli conn modify ens4 ipv4.method manual
+$ sudo nmcli conn modify ens3 ipv4.method manual
 $ sudo nmcli conn modify ens4 ipv4.addresses 10.1.1.101/30
+$ sudo nmcli conn modify ens4 ipv4.method manual
 
 $ sudo systemctl restart NetworkManager
 $ sudo nmcli conn down ens3 && sudo nmcli conn up ens3
