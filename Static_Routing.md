@@ -207,3 +207,26 @@ $ sudo vi /etc/sysconfig/network-scripts/route-eth1
 192.168.1.0/24 via 10.2.2.102 dev eth1
 ```
 
+## Static route on Rocky9 / RHEL9
+
+**R1**
+```shell
+$ ip address
+ens3
+ens4
+$ ls /etc/NetworkManager/system-connections/
+ens3.nmconnection
+
+Жаңа Profile құру
+$ sudo nmcli conn add type ethernet con-name ens4 ifname ens4
+$ ls /etc/NetworkManager/system-connections/
+ens3.nmconnection
+ens4.nmconnection
+
+$ sudo nmcli conn modify ens3 ipv4.method manual
+$ sudo nmcli conn modify ens3 ipv4.addresses 192.168.1.1/24
+
+$ sudo nmcli conn modify ens4 ipv4.method manual
+$ sudo nmcli conn modify ens4 ipv4.addresses 10.1.1.101/30
+
+```
