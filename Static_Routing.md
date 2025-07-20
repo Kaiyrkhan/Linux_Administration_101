@@ -3,6 +3,13 @@
 ### Топология
 ![Topology](Topology_Static_Routing.png)
 
+### Virtual PC Simulator
+```shell
+VPCS> ip 192.168.1.100/24 192.168.1.1
+VPCS> show ip
+VPCS> save
+```
+
 ### Static route on Debian
 
 **R1**
@@ -112,12 +119,11 @@ version: 2
 **R2**
 ```shell
 $ ip address
-Lo
 eth0
 eth1
 $ ls /etc/sysconfig/network-scripts/
 ifcfg-eth0
-<img width="815" height="78" alt="image" src="https://github.com/user-attachments/assets/bdf66f22-0144-42bd-a4b4-d1a16584bc98" />
+$ sudo nmcli conn add type ethernet
 
 ```
 
