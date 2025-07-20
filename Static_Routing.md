@@ -1,4 +1,4 @@
-# Static route on Linux
+# Static route (permanent-тұрақты) on Linux
 
 ### Топология
 ![Topology](Topology_Static_Routing.png)
