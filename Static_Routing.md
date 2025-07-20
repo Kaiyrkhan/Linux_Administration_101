@@ -9,6 +9,11 @@ VPCS> ip 192.168.1.100/24 192.168.1.1
 VPCS> show ip
 VPCS> save
 ```
+```shell
+VPCS> ip 172.16.1.100/24 172.16.1.1
+VPCS> show ip
+VPCS> save
+```
 
 ### Static route on Debian
 
