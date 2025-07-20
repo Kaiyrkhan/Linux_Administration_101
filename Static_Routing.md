@@ -352,6 +352,3 @@ $ sudo sysctl -p
 VPC1> ping 172.16.1.100
 VPC2> ping 192.168.1.100
 ```
-
-```
-
