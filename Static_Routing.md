@@ -107,4 +107,13 @@ network:
 version: 2
 ```
 
+### Static route on Oracle 7.9
+
+**R2**
+```shell
+$ ls /etc/sysconfig/network-scripts/
+
+```
+
+
 
