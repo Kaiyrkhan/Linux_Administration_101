@@ -272,3 +272,33 @@ $ sudo nmcli conn up ens4
 $ ip route
 172.16.1.0/24 via 10.2.2.101 dev ens4
 ```
+
+**R3**
+```shell
+$ ip address
+ens3
+ens4
+$ ls /etc/NetworkManager/system-connections/
+ens3.nmconnection
+
+Жаңа Profile құру
+$ sudo nmcli conn add type ethernet con-name ens4 ifname ens4
+$ ls /etc/NetworkManager/system-connections/
+ens3.nmconnection
+ens4.nmconnection
+
+$ sudo nmcli conn modify ens3 ipv4.addresses 172.16.1.1/24
+$ sudo nmcli conn modify ens3 ipv4.method manual
+$ sudo nmcli conn modify ens4 ipv4.addresses 10.2.2.101/30
+$ sudo nmcli conn modify ens4 ipv4.method manual
+
+$ sudo systemctl restart NetworkManager
+$ sudo nmcli conn down ens3 && sudo nmcli conn up ens3
+$ sudo nmcli conn down ens4 && sudo nmcli conn up ens4
+
+$ sudo nmcli connection modify ens4 +ipv4.routes "192.168.1.0/24 10.2.2.102"
+$ sudo nmcli connection reload
+$ sudo nmcli connection up ens4
+$ ip route
+192.168.1.0/24 via 10.2.2.102 dev ens4
+```
