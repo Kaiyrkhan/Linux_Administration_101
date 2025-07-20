@@ -119,7 +119,7 @@ network:
 version: 2
 ```
 
-### Static route on Oracle 7.9
+### Static route on Oracle 7 / RHEL 7
 
 **R2**
 ```shell
@@ -128,9 +128,25 @@ eth0
 eth1
 $ ls /etc/sysconfig/network-scripts/
 ifcfg-eth0
-$ sudo nmcli conn add type ethernet
 
+Жаңа Profile құру
+$ sudo nmcli conn add type ethernet con-name eth1 ifname eth1
+$ ls /etc/sysconfig/network-scripts/
+ifcfg-eth0
+ifcfg-eth1
+
+$ sudo vi /etc/sysconfig/network-scripts/ifcfg-eth0
+BOOTPROTO=static
+IPADDR=192.168.1.1
+NETMASK=255.255.255.0
+$ sudo vi /etc/sysconfig/network-scripts/ifcfg-eth1
+BOOTPROTO=static
+IPADDR=10.1.1.101
+NETMASK=255.255.255.252
+$ sudo systemctl restart network
+
+$ sudo vi /etc/sysconfig/network-scripts/route-eth0
+192.168.1.0/24 via 10.1.1.101 dev eth0
+$ sudo vi /etc/sysconfig/network-scripts/route-eth1
+172.16.1.0/24 via 10.2.2.101 dev eth1
 ```
-
-
-
