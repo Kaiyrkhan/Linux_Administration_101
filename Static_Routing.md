@@ -119,7 +119,7 @@ network:
 version: 2
 ```
 
-### Static route on Oracle 7 / RHEL 7
+### Static route on Oracle7 / RHEL7
 
 **R2**
 ```shell
