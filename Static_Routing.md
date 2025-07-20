@@ -1,7 +1,7 @@
 # Static route on Linux
 
 Топология
-![Topology](Topology_Static_Route.png)
+![Topology](Topology_Static_Routing.png)
 
 ### Static route on Debian
 
