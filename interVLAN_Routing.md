@@ -11,9 +11,9 @@
   6) NAT конфигурациялау (using nftables).
 
 #### Physical Topology
-![Physical Topology](TopologyPhysical_interVLANRouting_Linux.png)
+![Physical Topology](Topology/TopologyPhysical_interVLANRouting_Linux.png)
 #### Logical Topology
-![Logical Topology](TopologyLogical_interVLANRouting_Linux.png)
+![Logical Topology](Topology/TopologyLogical_interVLANRouting_Linux.png)
 
 ### 1) 802.1Q VLAN құру
 
