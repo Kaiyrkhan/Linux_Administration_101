@@ -164,7 +164,6 @@ $ sudo iptables -L
 ```shel
 $ sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 $ sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-$ sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
 $ sudo iptables -vnL
 немесе
@@ -179,13 +178,6 @@ $ sudo iptables -D INPUT 1
 ```
 
 ```shel
-Өзгерістерті сақтау (Saving Rules)
-$ sudo apt install iptables-persistent
-$ sudo netfilter-persistent save
-$ sudo netfilter-persistent reload
-```
-
-```shel
 sudo iptables -P INPUT DROP
 sudo iptables -P FORWARD DROP
 ```
@@ -196,6 +188,13 @@ $ sudo iptables -F INPUT
 
 Flush the whole iptables
 $ sudo iptables -F
+```
+
+```shel
+Өзгерістерті сақтау (Saving Rules)
+$ sudo apt install iptables-persistent
+$ sudo netfilter-persistent save
+$ sudo netfilter-persistent reload
 ```
 
 ##### Network Address Translation (NAT)
