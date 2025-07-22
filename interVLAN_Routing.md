@@ -7,7 +7,8 @@
   2) IP Packet Forwarding қызметін қосу;
   3) Cisco Switch конфигурациялау;
   4) Virtual PC Simulator-ды конфигурациялау;
-  5) Нəтижені тексеру.
+  5) NAT конфигурациялау (using iptables);
+  6) NAT конфигурациялау (using nftables).
 
 #### Physical Topology
 ![Physical Topology](TopologyPhysical_interVLANRouting_Linux.png)
@@ -120,12 +121,13 @@ switchport access vlan 12
 
 show vlan brief
 ```
-##### Save configuration
+
 ```shell
+Save Configuration
 copy run startup
 ```
 
-### 4) Virtual PC Simulator
+### 4) Virtual PC Simulator-ды конфигурациялау
 ```shell
 VPC1> ip 172.16.11.101/24 172.16.11.1
 VPCS> ip dns 8.8.8.8
@@ -139,7 +141,7 @@ VPC2> show ip
 VPC2> save
 ```
 
-### 5) Нəтижені тексеру
+##### Нəтижені тексеру (ping VPC1 to VPC2)
 ```shel
 VPC1> ping 172.16.11.1
 VPC1> ping 172.16.12.101
