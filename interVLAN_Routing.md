@@ -13,7 +13,7 @@
 ### Logical Topology
 ![Logical Topology](TopologyLogical_interVLANRouting_Linux.png)
 
-## Gateway конфигурациялау
+## 802.1Q VLAN құру
 
 ### 8021q модулін жүктеу және автожүктеу қызметіне қосу
 ```shell
