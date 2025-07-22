@@ -1,21 +1,21 @@
 # interVLAN Routing on Linux 
 
-### Тақырыбы: Linux дистрибутивінде 802.1Q VLAN конфигурациялау
+#### Тақырыбы: Linux дистрибутивінде 802.1Q VLAN конфигурациялау
 
-### Жұмыстың орындалу қадамы: 
+#### Жұмыстың орындалу қадамы: 
   1) 802.1Q VLAN құру;
   2) IP Packet Forwarding қызметін қосу;
   3) Cisco Switch конфигурациялау;
   4) Нəтижені тексеру.
 
-### Physical Topology
+#### Physical Topology
 ![Physical Topology](TopologyPhysical_interVLANRouting_Linux.png)
-### Logical Topology
+#### Logical Topology
 ![Logical Topology](TopologyLogical_interVLANRouting_Linux.png)
 
-## 802.1Q VLAN құру
+#### 802.1Q VLAN құру
 
-### 8021q модулін жүктеу және автожүктеу қызметіне қосу
+##### 8021q модулін жүктеу және автожүктеу қызметіне қосу
 ```shell
 8021q модулін жүктеу
 $ sudo modprobe 8021q
@@ -27,7 +27,7 @@ $ lsmod | grep 8021q
 $ echo "8021q" | sudo tee -a /etc/modules-load.d/8021q.conf
 ```
 
-### Virtual interface (VLAN11 және VLAN12) құру
+##### Virtual interface (VLAN11 және VLAN12) құру
 ```shell
 $ ip address
 ```
@@ -68,7 +68,7 @@ VLAN құрылғанын тексеру
 $ sudo cat /proc/net/vlan/config
 ```
 
-### IP Packet Forwarding қызметін қосу (enable)
+#### IP Packet Forwarding қызметін қосу (enable)
 ```shell
 cat /proc/sys/net/ipv4/ip_forward
 0
@@ -85,9 +85,9 @@ cat /proc/sys/net/ipv4/ip_forward
 1
 ```
 
-## Cisco Switch конфигурациялау
+#### Cisco Switch конфигурациялау
 
-### Trunk Port
+##### Trunk Port
 ```shell
 enable
 configure terminal
@@ -103,7 +103,7 @@ show int status
 show int g0/1 switchport
 ```
 
-### Access Port
+##### Access Port
 ```shell
 configure terminal
 
