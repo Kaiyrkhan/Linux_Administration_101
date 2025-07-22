@@ -150,7 +150,7 @@ VPC1> ping 172.16.11.1
 VPC1> ping 172.16.12.101
 ```
 
-### 5) NAT конфигурациялау (using iptables)
+### 6) NAT конфигурациялау (using iptables)
 
 ##### iptables пакетін орнату және конфигурациялау
 ```shel
