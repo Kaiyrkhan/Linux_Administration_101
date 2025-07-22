@@ -1,4 +1,4 @@
-# VLAN and interVLAN Routing on Linux
+# VLAN and interVLAN Routing on Linux (Software Router)
 
 ### Топология
 ![Topology](Topology_interVLANRouting_Linux.png)
@@ -20,8 +20,9 @@ $ sudo nano /etc/network/interfaces
   vlan-raw-device ens4
 
 $ sudo systemctl restart networking
-$ sudo ifdown ens4.11 && sudo ifup ens4.11
-$ sudo ifdown ens4.12 && sudo ifup ens4.12
+$ sudo ifdown ens4 && sudo ifup ens4
+$ sudo ifup ens4.11
+$ sudo ifup ens4.12
 
 $ ip -d link show ens4.11
 $ ip -d link show ens4.12
