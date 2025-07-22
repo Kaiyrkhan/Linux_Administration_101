@@ -84,3 +84,17 @@ $ sudo sysctl -p
 cat /proc/sys/net/ipv4/ip_forward
 1
 ```
+
+## Cisco Switch конфигурациялау
+
+### Trunk interface құру
+```shell
+enable
+configure terminal
+interface g0/1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 11,12
+switchport nonegotiate
+
+```
