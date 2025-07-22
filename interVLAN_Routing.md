@@ -13,7 +13,7 @@
 #### Logical Topology
 ![Logical Topology](TopologyLogical_interVLANRouting_Linux.png)
 
-#### 802.1Q VLAN құру
+### 802.1Q VLAN құру
 
 ##### 8021q модулін жүктеу және автожүктеу қызметіне қосу
 ```shell
@@ -68,7 +68,7 @@ VLAN құрылғанын тексеру
 $ sudo cat /proc/net/vlan/config
 ```
 
-#### IP Packet Forwarding қызметін қосу (enable)
+### IP Packet Forwarding қызметін қосу (enable)
 ```shell
 cat /proc/sys/net/ipv4/ip_forward
 0
@@ -85,7 +85,7 @@ cat /proc/sys/net/ipv4/ip_forward
 1
 ```
 
-#### Cisco Switch конфигурациялау
+### Cisco Switch конфигурациялау
 
 ##### Trunk Port
 ```shell
