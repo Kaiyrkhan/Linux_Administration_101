@@ -11,9 +11,9 @@
   6) Нəтижені тексеру.
 
 ### Network Physical Topology
-![Physical Topology](Topology (Physical)_interVLANRouting_Linux.png)
+![Physical Topology](TopologyPhysical_interVLANRouting_Linux.png)
 ### Network Logical Topology
-![Logical Topology](Logical_Topology_interVLANRouting_Linux.png)
+![Logical Topology](TopologyLogical_interVLANRouting_Linux.png)
 
 ### Create VLAN
 ```shell
