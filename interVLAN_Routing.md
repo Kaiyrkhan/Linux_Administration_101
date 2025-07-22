@@ -158,37 +158,39 @@ $ sudo apt update
 $ sudo apt install iptables
 
 $ sudo iptables -V
+$ sudo iptables -L
+```
+
+```shel
+$ sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+$ sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+$ sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+$ sudo iptables -A INPUT -j DROP
+
 $ sudo iptables -vnL
 ```
 
 ```shel
-$ sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-$ sudo iptables -A INPUT -p tcp --dport ssh -j ACCEPT
-$ sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-$ iptables -A INPUT 1 -p tcp --dport 443 -j ACCEPT
+$ sudo iptables -A INPUT 1 -p tcp --dport 443 -j ACCEPT
 $ sudo iptables -vnL
-
-Өзгерістерті сақтау
-$ sudo service iptables save
-$ sudo systemctl restart iptables
 
 $ sudo iptables -vnL --line-numbers
-$ sudo iptables -D INPUT 3
-
-Clear input chain
-$ sudo iptables -F INPUT
-Flush the whole iptables
-$ sudo iptables -F
+$ sudo iptables -D INPUT 1
 ```
 
 ```shel
-sudo iptables -P INPUT DROP
-sudo iptables -P FORWARD DROP
-sudo iptables -P OUTPUT DROP
+Өзгерістерті сақтау
+$ sudo apt install iptables-persistent
+$ sudo netfilter-persistent save
+$ sudo netfilter-persistent reload
+немесе
+$ sudo service iptables save
+$ sudo systemctl restart iptables
 ```
 
-###### Saving and restoring rules
 ```shel
+Saving and restoring rules
+
 iptables-save > /etc/iptables/rules.v4
 ip6tables-save > /etc/iptables/rules.v6
 
@@ -199,9 +201,11 @@ $ sudo iptables-restore -n < /etc/iptables/rules.v4
 ```
 
 ```shel
-$ sudo apt install iptables-persistent
-$ sudo netfilter-persistent save
-$ sudo netfilter-persistent reload
+Clear input chain
+$ sudo iptables -F INPUT
+
+Flush the whole iptables
+$ sudo iptables -F
 ```
 
 ##### Network Address Translation (NAT)
