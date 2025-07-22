@@ -6,8 +6,7 @@
   1) 802.1Q VLAN құру;
   2) IP Packet Forwarding қызметін қосу;
   3) Cisco Switch конфигурациялау;
-  4) NAT конфигурациялау;
-  5) Нəтижені тексеру.
+  4) Нəтижені тексеру.
 
 ### Physical Topology
 ![Physical Topology](TopologyPhysical_interVLANRouting_Linux.png)
