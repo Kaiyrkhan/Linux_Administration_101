@@ -10,8 +10,10 @@
   5) NAT конфигурациялау;
   6) Нəтижені тексеру.
 
-### Топология
-![Topology](Topology_interVLANRouting_Linux.png)
+### Network Physical Topology
+![Topology](Physical_Topology_interVLANRouting_Linux.png)
+### Network Logical Topology
+![Topology](Logical_Topology_interVLANRouting_Linux.png)
 
 ### Create VLAN
 ```shell
