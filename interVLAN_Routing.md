@@ -48,14 +48,14 @@ $ sudo nano /etc/network/interfaces
   vlan-raw-device ens4
 
 $ sudo systemctl restart networking
+
+$ ip -d link show ens4.11
+$ ip -d link show ens4.12
 ```
 
 ```shell
 VLAN құрылғанын тексеру
 $ sudo cat /proc/net/vlan/config
-
-$ ip -d link show ens4.11
-$ ip -d link show ens4.12
 ```
 
 ### IP Packet Forwarding қызметін қосу (enable)
