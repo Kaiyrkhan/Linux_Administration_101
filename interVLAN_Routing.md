@@ -148,3 +148,48 @@ ping VPC1 to VPC2
 VPC1> ping 172.16.11.1
 VPC1> ping 172.16.12.101
 ```
+
+### 5) NAT конфигурациялау (using iptables)
+
+##### iptables пакетін орнату және конфигурациялау
+```shel
+$ sudo apt install install iptables-services
+$ dpkg -l iptables-services
+$ dpkg -s iptables-services
+```
+```shel
+$ sudo systemctl start iptables
+$ sudo systemctl enable iptables
+
+$ sudo iptables -vnL
+```
+```shel
+Chain-ді тазалау
+$ sudo iptables -F
+
+Өзгерістерті сақтау
+$ sudo service iptables save
+$ sudo systemctl restart iptables
+
+$ sudo iptables -vnL
+```
+
+##### Network Address Translation (NAT)
+```shel
+$ sudo iptables -t nat -vnL
+
+$ sudo iptables -t nat -A POSTROUTING -s 172.16.11.0/24 -o ens3 -j MASQUERADE
+$ sudo iptables -t nat -A POSTROUTING -s 172.16.12.0/24 -o ens3 -j MASQUERADE
+
+$ sudo iptables -t nat -vnL
+```
+```shel
+$ sudo service iptables save
+$ sudo systemctl restart iptables
+```
+
+##### Нəтижені тексеру
+```shel
+VPC1> ping 8.8.8.8
+VPC2> ping 8.8.8.8
+```
