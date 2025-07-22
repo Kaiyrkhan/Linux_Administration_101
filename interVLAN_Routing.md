@@ -122,8 +122,8 @@ switchport access vlan 12
 show vlan brief
 ```
 
+##### Save Configuration
 ```shell
-Save Configuration
 copy run startup
 ```
 
@@ -141,8 +141,10 @@ VPC2> show ip
 VPC2> save
 ```
 
-##### Нəтижені тексеру (ping VPC1 to VPC2)
+##### Нəтижені тексеру
 ```shel
+ping VPC1 to VPC2
+
 VPC1> ping 172.16.11.1
 VPC1> ping 172.16.12.101
 ```
