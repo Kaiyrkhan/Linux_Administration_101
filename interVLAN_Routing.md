@@ -198,7 +198,28 @@ Flush the whole iptables
 $ sudo iptables -F
 ```
 
-##### Тәжірибе
+##### Network Address Translation (NAT)
+```shel
+$ sudo iptables -t nat -A POSTROUTING -s 172.16.11.0/24 -o ens3 -j MASQUERADE
+$ sudo iptables -t nat -A POSTROUTING -s 172.16.12.0/24 -o ens3 -j MASQUERADE
+
+$ sudo iptables -t nat -vnL
+```
+
+```shel
+$ sudo netfilter-persistent save
+$ sudo netfilter-persistent reload
+
+$ sudo iptables -t nat -vnL
+```
+
+##### Нəтижені тексеру
+```shel
+VPC1> ping 8.8.8.8
+VPC2> ping 8.8.8.8
+```
+
+### Тәжірибе
 ```shel
 $ sudo iptables -F
 
@@ -235,25 +256,4 @@ VPC1> ping google.com
 ###### 4-тәжірибе: HTTP, HTTPS хаттамаларына рұқсат ету
 ```shel
 $ sudo iptables -A FORWARD -p tcp -m multiport --ports 80,443 -s 172.16.11.0/24 -j ACCEPT
-```
-
-##### Network Address Translation (NAT)
-```shel
-$ sudo iptables -t nat -A POSTROUTING -s 172.16.11.0/24 -o ens3 -j MASQUERADE
-$ sudo iptables -t nat -A POSTROUTING -s 172.16.12.0/24 -o ens3 -j MASQUERADE
-
-$ sudo iptables -t nat -vnL
-```
-
-```shel
-$ sudo netfilter-persistent save
-$ sudo netfilter-persistent reload
-
-$ sudo iptables -t nat -vnL
-```
-
-##### Нəтижені тексеру
-```shel
-VPC1> ping 8.8.8.8
-VPC2> ping 8.8.8.8
 ```
