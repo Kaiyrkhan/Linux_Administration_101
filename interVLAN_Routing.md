@@ -212,8 +212,8 @@ $ sudo netfilter-persistent reload
 $ sudo iptables -t nat -vnL
 ```
 
-##### Нəтижені тексеру
 ```shel
+Нəтижені тексеру
 VPC1> ping 8.8.8.8
 VPC2> ping 8.8.8.8
 ```
