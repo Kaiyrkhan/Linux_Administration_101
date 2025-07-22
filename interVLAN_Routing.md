@@ -30,7 +30,9 @@ $ echo "8021q" | sudo tee -a /etc/modules-load.d/8021q.conf
 ### Virtual interface (VLAN11 және VLAN12) құру
 ```shell
 $ ip address
+```
 
+```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
   iface ens3 inet dhcp
@@ -46,9 +48,17 @@ $ sudo nano /etc/network/interfaces
   iface ens4.12 inet static
   address 172.16.12.1/24
   vlan-raw-device ens4
+```
 
+```shell
 $ sudo systemctl restart networking
 
+$ sudo ifdown ens4 && sudo ifup ens4
+$ sudo ifup ens4.11
+$ sudo ifup ens4.12
+```
+
+```shell
 $ ip -d link show ens4.11
 $ ip -d link show ens4.12
 ```
