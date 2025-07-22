@@ -6,14 +6,15 @@
   1) 802.1Q VLAN құру;
   2) IP Packet Forwarding қызметін қосу;
   3) Cisco Switch конфигурациялау;
-  4) Нəтижені тексеру.
+  4) Virtual PC Simulator-ды конфигурациялау;
+  5) Нəтижені тексеру.
 
 #### Physical Topology
 ![Physical Topology](TopologyPhysical_interVLANRouting_Linux.png)
 #### Logical Topology
 ![Logical Topology](TopologyLogical_interVLANRouting_Linux.png)
 
-### 802.1Q VLAN құру
+### 1) 802.1Q VLAN құру
 
 ##### 8021q модулін жүктеу және автожүктеу қызметіне қосу
 ```shell
@@ -68,7 +69,7 @@ VLAN құрылғанын тексеру
 $ sudo cat /proc/net/vlan/config
 ```
 
-### IP Packet Forwarding қызметін қосу (enable)
+### 2) IP Packet Forwarding қызметін қосу (enable)
 ```shell
 cat /proc/sys/net/ipv4/ip_forward
 0
@@ -85,7 +86,7 @@ cat /proc/sys/net/ipv4/ip_forward
 1
 ```
 
-### Cisco Switch конфигурациялау
+### 3) Cisco Switch конфигурациялау
 
 ##### Trunk Port
 ```shell
@@ -114,4 +115,24 @@ switchport access vlan 11
 interface g0/3
 switchport mode access
 switchport access vlan 12
+
+show vlan brief
+```
+##### Save configuration
+```shell
+copy run startup
+```
+
+### 4) Virtual PC Simulator
+```shell
+VPC1> ip 172.16.11.101/24 172.16.11.1
+VPCS> ip dns 8.8.8.8
+VPC1> show ip
+VPC1> save
+```
+```shell
+VPC2> ip 172.16.12.101/24 172.16.12.1
+VPCS> ip dns 8.8.8.8
+VPC2> show ip
+VPC2> save
 ```
