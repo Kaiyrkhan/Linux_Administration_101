@@ -155,25 +155,30 @@ VPC1> ping 172.16.12.101
 ##### iptables пакетін орнату және конфигурациялау
 ```shel
 $ sudo apt update
-$ sudo apt install install iptables-services
-$ dpkg -l iptables-services
-$ dpkg -s iptables-services
-```
-```shel
-$ sudo systemctl start iptables
-$ sudo systemctl enable iptables
+$ sudo apt install iptables
+$ sudo apt install iptables-persistent
 
+$ sudo iptables -V
 $ sudo iptables -vnL
 ```
+
 ```shel
-Chain-ді тазалау
-$ sudo iptables -F
+$ sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+$ sudo iptables -A INPUT -p tcp --dport ssh -j ACCEPT
+$ sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+$ sudo iptables -vnL
 
 Өзгерістерті сақтау
 $ sudo service iptables save
 $ sudo systemctl restart iptables
 
-$ sudo iptables -vnL
+$ sudo iptables -vnL --line-numbers
+$ sudo iptables -D INPUT 3
+
+Clear input chain
+$ sudo iptables -F INPUT
+Flush the whole iptables
+$ sudo iptables -F
 ```
 
 ##### Network Address Translation (NAT)
