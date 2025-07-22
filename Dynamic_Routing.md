@@ -8,7 +8,7 @@
 **R1**
 ```shell
 Құрылғының атауын (Device Name) өзгерту
-$ hostnamectl set-hostname firewall
+$ sudo hostnamectl set-hostname R1
 $ bash
 ```
 
