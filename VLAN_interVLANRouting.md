@@ -1,5 +1,15 @@
 # VLAN and interVLAN Routing on Linux (Software Router)
 
+### Тақырыбы: Linux дистрибутивінде интернет шлюз (gateway) құру
+
+### Жұмыстың орындалу қадамы: 
+  1) Желілік интерфейсті конфигурациялау;
+  2) 802.1Q VLAN құру;
+  3) IP Packet Forwarding қызметін қосу (enable);
+  4) Switch конфигурациялау;
+  5) NAT конфигурациялау;
+  6) Нəтижені тексеру.
+
 ### Топология
 ![Topology](Topology_interVLANRouting_Linux.png)
 
