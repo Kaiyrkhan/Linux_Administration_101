@@ -71,7 +71,7 @@ $ sudo cat /proc/net/vlan/config
 
 ### 2) IP Packet Forwarding қызметін қосу (enable)
 ```shell
-cat /proc/sys/net/ipv4/ip_forward
+$ cat /proc/sys/net/ipv4/ip_forward
 0
 ```
 
@@ -82,7 +82,7 @@ $ sudo sysctl -p
 ```
 
 ```shell
-cat /proc/sys/net/ipv4/ip_forward
+$ cat /proc/sys/net/ipv4/ip_forward
 1
 ```
 
@@ -92,6 +92,7 @@ cat /proc/sys/net/ipv4/ip_forward
 ```shell
 enable
 configure terminal
+
 interface g0/1
 switchport trunk encapsulation dot1q
 switchport mode trunk
@@ -107,6 +108,9 @@ show int g0/1 switchport
 ##### Access Port
 ```shell
 configure terminal
+vlan 11
+vlan 12
+show vlan brief
 
 interface g0/2
 switchport mode access
