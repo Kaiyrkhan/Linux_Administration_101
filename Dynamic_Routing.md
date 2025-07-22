@@ -13,7 +13,7 @@ $ bash
 ```
 
 ```shell
-FRR пакетін орнату және конфигурациялау
+FRR (FRRouting) пакетін орнату және конфигурациялау
 
 $ sudo apt update
 $ sudo apt install frr frr-pythontools
