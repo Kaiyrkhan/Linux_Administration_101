@@ -13,7 +13,7 @@
 ### Logical Topology
 ![Logical Topology](TopologyLogical_interVLANRouting_Linux.png)
 
-## 802.1Q VLAN құру (Gateway)
+## Gateway конфигурациялау
 
 ### 8021q модулін жүктеу және автожүктеу қызметіне қосу
 ```shell
@@ -87,7 +87,7 @@ cat /proc/sys/net/ipv4/ip_forward
 
 ## Cisco Switch конфигурациялау
 
-### Trunk interface құру
+### Trunk Port
 ```shell
 enable
 configure terminal
@@ -96,5 +96,22 @@ switchport trunk encapsulation dot1q
 switchport mode trunk
 switchport trunk allowed vlan 11,12
 switchport nonegotiate
+end
 
+show int trunk
+show int status
+show int g0/1 switchport
+```
+
+### Access Port
+```shell
+configure terminal
+
+interface g0/2
+switchport mode access
+switchport access vlan 11
+
+interface g0/3
+switchport mode access
+switchport access vlan 12
 ```
