@@ -218,7 +218,7 @@ VPC1> ping 8.8.8.8
 VPC2> ping 8.8.8.8
 ```
 
-### Тәжірибе
+### Мысалдар
 ```shel
 $ sudo iptables -F
 
@@ -228,14 +228,14 @@ sudo iptables -P FORWARD DROP
 $ sudo netfilter-persistent save
 $ sudo netfilter-persistent reload
 ```
-###### 2-тәжірибе: INPUT бойынша ICMP хаттамаға рұқсат ету
+###### 1-мысал: INPUT бойынша ICMP хаттамаға рұқсат ету
 ```shel
 VPC1> ping 172.16.11.1
 $ sudo iptables -A INPUT -p icmp -j ACCEPT
 VPC1> ping 172.16.11.1
 ```
 
-###### 2-тәжірибе: FORWARD бойынша ICMP хаттамаға рұқсат ету
+###### 2-мысал: FORWARD бойынша ICMP хаттамаға рұқсат ету
 ```shel
 VPC1> ping 172.16.12.101
 VPC1> ping 8.8.8.8
@@ -244,7 +244,7 @@ VPC1> ping 172.16.12.101
 VPC1> ping 8.8.8.8
 ```
 
-###### 3-тәжірибе: Conntrack және DNS портына рұқсат ету
+###### 3-мысал: Conntrack және DNS портына рұқсат ету
 ```shel
 VPC1> ping google.com
 $ sudo iptables -A FORWARD -p udp --dport 53 -s 172.16.11.0/24 -j ACCEPT
@@ -252,7 +252,7 @@ $ sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 VPC1> ping google.com
 ```
 
-###### 4-тәжірибе: HTTP, HTTPS хаттамаларына рұқсат ету
+###### 4-мысал: HTTP, HTTPS хаттамаларына рұқсат ету
 ```shel
 $ sudo iptables -A FORWARD -p tcp -m multiport --ports 80,443 -s 172.16.11.0/24 -j ACCEPT
 ```
