@@ -1,4 +1,4 @@
-# interVLAN Routing on Linux 
+# interVLAN Routing on Debian 12.x 
 
 #### Тақырыбы: Linux дистрибутивінде 802.1Q VLAN конфигурациялау
 
@@ -181,6 +181,7 @@ $ sudo iptables -I INPUT 1 -p tcp --dport 443 -j ACCEPT
 
 Listing Rules
 $ sudo iptables -vnL --line-numbers
+
 Deleting Rules
 $ sudo iptables -D INPUT 1
 ```
@@ -203,6 +204,7 @@ $ sudo iptables -F
 
 ```shel
 Өзгерісті сақтау және қайта жүктеу (Saving and Reloading IPTables Rules)
+
 $ sudo apt install iptables-persistent
 $ sudo systemctl status netfilter-persistent
 
