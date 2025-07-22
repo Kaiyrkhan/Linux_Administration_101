@@ -167,6 +167,8 @@ $ sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 $ sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
 $ sudo iptables -vnL
+немесе
+$ sudo iptables -t filter -vnL
 ```
 
 ```shel
@@ -186,7 +188,6 @@ $ sudo netfilter-persistent reload
 ```shel
 sudo iptables -P INPUT DROP
 sudo iptables -P FORWARD DROP
-sudo iptables -P OUTPUT DROP
 ```
 
 ```shel
@@ -197,18 +198,58 @@ Flush the whole iptables
 $ sudo iptables -F
 ```
 
+##### Тәжірибе
+```shel
+$ sudo iptables -F
+
+sudo iptables -P INPUT DROP
+sudo iptables -P FORWARD DROP
+
+$ sudo netfilter-persistent save
+$ sudo netfilter-persistent reload
+```
+###### 2-тәжірибе: INPUT бойынша ICMP хаттамаға рұқсат ету
+```shel
+VPC1> ping 172.16.11.1
+$ sudo iptables -A INPUT -p icmp -j ACCEPT
+VPC1> ping 172.16.11.1
+```
+
+###### 2-тәжірибе: FORWARD бойынша ICMP хаттамаға рұқсат ету
+```shel
+VPC1> ping 172.16.12.101
+VPC1> ping 8.8.8.8
+$ sudo iptables -A FORWARD -p icmp -j ACCEPT
+VPC1> ping 172.16.12.101
+VPC1> ping 8.8.8.8
+```
+
+###### 3-тәжірибе: Conntrack және DNS портына рұқсат ету
+```shel
+VPC1> ping google.com
+$ sudo iptables -A FORWARD -p udp --dport 53 -s 172.16.11.0/24 -j ACCEPT
+$ sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+VPC1> ping google.com
+```
+
+###### 4-тәжірибе: HTTP, HTTPS хаттамаларына рұқсат ету
+```shel
+$ sudo iptables -A FORWARD -p tcp -m multiport --ports 80,443 -s 172.16.11.0/24 -j ACCEPT
+```
+
 ##### Network Address Translation (NAT)
 ```shel
-$ sudo iptables -t nat -vnL
-
 $ sudo iptables -t nat -A POSTROUTING -s 172.16.11.0/24 -o ens3 -j MASQUERADE
 $ sudo iptables -t nat -A POSTROUTING -s 172.16.12.0/24 -o ens3 -j MASQUERADE
 
 $ sudo iptables -t nat -vnL
 ```
+
 ```shel
-$ sudo service iptables save
-$ sudo systemctl restart iptables
+$ sudo netfilter-persistent save
+$ sudo netfilter-persistent reload
+
+$ sudo iptables -t nat -vnL
 ```
 
 ##### Нəтижені тексеру
