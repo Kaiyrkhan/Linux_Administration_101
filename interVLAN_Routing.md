@@ -1,6 +1,6 @@
 # interVLAN Routing on Linux 
 
-### Тақырыбы: Linux дистрибутивінде интернет шлюз (gateway) құру
+### Тақырыбы: Linux дистрибутивінде VLAn құру және әр түрлі VLAN-дар арасында байланыс орнату
 
 ### Жұмыстың орындалу қадамы: 
   1) Желілік интерфейсті конфигурациялау;
@@ -21,8 +21,8 @@
 ```shell
 8021q модулін жүктеу
 $ sudo modprobe 8021q
+8021q модулінің жүктелгенін тексеру
 $ lsmod | grep 8021q
-$ sudo cat /proc/net/vlan/config
 ```
 
 ```shell
@@ -43,12 +43,9 @@ $ sudo nano /etc/network/interfaces
   vlan-raw-device ens4
 
 $ sudo systemctl restart networking
-~~ $ sudo ifdown ens4 && sudo ifup ens4
-$ sudo ifup ens4.11
-$ sudo ifup ens4.12 ~~
+```
 
-~~сызып тасталған~~
-
+```shell
 VLAN құрылғанын тексеру
 $ sudo cat /proc/net/vlan/config
 
