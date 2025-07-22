@@ -154,6 +154,7 @@ VPC1> ping 172.16.12.101
 
 ##### iptables пакетін орнату және конфигурациялау
 ```shel
+$ sudo apt update
 $ sudo apt install install iptables-services
 $ dpkg -l iptables-services
 $ dpkg -s iptables-services
