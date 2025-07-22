@@ -171,7 +171,7 @@ $ sudo iptables -vnL
 ```
 
 ```shel
-$ sudo iptables -A INPUT 1 -p tcp --dport 443 -j ACCEPT
+$ sudo iptables -I INPUT 1 -p tcp --dport 443 -j ACCEPT
 $ sudo iptables -vnL
 
 $ sudo iptables -vnL --line-numbers
@@ -179,25 +179,10 @@ $ sudo iptables -D INPUT 1
 ```
 
 ```shel
-Өзгерістерті сақтау
+Өзгерістерті сақтау (Saving Rules)
 $ sudo apt install iptables-persistent
 $ sudo netfilter-persistent save
 $ sudo netfilter-persistent reload
-немесе
-$ sudo service iptables save
-$ sudo systemctl restart iptables
-```
-
-```shel
-Saving and restoring rules
-
-iptables-save > /etc/iptables/rules.v4
-ip6tables-save > /etc/iptables/rules.v6
-
-Overwrite the current rules
-$ sudo iptables-restore < /etc/iptables/rules.v4
-Add the new rules keeping the current ones
-$ sudo iptables-restore -n < /etc/iptables/rules.v4
 ```
 
 ```shel
