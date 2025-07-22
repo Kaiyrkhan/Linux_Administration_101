@@ -1,30 +1,35 @@
 # interVLAN Routing on Linux 
 
-### Тақырыбы: Linux дистрибутивінде VLAN құру және әр түрлі VLAN-дар арасында байланыс орнату
+### Тақырыбы: Linux дистрибутивінде interVLAN Routing қолдану
+### Жұмыстың мақсаты: Linux дистрибутивінде VLAN құру және әр түрлі VLAN-дар арасына байланыс орнату
 
 ### Жұмыстың орындалу қадамы: 
-  1) Желілік интерфейсті конфигурациялау;
-  2) 802.1Q VLAN құру;
-  3) IP Packet Forwarding қызметін қосу (enable);
-  4) Cisco Switch конфигурациялау;
-  5) NAT конфигурациялау;
-  6) Нəтижені тексеру.
+  1) 802.1Q VLAN құру;
+  2) IP Packet Forwarding қызметін қосу;
+  3) Cisco Switch конфигурациялау;
+  4) NAT конфигурациялау;
+  5) Нəтижені тексеру.
 
 ### Physical Topology
 ![Physical Topology](TopologyPhysical_interVLANRouting_Linux.png)
 ### Logical Topology
 ![Logical Topology](TopologyLogical_interVLANRouting_Linux.png)
 
-## Gateway
+## 802.1Q VLAN құру (Gateway)
 
-### 802.1Q VLAN құру
+### 8021q модулін жүктеу және автожүктеу қызметіне қосу
 ```shell
 8021q модулін жүктеу
 $ sudo modprobe 8021q
+
 8021q модулінің жүктелгенін тексеру
 $ lsmod | grep 8021q
+
+8021q модулін автожүктеу (startup) қызметіне қосу
+$ echo "8021q" | sudo tee -a /etc/modules-load.d/8021q.conf
 ```
 
+### Virtual interface (VLAN11 және VLAN12) құру
 ```shell
 $ ip address
 
@@ -32,11 +37,13 @@ $ sudo nano /etc/network/interfaces
   auto ens3
   iface ens3 inet dhcp
 
+  # Virtual interface VLAN11
   auto ens4.11
   iface ens4.11 inet static
   address 172.16.11.1/24
   vlan-raw-device ens4
 
+  # Virtual interface VLAN12
   auto ens4.12
   iface ens4.12 inet static
   address 172.16.12.1/24
@@ -53,9 +60,19 @@ $ ip -d link show ens4.11
 $ ip -d link show ens4.12
 ```
 
-### Enable Packet IP Forwarding
+### IP Packet Forwarding қызметін қосу (enable)
+```shell
+cat /proc/sys/net/ipv4/ip_forward
+0
+```
+
 ```shell
 $ sudo nano /etc/sysctl.conf
 net.ipv4.ip_forward=1
 $ sudo sysctl -p
+```
+
+```shell
+cat /proc/sys/net/ipv4/ip_forward
+1
 ```
