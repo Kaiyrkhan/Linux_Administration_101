@@ -7,8 +7,9 @@
   2) IP Packet Forwarding қызметін қосу;
   3) Cisco Switch конфигурациялау;
   4) Virtual PC Simulator-ды конфигурациялау;
-  5) NAT конфигурациялау (using iptables);
-  6) NAT конфигурациялау (using nftables).
+  5) NAT конфигурациялау (using nftables);
+  6) NAT конфигурациялау (using iptables);
+  7) NAT конфигурациялау (using Firewalld).
 
 #### Physical Topology
 ![Physical Topology](Topology/TopologyPhysical_interVLANRouting_Linux.png)
