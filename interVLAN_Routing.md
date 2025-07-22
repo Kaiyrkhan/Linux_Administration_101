@@ -90,7 +90,6 @@ $ cat /proc/sys/net/ipv4/ip_forward
 
 ##### Trunk Port
 ```shell
-enable
 configure terminal
 
 interface g0/1
@@ -98,7 +97,6 @@ switchport trunk encapsulation dot1q
 switchport mode trunk
 switchport trunk allowed vlan 11,12
 switchport nonegotiate
-end
 
 show int trunk
 show int status
@@ -139,4 +137,10 @@ VPC2> ip 172.16.12.101/24 172.16.12.1
 VPCS> ip dns 8.8.8.8
 VPC2> show ip
 VPC2> save
+```
+
+### 5) Нəтижені тексеру
+```shel
+VPC1> ping 172.16.11.1
+VPC1> ping 172.16.12.101
 ```
