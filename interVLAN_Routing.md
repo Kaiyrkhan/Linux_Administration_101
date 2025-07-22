@@ -180,6 +180,9 @@ $ sudo iptables -D INPUT 1
 ```shel
 sudo iptables -P INPUT DROP
 sudo iptables -P FORWARD DROP
+
+sudo iptables -P INPUT ACCEPT
+sudo iptables -P FORWARD ACCEPT
 ```
 
 ```shel
