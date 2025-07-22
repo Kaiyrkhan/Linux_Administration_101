@@ -7,15 +7,37 @@
 
 **R1**
 ```shell
-$ sudo nano /etc/network/interfaces
-  auto ens3
-  iface ens3 inet static
-  address 192.168.1.1
-  netmask 255.255.255.0
+Құрылғының атауын (Device Name) өзгерту
+$ hostnamectl set-hostname firewall
+$ bash
+```
 
-  auto ens4
-  iface ens4 inet static
-  address 10.1.1.101
-  netmask 255.255.255.252
-  up ip route add 172.16.1.0/24 via 10.1.1.102
+```shell
+FRR пакетін орнату және конфигурациялау
+
+$ sudo apt update
+$ sudo apt install frr frr-pythontools
+
+$ sudo nano /etc/frr/daemons
+ospfd=yes
+
+$ sudo systemctl restart frr
+$ sudo systemctl enable frr
+```
+
+```shell
+OSPF конфигурациялау
+
+$ sudo vtysh
+
+router ospf
+router-id 50.1.1.1
+passive-interface ens3
+network 10.10.10.0/24 area 0
+int ens4
+ip ospf network broadcast
+ip ospf mtu-ignore
+
+copy run start
+exit
 ```
