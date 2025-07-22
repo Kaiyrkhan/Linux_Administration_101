@@ -156,7 +156,6 @@ VPC1> ping 172.16.12.101
 ```shel
 $ sudo apt update
 $ sudo apt install iptables
-$ sudo apt install iptables-persistent
 
 $ sudo iptables -V
 $ sudo iptables -vnL
@@ -166,6 +165,7 @@ $ sudo iptables -vnL
 $ sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 $ sudo iptables -A INPUT -p tcp --dport ssh -j ACCEPT
 $ sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+$ iptables -A INPUT 1 -p tcp --dport 443 -j ACCEPT
 $ sudo iptables -vnL
 
 Өзгерістерті сақтау
@@ -179,6 +179,29 @@ Clear input chain
 $ sudo iptables -F INPUT
 Flush the whole iptables
 $ sudo iptables -F
+```
+
+```shel
+sudo iptables -P INPUT DROP
+sudo iptables -P FORWARD DROP
+sudo iptables -P OUTPUT DROP
+```
+
+###### Saving and restoring rules
+```shel
+iptables-save > /etc/iptables/rules.v4
+ip6tables-save > /etc/iptables/rules.v6
+
+Overwrite the current rules
+$ sudo iptables-restore < /etc/iptables/rules.v4
+Add the new rules keeping the current ones
+$ sudo iptables-restore -n < /etc/iptables/rules.v4
+```
+
+```shel
+$ sudo apt install iptables-persistent
+$ sudo netfilter-persistent save
+$ sudo netfilter-persistent reload
 ```
 
 ##### Network Address Translation (NAT)
