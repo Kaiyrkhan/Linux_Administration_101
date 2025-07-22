@@ -1,4 +1,4 @@
-# VLAN and interVLAN Routing on Linux (Software Router)
+# interVLAN Routing on Linux 
 
 ### Тақырыбы: Linux дистрибутивінде интернет шлюз (gateway) құру
 
