@@ -15,8 +15,19 @@
 ### Logical Topology
 ![Logical Topology](TopologyLogical_interVLANRouting_Linux.png)
 
-### Create VLAN
+## Gateway
+
+### 802.1Q VLAN құру
 ```shell
+8021q модулін жүктеу
+$ sudo modprobe 8021q
+$ lsmod | grep 8021q
+$ sudo cat /proc/net/vlan/config
+```
+
+```shell
+$ ip address
+
 $ sudo nano /etc/network/interfaces
   auto ens3
   iface ens3 inet dhcp
@@ -32,14 +43,17 @@ $ sudo nano /etc/network/interfaces
   vlan-raw-device ens4
 
 $ sudo systemctl restart networking
-$ sudo ifdown ens4 && sudo ifup ens4
+~~ $ sudo ifdown ens4 && sudo ifup ens4
 $ sudo ifup ens4.11
-$ sudo ifup ens4.12
+$ sudo ifup ens4.12 ~~
+
+~~сызып тасталған~~
+
+VLAN құрылғанын тексеру
+$ sudo cat /proc/net/vlan/config
 
 $ ip -d link show ens4.11
 $ ip -d link show ens4.12
-
-$ sudo cat /proc/net/vlan/config
 ```
 
 ### Enable Packet IP Forwarding
