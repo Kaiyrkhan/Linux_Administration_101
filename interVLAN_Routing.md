@@ -157,11 +157,16 @@ VPC1> ping 172.16.12.101
 $ sudo apt update
 $ sudo apt install iptables
 
+Verify the Installation
 $ sudo iptables -V
+$ sudo iptables --version
+
+Check Current Rules
 $ sudo iptables -L
 ```
 
 ```shel
+$ sudo iptables -A INPUT -i lo -j ACCEPT
 $ sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 $ sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 
@@ -171,9 +176,12 @@ $ sudo iptables -t filter -vnL
 ```
 
 ```shel
+Inserting Rules
 $ sudo iptables -I INPUT 1 -p tcp --dport 443 -j ACCEPT
 
+Listing Rules
 $ sudo iptables -vnL --line-numbers
+Deleting Rules
 $ sudo iptables -D INPUT 1
 ```
 
@@ -194,10 +202,17 @@ $ sudo iptables -F
 ```
 
 ```shel
-Өзгерістерті сақтау (Saving Rules)
+Өзгерісті сақтау және қайта жүктеу (Saving and Reloading IPTables Rules)
 $ sudo apt install iptables-persistent
+$ sudo systemctl status netfilter-persistent
+
 $ sudo netfilter-persistent save
 $ sudo netfilter-persistent reload
+
+$ sudo iptables-save > /etc/iptables/rules.v4
+$ sudo iptables-restore < /etc/iptables/rules.v4
+
+/etc/network/if-pre-up.d/iptables
 ```
 
 ##### Network Address Translation (NAT)
@@ -219,7 +234,7 @@ VPC1> ping 8.8.8.8
 VPC2> ping 8.8.8.8
 ```
 
-### Мысалдар
+### Troubleshooting
 ```shel
 $ sudo iptables -F
 
@@ -256,4 +271,10 @@ VPC1> ping google.com
 ###### 4-мысал: HTTP, HTTPS хаттамаларына рұқсат ету
 ```shel
 $ sudo iptables -A FORWARD -p tcp -m multiport --ports 80,443 -s 172.16.11.0/24 -j ACCEPT
+```
+
+###### 5-мысал: Port Forwarding
+```shel
+Change external port 8080 to internal port 80:
+$ sudo iptables -t nat -A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
 ```
