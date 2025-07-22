@@ -202,17 +202,15 @@ $ sudo netfilter-persistent reload
 
 ##### Network Address Translation (NAT)
 ```shel
+$ sudo iptables -t nat -vnL
+
 $ sudo iptables -t nat -A POSTROUTING -s 172.16.11.0/24 -o ens3 -j MASQUERADE
 $ sudo iptables -t nat -A POSTROUTING -s 172.16.12.0/24 -o ens3 -j MASQUERADE
-
-$ sudo iptables -t nat -vnL
 ```
 
 ```shel
 $ sudo netfilter-persistent save
 $ sudo netfilter-persistent reload
-
-$ sudo iptables -t nat -vnL
 ```
 
 ```shel
