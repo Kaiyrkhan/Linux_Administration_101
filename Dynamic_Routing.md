@@ -35,10 +35,24 @@ $ sudo apt install frr frr-pythontools
 $ sudo systemctl status frr
 
 $ sudo nano /etc/frr/daemons
+zebra=yes
 ospfd=yes
 
 $ sudo systemctl restart frr
 $ sudo systemctl status frr
+```
+
+```shell
+$ sudo nano /etc/network/interfaces
+  auto ens3
+  iface ens3 inet static
+  address 192.168.1.1/24
+
+  auto ens4
+  iface ens4 inet static
+  address 10.1.1.101/30
+
+$ sudo systemctl restart networking
 ```
 
 ```shell
