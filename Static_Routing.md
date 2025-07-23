@@ -19,6 +19,14 @@ VPC2> save
 
 **R1**
 ```shell
+Құрылғының атауын (Device Name) өзгерту
+$ sudo hostnamectl set-hostname R1
+$ sudo nano /etc/hosts
+127.0.1.1  R1
+$ bash
+```
+
+```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
   iface ens3 inet static
@@ -33,6 +41,14 @@ $ sudo nano /etc/network/interfaces
 ```
 
 **R2**
+```shell
+Құрылғының атауын (Device Name) өзгерту
+$ sudo hostnamectl set-hostname R2
+$ sudo nano /etc/hosts
+127.0.1.1  R2
+$ bash
+```
+
 ```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
@@ -49,6 +65,14 @@ $ sudo nano /etc/network/interfaces
 ```
 
 **R3**
+```shell
+Құрылғының атауын (Device Name) өзгерту
+$ sudo hostnamectl set-hostname R3
+$ sudo nano /etc/hosts
+127.0.1.1  R3
+$ bash
+```
+
 ```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
