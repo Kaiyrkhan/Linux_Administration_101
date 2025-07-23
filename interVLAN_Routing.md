@@ -273,6 +273,8 @@ VPC1> ping google.com
 ###### 4-мысал: HTTP, HTTPS хаттамаларына рұқсат ету
 ```shel
 $ sudo iptables -A FORWARD -p tcp -m multiport --ports 80,443 -s 172.16.11.0/24 -j ACCEPT
+
+nc -w1 -vz 172.16.11.1 80
 ```
 
 ###### 5-мысал: Port Forwarding
