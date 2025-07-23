@@ -90,6 +90,10 @@ exit
 $ sudo cat /etc/frr/frr.conf
 ```
 
+```shell
+$ ip route
+```
+
 **R2**
 ```shell
 Құрылғының атауын (Device Name) өзгерту
