@@ -26,9 +26,11 @@ $ sudo nano /etc/network/interfaces
   auto bond0
   iface bond0 inet static
     address 172.16.10.1/24
-  bond-mode 4
   bond-slaves ens3 ens4
+  bond-mode 802.3ad
 ```
+
+> IEEE 802.3ad – LACP (Link Aggregation Control Protocol) 
 
 ```shell
 $ cat /proc/net/bonding/bond0
