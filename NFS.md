@@ -3,6 +3,8 @@
 > NFS - Network File Sharing Protocol
 
 ## NFS on Ubuntu Linux
+
+##### NFS Server
 ```shell
 $ sudo apt update
 $ sudo apt install nfs-kernel-server
@@ -18,6 +20,7 @@ $ sudo nano /etc/exports
 $ sudo service nfs-kernel-server restart
 ```
 
+##### NFS Client
 ```shell
 $ sudo nano /etc/fstab
 172.16.11.101:/mnt/data1  /mnt/data1  nfs  defaults  0  0
