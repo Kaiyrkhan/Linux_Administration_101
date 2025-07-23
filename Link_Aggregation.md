@@ -33,3 +33,7 @@ $ sudo nano /etc/network/interfaces
 ```shell
 $ cat /proc/net/bonding/bond0
 ```
+
+> student@server:~$ iperf3 -s -p 1234
+>
+> student@desktop:~$ iperf3 -c server -p 1234
