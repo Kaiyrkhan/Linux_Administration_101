@@ -59,14 +59,22 @@ $ sudo systemctl restart networking
 OSPF конфигурациялау
 
 $ sudo vtysh
+configure terminal
 
 router ospf
 router-id 50.1.1.1
-passive-interface ens3
-network 10.10.10.0/24 area 0
-int ens4
+network 10.1.1.100/30 area 0
+network 192.168.1.0/24 area 0
+exit
+
+interface ens4
 ip ospf network broadcast
 ip ospf mtu-ignore
+exit
+
+interface ens3
+ip ospf passive
+end
 
 copy run start
 exit
