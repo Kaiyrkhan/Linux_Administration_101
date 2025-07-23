@@ -21,6 +21,8 @@ VPC2> save
 ```shell
 Құрылғының атауын (Device Name) өзгерту
 $ sudo hostnamectl set-hostname R1
+$ sudo nano /etc/hosts
+127.0.1.1  R1
 $ bash
 ```
 
