@@ -10,4 +10,5 @@
 
 ### References
 
-[How to Set Up Ethernet Channel Bonding in Linux for Load Balancing] (https://www.tecmint.com/ethernet-channel-bonding-in-linux)
+1) [How to Set Up Ethernet Channel Bonding in Linux for Load Balancing](https://www.tecmint.com/ethernet-channel-bonding-in-linux)
+
