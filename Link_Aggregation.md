@@ -1,6 +1,8 @@
-# Link Aggregation (LACP) on Linux
+# Link Aggregation (LACP) and Bridging on Linux
 
 ## Link Aggregation on Debian/Ubuntu
+
+### Bonding
 ```shell
 $ sudo apt update
 $ sudo apt install ifenslave
@@ -29,13 +31,25 @@ $ sudo nano /etc/network/interfaces
   bond-slaves ens3 ens4
   bond-mode 802.3ad
 ```
-
 > IEEE 802.3ad – LACP (Link Aggregation Control Protocol) 
 
 ```shell
 $ cat /proc/net/bonding/bond0
 ```
 
+## Link Aggregation on RHEL
+### Teaming
+```shell
+$ ip address
+
+$ sudo nmcli conn add type team con-name team0 ifname team0 config '{"runner": {"name": "activebackup"}}'
+```
+
+```shell
+
+```
+
+### Қосымша ақпарат
 > student@server:~$ iperf3 -s -p 1234
 >
 > student@desktop:~$ iperf3 -c server -p 1234
