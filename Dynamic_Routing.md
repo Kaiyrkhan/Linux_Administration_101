@@ -1,7 +1,7 @@
 # Dynamic Routing on Linux
 
 ### Топология
-![Topology](Topology/Topology_Static_Routing_Linux.png)
+![Topology](Topology/Topology_Dynamic_Routing_Linux.png)
 
 ## Virtual PC Simulator
 ```shell
