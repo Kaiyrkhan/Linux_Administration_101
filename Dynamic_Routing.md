@@ -38,6 +38,9 @@ $ sudo nano /etc/frr/daemons
 zebra=yes
 ospfd=yes
 
+немесе
+$ sudo sed -i 's/ospfd=no/ospfd=yes/' /etc/frr/daemons
+
 $ sudo systemctl restart frr
 $ sudo systemctl status frr
 ```
@@ -77,8 +80,14 @@ interface ens3
 ip ospf passive
 end
 
+show ip route
+
 copy run start
 exit
+```
+
+```shell
+$ sudo cat /etc/frr/frr.conf
 ```
 
 **R2**
@@ -141,6 +150,7 @@ ip ospf mtu-ignore
 end
 
 show ip ospf neighbor
+show ip route
 
 copy run start
 exit
@@ -205,6 +215,7 @@ ip ospf passive
 end
 
 show ip ospf neighbor
+show ip route
 
 copy run start
 exit
@@ -214,6 +225,7 @@ exit
 ```shell
 $ sudo nano /etc/sysctl.conf
 net.ipv4.ip_forward=1
+net.ipv6.conf.all.forwarding=1 
 $ sudo sysctl -p
 ```
 
