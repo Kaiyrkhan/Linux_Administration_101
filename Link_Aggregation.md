@@ -43,6 +43,8 @@ $ cat /proc/net/bonding/bond0
 $ ip address
 
 $ sudo nmcli conn add type team con-name team0 ifname team0 config '{"runner": {"name": "activebackup"}}'
+$ sudo nmcli conn add type team-slave con-name team0-port1 ifname eth1
+$ sudo nmcli conn add type team-slave con-name team0-port2 ifname eth2
 ```
 
 ```shell
