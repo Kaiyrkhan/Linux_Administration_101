@@ -130,10 +130,15 @@ network 10.1.1.100/30 area 0
 network 10.2.2.100/30 area 0
 exit
 
+interface ens3
+ip ospf network broadcast
+ip ospf mtu-ignore
 interface ens4
 ip ospf network broadcast
 ip ospf mtu-ignore
 end
+
+show ip ospf neighbor
 
 copy run start
 exit
