@@ -32,11 +32,13 @@ FRR (FRRouting) пакетін орнату және конфигурациял�
 $ sudo apt update
 $ sudo apt install frr frr-pythontools
 
+$ sudo systemctl status frr
+
 $ sudo nano /etc/frr/daemons
 ospfd=yes
 
 $ sudo systemctl restart frr
-$ sudo systemctl enable frr
+$ sudo systemctl status frr
 ```
 
 ```shell
