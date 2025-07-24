@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<lab name="Topology_LinkAggregation_LACP_Linux" version="1" scripttimeout="300" password="" author="1" countdown="60" darkmode="" mode3d="" nogrid="" joinable="2" joinable_emails="1" openable="2" openable_emails="1" editable="2" editable_emails="1" multi_config_active="">
+  <topology>
+    <nodes>
+      <node id="1" type="qemu" template="viosl2" config="0" config_script="config_viosl2.py" script_timeout="1200" config_data="" multi_config="W10=" delay="0" icon="Switch L3.png" image="viosl2-15.2-20200929" left="366" name="Cisco Switch" top="234" size="0" console="telnet" ethernet="8" nvram="1024" ram="1024" serial="0" idlepc="0x0" cpu="1" cpulimit="1" uuid="d3e15847-bc11-4c77-9b61-ca2de570a3d4" firstmac="" first_nic="" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc -cpu host" qemu_version="2.12.0" qemu_arch="x86_64" qemu_nic="e1000" username="" password="" eth_format="" console_2nd="" map_port="" map_port_2nd="">
+        <interface id="1" name="Gi0/1" type="ethernet" network_id="2" style="" linkstyle="" color="" label="" linkcfg="" labelpos="" srcpos="" dstpos="" width="" fontsize=""/>
+        <interface id="2" name="Gi0/2" type="ethernet" network_id="3" style="" linkstyle="" color="" label="" linkcfg="" labelpos="" srcpos="" dstpos="" width="" fontsize=""/>
+        <interface id="5" name="Gi1/1" type="ethernet" network_id="4" style="" linkstyle="" color="" label="" linkcfg="" labelpos="" srcpos="" dstpos="" width="" fontsize=""/>
+        <interface id="6" name="Gi1/2" type="ethernet" network_id="5" style="" linkstyle="" color="" label="" linkcfg="" labelpos="" srcpos="" dstpos="" width="" fontsize=""/>
+      </node>
+      <node id="2" type="qemu" template="linux" config="0" config_script="" script_timeout="1200" config_data="" multi_config="W10=" delay="0" icon="Linux.png" image="linux-ubuntu-24.04-LTS" left="135" name="H1" top="231" size="0" console="vnc" ethernet="2" nvram="1024" ram="4096" serial="0" idlepc="0x0" cpu="2" cpulimit="1" uuid="24feb0d8-a817-4421-9b57-903cd0c8427a" firstmac="" first_nic="" qemu_options="-machine type=pc,accel=kvm -vga std -usbdevice tablet -boot order=cd -cpu host" qemu_version="2.12.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" username="" password="" eth_format="" console_2nd="" map_port="" map_port_2nd="">
+        <interface id="0" name="e0" type="ethernet" network_id="2" style="" linkstyle="" color="" label="" linkcfg="" labelpos="" srcpos="" dstpos="" width="" fontsize=""/>
+        <interface id="1" name="e1" type="ethernet" network_id="3" style="" linkstyle="" color="" label="" linkcfg="" labelpos="" srcpos="" dstpos="" width="" fontsize=""/>
+      </node>
+      <node id="3" type="qemu" template="linux" config="0" config_script="" script_timeout="1200" config_data="" multi_config="W10=" delay="0" icon="Linux.png" image="linux-ubuntu-24.04-LTS" left="627" name="H2" top="231" size="0" console="vnc" ethernet="2" nvram="0" ram="4096" serial="0" idlepc="0x0" cpu="2" cpulimit="1" uuid="6456fe25-525b-4133-8e99-48cc5a0beabc" firstmac="" first_nic="" qemu_options="-machine type=pc,accel=kvm -vga std -usbdevice tablet -boot order=cd -cpu host" qemu_version="2.12.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" username="" password="" eth_format="" console_2nd="" map_port="" map_port_2nd="">
+        <interface id="0" name="e0" type="ethernet" network_id="4" style="" linkstyle="" color="" label="" linkcfg="" labelpos="" srcpos="" dstpos="" width="" fontsize=""/>
+        <interface id="1" name="e1" type="ethernet" network_id="5" style="" linkstyle="" color="" label="" linkcfg="" labelpos="" srcpos="" dstpos="" width="" fontsize=""/>
+      </node>
+    </nodes>
+    <networks>
+      <network id="2" type="bridge" name="H1iface_0" left="0" top="0" visibility="0" icon="lan.png" size=""/>
+      <network id="3" type="bridge" name="H1iface_1" left="0" top="0" visibility="0" icon="lan.png" size=""/>
+      <network id="4" type="bridge" name="Cisco Switchiface_5" left="0" top="0" visibility="0" icon="lan.png" size=""/>
+      <network id="5" type="bridge" name="Cisco Switchiface_6" left="0" top="0" visibility="0" icon="lan.png" size=""/>
+    </networks>
+  </topology>
+  <objects>
+    <textobjects>
+      <textobject id="2" name="txt 2" type="text">
+        <data>JTNDZGl2JTIwaWQlM0QlMjJjdXN0b21UZXh0MiUyMiUyMGNsYXNzJTNEJTIyY3VzdG9tU2hhcGUlMjBjdXN0b21UZXh0JTIwY29udGV4dC1tZW51JTIwY2stY29udGVudCUyMGp0ay1kcmFnZ2FibGUlMjB1aS1zZWxlY3RlZSUyMGRyYWdzdG9wcGVkJTIyJTIwZGF0YS1wYXRoJTNEJTIyMiUyMiUyMHN0eWxlJTNEJTIycG9zaXRpb24lM0ElMjBhYnNvbHV0ZSUzQiUyMGRpc3BsYXklM0ElMjBibG9jayUzQiUyMHRvcCUzQSUyMDI1OHB4JTNCJTIwbGVmdCUzQSUyMDUyOHB4JTNCJTIwd2lkdGglM0ElMjA2NHB4JTNCJTIwaGVpZ2h0JTNBJTIwNDNweCUzQiUyMGN1cnNvciUzQSUyMG1vdmUlM0IlMjB6LWluZGV4JTNBJTIwMTAwMSUzQiUyMiUzRSUzQ3AlMjBwb3NpdGlvbmFibGUlM0QlMjJ0cnVlJTIyJTNFJTNDc3BhbiUyMHN0eWxlJTNEJTIyZm9udC1zaXplJTNBMTJweCUzQiUyMiUzRUxBQ1AlM0MlMkZzcGFuJTNFJTNDJTJGcCUzRSUzQyUyRmRpdiUzRQ==</data>
+      </textobject>
+      <textobject id="3" name="txt 3" type="text">
+        <data>JTNDZGl2JTIwaWQlM0QlMjJjdXN0b21UZXh0MyUyMiUyMGNsYXNzJTNEJTIyY3VzdG9tU2hhcGUlMjBjdXN0b21UZXh0JTIwY29udGV4dC1tZW51JTIwY2stY29udGVudCUyMGp0ay1kcmFnZ2FibGUlMjBkcmFnc3RvcHBlZCUyMHVpLXNlbGVjdGVlJTIyJTIwZGF0YS1wYXRoJTNEJTIyMyUyMiUyMHN0eWxlJTNEJTIycG9zaXRpb24lM0ElMjBhYnNvbHV0ZSUzQiUyMGRpc3BsYXklM0ElMjBibG9jayUzQiUyMHRvcCUzQSUyMDExNHB4JTNCJTIwbGVmdCUzQSUyMDE0NHB4JTNCJTIwd2lkdGglM0ElMjAzMDdweCUzQiUyMGhlaWdodCUzQSUyMDUwcHglM0IlMjBjdXJzb3IlM0ElMjBtb3ZlJTNCJTIwei1pbmRleCUzQSUyMDEwMDElM0IlMjIlM0UlM0NwJTIwc3R5bGUlM0QlMjJ0ZXh0LWFsaWduJTNBY2VudGVyJTNCYWxpZ25tZW50JTNBY2VudGVyJTNCYmFja2dyb3VuZC1jb2xvciUzQXJnYmEoMjQ1JTJDJTIwMTY2JTJDJTIwMzUlMkMlMjAxKSUzQiUyMiUyMHBvc2l0aW9uYWJsZSUzRCUyMnRydWUlMjIlM0UlM0NzcGFuJTIwc3R5bGUlM0QlMjJiYWNrZ3JvdW5kLWNvbG9yJTNBcmdiYSgyNDUlMkMxNjYlMkMzNSUyQzEpJTNCJTIyJTNFJTNDc3BhbiUyMHN0eWxlJTNEJTIyZm9udC1zaXplJTNBMThweCUzQiUyMiUzRUxpbmslMjBBZ2dyZWdhdGlvbiUyMChMQUNQKSUyMG9uJTIwTGludXglM0MlMkZzcGFuJTNFJTNDJTJGc3BhbiUzRSUzQyUyRnAlM0UlM0MlMkZkaXYlM0U=</data>
+      </textobject>
+      <textobject id="6" name="txt 6" type="text">
+        <data>JTNDZGl2JTIwaWQlM0QlMjJjdXN0b21UZXh0NiUyMiUyMGNsYXNzJTNEJTIyY3VzdG9tU2hhcGUlMjBjdXN0b21UZXh0JTIwY29udGV4dC1tZW51JTIwY2stY29udGVudCUyMGp0ay1kcmFnZ2FibGUlMjBkcmFnc3RvcHBlZCUyMiUyMGRhdGEtcGF0aCUzRCUyMjYlMjIlMjBzdHlsZSUzRCUyMnBvc2l0aW9uJTNBJTIwYWJzb2x1dGUlM0IlMjBkaXNwbGF5JTNBJTIwYmxvY2slM0IlMjB0b3AlM0ElMjAyMTlweCUzQiUyMGxlZnQlM0ElMjAyNDlweCUzQiUyMHdpZHRoJTNBJTIwNjZweCUzQiUyMGhlaWdodCUzQSUyMDQxcHglM0IlMjBjdXJzb3IlM0ElMjBtb3ZlJTNCJTIwei1pbmRleCUzQSUyMDEwMDElM0IlMjIlM0UlM0NwJTIwcG9zaXRpb25hYmxlJTNEJTIydHJ1ZSUyMiUzRVRydW5rJTNDJTJGcCUzRSUzQyUyRmRpdiUzRQ==</data>
+      </textobject>
+      <textobject id="7" name="txt 7" type="text">
+        <data>JTNDZGl2JTIwaWQlM0QlMjJjdXN0b21UZXh0NyUyMiUyMGNsYXNzJTNEJTIyY3VzdG9tU2hhcGUlMjBjdXN0b21UZXh0JTIwY29udGV4dC1tZW51JTIwY2stY29udGVudCUyMGp0ay1kcmFnZ2FibGUlMjBkcmFnc3RvcHBlZCUyMiUyMGRhdGEtcGF0aCUzRCUyMjclMjIlMjBzdHlsZSUzRCUyMnBvc2l0aW9uJTNBJTIwYWJzb2x1dGUlM0IlMjBkaXNwbGF5JTNBJTIwYmxvY2slM0IlMjB0b3AlM0ElMjAyMTZweCUzQiUyMGxlZnQlM0ElMjA1MjhweCUzQiUyMHdpZHRoJTNBJTIwNjRweCUzQiUyMGhlaWdodCUzQSUyMDQ5cHglM0IlMjBjdXJzb3IlM0ElMjBtb3ZlJTNCJTIwei1pbmRleCUzQSUyMDEwMDElM0IlMjIlM0UlM0NwJTIwcG9zaXRpb25hYmxlJTNEJTIydHJ1ZSUyMiUzRVRydW5rJTNDJTJGcCUzRSUzQyUyRmRpdiUzRQ==</data>
+      </textobject>
+      <textobject id="8" name="txt 8" type="text">
+        <data>JTNDZGl2JTIwaWQlM0QlMjJjdXN0b21UZXh0OCUyMiUyMGNsYXNzJTNEJTIyY3VzdG9tU2hhcGUlMjBjdXN0b21UZXh0JTIwY29udGV4dC1tZW51JTIwY2stY29udGVudCUyMGp0ay1kcmFnZ2FibGUlMjB1aS1zZWxlY3RlZSUyMGRyYWdzdG9wcGVkJTIyJTIwZGF0YS1wYXRoJTNEJTIyOCUyMiUyMHN0eWxlJTNEJTIycG9zaXRpb24lM0ElMjBhYnNvbHV0ZSUzQiUyMGRpc3BsYXklM0ElMjBibG9jayUzQiUyMHRvcCUzQSUyMDI0M3B4JTNCJTIwbGVmdCUzQSUyMDI0MHB4JTNCJTIwd2lkdGglM0ElMjA1MnB4JTNCJTIwaGVpZ2h0JTNBJTIwNjRweCUzQiUyMGN1cnNvciUzQSUyMG1vdmUlM0IlMjB6LWluZGV4JTNBJTIwMTAwMSUzQiUyMiUzRSUzQ2RpdiUyMGNsYXNzJTNEJTIyb3ZhbCUyMG1hZ2ljX3dpZGdldCUyMiUyMHN0eWxlJTNEJTIyd2lkdGglM0ExMDAlMjUlM0JoZWlnaHQlM0E5NSUyNSUzQmJvcmRlci1sZWZ0LXN0eWxlJTNBZGFzaGVkJTNCYm9yZGVyLXJpZ2h0LXN0eWxlJTNBZGFzaGVkJTNCYm9yZGVyLXRvcC1zdHlsZSUzQWRhc2hlZCUzQmJvcmRlci1ib3R0b20tc3R5bGUlM0FkYXNoZWQlM0Jib3JkZXItd2lkdGglM0EycHglM0Jib3JkZXItcmFkaXVzJTNBNTAlMjUlM0Jwb3NpdGlvbiUzQXJlbGF0aXZlJTNCYm9yZGVyLWNvbG9yJTNBcmdiYSgxODklMkMlMjAxNiUyQyUyMDIyNCUyQyUyMDEpJTNCJTIyJTIwcG9zaXRpb25hYmxlJTNEJTIydHJ1ZSUyMiUzRSUyNm5ic3AlM0IlM0MlMkZkaXYlM0UlM0MlMkZkaXYlM0U=</data>
+      </textobject>
+      <textobject id="1" name="txt 1" type="text">
+        <data>JTNDZGl2JTIwaWQlM0QlMjJjdXN0b21UZXh0MSUyMiUyMGNsYXNzJTNEJTIyY3VzdG9tU2hhcGUlMjBjdXN0b21UZXh0JTIwY29udGV4dC1tZW51JTIwY2stY29udGVudCUyMGp0ay1kcmFnZ2FibGUlMjB1aS1zZWxlY3RlZSUyMGRyYWdzdG9wcGVkJTIyJTIwZGF0YS1wYXRoJTNEJTIyMSUyMiUyMHN0eWxlJTNEJTIycG9zaXRpb24lM0ElMjBhYnNvbHV0ZSUzQiUyMGRpc3BsYXklM0ElMjBibG9jayUzQiUyMHRvcCUzQSUyMDI1OHB4JTNCJTIwbGVmdCUzQSUyMDI0OXB4JTNCJTIwd2lkdGglM0ElMjA2MHB4JTNCJTIwaGVpZ2h0JTNBJTIwMzlweCUzQiUyMGN1cnNvciUzQSUyMG1vdmUlM0IlMjB6LWluZGV4JTNBJTIwMTAwMSUzQiUyMiUzRSUzQ3AlMjBwb3NpdGlvbmFibGUlM0QlMjJ0cnVlJTIyJTNFJTNDc3BhbiUyMHN0eWxlJTNEJTIyZm9udC1zaXplJTNBMTJweCUzQiUyMiUzRUxBQ1AlM0MlMkZzcGFuJTNFJTNDJTJGcCUzRSUzQyUyRmRpdiUzRQ==</data>
+      </textobject>
+      <textobject id="9" name="txt 9" type="text">
+        <data>JTNDZGl2JTIwaWQlM0QlMjJjdXN0b21UZXh0OSUyMiUyMGNsYXNzJTNEJTIyY3VzdG9tU2hhcGUlMjBjdXN0b21UZXh0JTIwY29udGV4dC1tZW51JTIwY2stY29udGVudCUyMGp0ay1kcmFnZ2FibGUlMjB1aS1zZWxlY3RlZSUyMGRyYWdzdG9wcGVkJTIyJTIwZGF0YS1wYXRoJTNEJTIyOSUyMiUyMHN0eWxlJTNEJTIycG9zaXRpb24lM0ElMjBhYnNvbHV0ZSUzQiUyMGRpc3BsYXklM0ElMjBibG9jayUzQiUyMHRvcCUzQSUyMDI0M3B4JTNCJTIwbGVmdCUzQSUyMDUxOXB4JTNCJTIwd2lkdGglM0ElMjA1MnB4JTNCJTIwaGVpZ2h0JTNBJTIwNjRweCUzQiUyMGN1cnNvciUzQSUyMG1vdmUlM0IlMjB6LWluZGV4JTNBJTIwMTAwMSUzQiUyMiUzRSUzQ2RpdiUyMGNsYXNzJTNEJTIyb3ZhbCUyMG1hZ2ljX3dpZGdldCUyMiUyMHN0eWxlJTNEJTIyd2lkdGglM0ExMDAlMjUlM0JoZWlnaHQlM0E5NSUyNSUzQmJvcmRlci1sZWZ0LXN0eWxlJTNBZGFzaGVkJTNCYm9yZGVyLXJpZ2h0LXN0eWxlJTNBZGFzaGVkJTNCYm9yZGVyLXRvcC1zdHlsZSUzQWRhc2hlZCUzQmJvcmRlci1ib3R0b20tc3R5bGUlM0FkYXNoZWQlM0Jib3JkZXItd2lkdGglM0EycHglM0Jib3JkZXItcmFkaXVzJTNBNTAlMjUlM0Jwb3NpdGlvbiUzQXJlbGF0aXZlJTNCYm9yZGVyLWNvbG9yJTNBcmdiYSgxODklMkMlMjAxNiUyQyUyMDIyNCUyQyUyMDEpJTNCJTIyJTIwcG9zaXRpb25hYmxlJTNEJTIydHJ1ZSUyMiUzRSUyNm5ic3AlM0IlM0MlMkZkaXYlM0UlM0MlMkZkaXYlM0U=</data>
+      </textobject>
+    </textobjects>
+  </objects>
+</lab>
