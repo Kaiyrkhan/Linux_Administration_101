@@ -265,8 +265,11 @@ VPC1> ping 8.8.8.8
 ###### 3-мысал: Conntrack және DNS портына рұқсат ету
 ```shel
 VPC1> ping google.com
+
 $ sudo iptables -A FORWARD -p udp --dport 53 -s 172.16.11.0/24 -j ACCEPT
+
 $ sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
 VPC1> ping google.com
 ```
 
