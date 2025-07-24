@@ -2,7 +2,7 @@
 
 ## Link Aggregation on Debian/Ubuntu
 
-### Bonding
+### NIC Bonding
 ```shell
 $ sudo apt update
 $ sudo apt install ifenslave
@@ -38,7 +38,8 @@ $ cat /proc/net/bonding/bond0
 ```
 
 ## Link Aggregation on RHEL
-### Teaming
+
+### NIC Teaming
 ```shell
 $ ip address
 
