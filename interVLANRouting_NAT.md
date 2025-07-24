@@ -10,9 +10,9 @@
   7) NAT конфигурациялау (using Firewalld).
 
 #### Physical Topology
-![Physical Topology](Topology/TopologyPhysical_interVLANRouting_Linux.png)
+![Physical Topology](Topology/PhysicalTopology_interVLANRouting_NAT_Linux.png)
 #### Logical Topology
-![Logical Topology](Topology/TopologyLogical_interVLANRouting_Linux.png)
+![Logical Topology](Topology/Topology_interVLANRouting_NAT_Linux.png)
 
 ### 1) 802.1Q VLAN құру
 
