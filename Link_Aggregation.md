@@ -45,10 +45,33 @@ $ ip address
 $ sudo nmcli conn add type team con-name team0 ifname team0 config '{"runner": {"name": "activebackup"}}'
 $ sudo nmcli conn add type team-slave con-name team0-port1 ifname eth1
 $ sudo nmcli conn add type team-slave con-name team0-port2 ifname eth2
-```
 
-```shell
+$ teamdctl team0 state
 
+$ sudo nmcli dev dis team0
+$ sudo systemctl stop NetworkManager
+$ sudo systemctl disable NetworkManager
+
+$ ls -l /etc/sysconfig/network-script/
+$ sudo vi /etc/sysconfig/network-script/ifcfg-team0
+BRIDGE=brteam0
+:wq
+$ sudo vi /etc/sysconfig/network-script/ifcfg-team0-port1
+$ sudo vi /etc/sysconfig/network-script/ifcfg-team0-port2
+
+$ sudo vi /etc/sysconfig/network-script/ifcfg-brteam0
+DEVICE=brteam0
+ONBOOT=yes
+TYPE=Bridge
+IPADDR0=172.16.11.1
+PREFIX0=24
+:wq
+
+$ sudo systemctl restart network
+$ ip address
+
+$ ping -I brteam0 172.16.11.101
+$ reboot
 ```
 
 ### Қосымша ақпарат
