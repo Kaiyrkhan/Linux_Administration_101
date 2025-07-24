@@ -1,6 +1,6 @@
 # Link Aggregation (LACP) and Bridging on Linux
 
-## Link Aggregation on Debian/Ubuntu
+## Link Aggregation on Debian
 
 ### NIC Bonding
 ```shell
