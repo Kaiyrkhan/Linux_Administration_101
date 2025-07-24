@@ -37,6 +37,13 @@ $ sudo nano /etc/network/interfaces
 $ cat /proc/net/bonding/bond0
 ```
 
+### Қосымша ақпарат
+> student@server:~$ iperf -s
+>
+> student@desktop:~$ iperf -c 172.16.11.1
+>
+> student@desktop:~$ iperf -c 172.16.11.1 -P2
+
 ## Link Aggregation on RHEL
 
 ### NIC Teaming
@@ -78,4 +85,4 @@ $ reboot
 ### Қосымша ақпарат
 > student@server:~$ iperf3 -s -p 1234
 >
-> student@desktop:~$ iperf3 -c server -p 1234
+> student@desktop:~$ iperf3 -c 172.16.11.1 -p 1234
