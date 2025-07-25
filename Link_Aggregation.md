@@ -18,7 +18,7 @@ Bonding модулін автожүктеу (startup) қызметіне қос�
 $ echo "bonding" | sudo tee /etc/modules-load.d/bonding.conf
 ```
 
-###### Bonding Mode
+#### Bonding Mode
 `0 - balance-rr` – Round Robin (load balancing and fault tolerance)  
 `1 - active-backup` – бір ғана интерфейс белсенді, қалғаны резерв (fault tolerance and redundancy)  
 `2 - balance-xor`  
