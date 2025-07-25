@@ -2,7 +2,7 @@
 
 ## Link Aggregation on Debian
 
-### NIC Bonding
+### NIC Bonding (Permanent)
 ```shell
 $ sudo apt update
 $ sudo apt install ifenslave
