@@ -19,8 +19,8 @@ $ echo "bonding" | sudo tee /etc/modules-load.d/bonding.conf
 ```
 
 ###### Bonding Mode
-`0 - balance-rr` – Round Robin (load balancing and fault tolerance)
-`1 - active-backup` – бір ғана интерфейс белсенді, қалғаны резерв (fault tolerance and redundancy)
+`0 - balance-rr` – Round Robin (load balancing and fault tolerance)  
+`1 - active-backup` – бір ғана интерфейс белсенді, қалғаны резерв (fault tolerance and redundancy)  
 `2 - balance-xor`  
 `3 - broadcast`  
 `4 - 802.3ad` – Link Aggregation Control Protocol (LACP)  
