@@ -131,7 +131,7 @@ $ sudo nmcli conn modify team0 ipv6.method manual
 $ teamdctl team0 state
 ```
 
-###### Troubleshooting
+###### Troubleshooting / Testing
 ```shell
 $ sudo nmcli conn down eth1
 $ teamdctl team0 state
