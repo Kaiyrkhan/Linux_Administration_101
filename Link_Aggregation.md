@@ -64,9 +64,6 @@ $ cat /proc/net/bonding/bond0
 ## Link Aggregation on RHEL
 
 ### NIC Teaming using nmcli
-```shell
-$ ip address
-```
 
 ```shell
 Create a Team interface
