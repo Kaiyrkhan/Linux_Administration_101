@@ -18,6 +18,23 @@ Bonding модулін автожүктеу (startup) қызметіне қос�
 $ echo "bonding" | sudo tee /etc/modules-load.d/bonding.conf
 ```
 
+##### Bonding модулі жүктелген кезде parameter-лерді автоматты түрде қабылдайтындай алдын-ала конфигурациялауға болады
+Мысал #1: `mode=active-backup` `miimon=100` - parameter-лерін автоматты түрде қабылдау үшін:
+```shell
+$ echo "options bonding mode=1 miimon=100" | sudo tee /etc/modprobe.d/bonding.conf
+```
+Мысал #2: `mode=802.3ad` `lacp_rate=1` `xmit_hash_policy=layer3+4` - parameter-лерін автоматты түрде қабылдау үшін:
+```shell
+options bonding mode=4 miimon=100 lacp_rate=1 xmit_hash_policy=layer3+4
+```
+```shell
+$ sudo modprobe -r bonding
+
+Parameter-дің дұрыс қолданылғанын тексеру:
+$ cat /sys/class/net/bond0/bonding/mode
+$ cat /sys/class/net/bond0/bonding/miimon
+```
+
 ###### Bonding Mode
 `0 - balance-rr`  
 `1 - active-backup`  
