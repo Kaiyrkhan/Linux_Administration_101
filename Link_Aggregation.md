@@ -45,6 +45,8 @@ $ sudo nano /etc/network/interfaces
     bond-miimon 100
     bond-lacp-rate 1
     bond-slaves none
+
+$ sudo systemctl restart networking
 ```
 > IEEE 802.3ad – LACP (Link Aggregation Control Protocol) 
 
