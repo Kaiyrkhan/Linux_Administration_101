@@ -172,3 +172,4 @@ $ reboot
 ### References
 
 1) [Configuring a NIC team by using nmcli](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/configuring-network-teaming_configuring-and-managing-networking#configuring-a-network-team-by-using-nmcli_configuring-network-teaming)
+2) [How To Configure Network Bonding & Network Teaming In Linux](https://tekneed.com/configure-network-bonding-network-teaming-in-linux/#what-is-the-difference-between-teaming-and-bonding-in-linux)
