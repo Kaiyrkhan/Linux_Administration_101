@@ -49,7 +49,7 @@ $ sudo nano /etc/network/interfaces
 $ sudo systemctl restart networking
 ```
 
-`IEEE 802.3ad` – LACP (Link Aggregation Control Protocol)
+`IEEE 802.3ad` – Link Aggregation Control Protocol (LACP)
 
 ```shell
 $ cat /proc/net/bonding/bond0
