@@ -67,40 +67,82 @@ $ cat /proc/net/bonding/bond0
 
 ```shell
 $ ip address
+```
 
+```shell
+Create the Team interface
 nmcli conn add type team con-name <connection-name> ifname <device-name> config '{"runner":{"name":"<runners-mode>"}}'
-немесе
-nmcli conn add type team con-name <connection-name> ifname <device-name> team.runner <runners-mode>
-
 $ sudo nmcli conn add type team con-name team0 ifname team0 config '{"runner": {"name": "activebackup"}}'
-$ sudo nmcli conn add type team-slave con-name team0-port1 ifname eth1
-$ sudo nmcli conn add type team-slave con-name team0-port2 ifname eth2
+
+немесе
+
+nmcli conn add type team con-name <connection-name> ifname <device-name> team.runner <runners-mode>
+$ sudo nmcli conn add type team con-name team0 ifname team0 team.runner activebackup
+```
+
+```shell
+Add NIC interfaces to the Team
+nmcli conn add type team-slave con-name <connection-name> ifname <device-name> master <teamed-interface>
+$ sudo nmcli conn add type team-slave con-name team0-port1 ifname eth1 master team0
+$ sudo nmcli conn add type team-slave con-name team0-port2 ifname eth2 master team0
+```
+
+```shell
+$ teamdctl team0 state
+```
+
+```shell
+1-ші тәсіл: Configure IP settings for the Teamed interface
+
+$ sudo nmcli conn modify team1 ipv4.addresses 172.16.11.101/24
+$ sudo nmcli conn mod team1 ipv4.gateway 172.16.11.1
+$ sudo nmcli conn mod team1 ipv4.dns 8.8.8.8
+$ sudo nmcli conn modify team1 ipv4.method manual
+
+$ sudo systemctl restart NetworkManager
+
+$ sudo nmcli conn down eth1 && sudo nmcli conn up eth1
+$ sudo nmcli conn down eth2 && sudo nmcli conn up eth2
+
+$ sudo nmcli conn down team0 && sudo nmcli conn up team0
+
+$ ip address
 
 $ teamdctl team0 state
+```
+
+```shell
+2-ші тәсіл: Configure IP settings for the Teamed interface
 
 $ sudo nmcli dev dis team0
 $ sudo systemctl stop NetworkManager
 $ sudo systemctl disable NetworkManager
 
 $ ls -l /etc/sysconfig/network-script/
+ifcfg-team0
+ifcfg-team0-port1
+ifcfg-team0-port2
+
+$ cat /etc/sysconfig/network-script/ifcfg-team0-port1
+$ cat /etc/sysconfig/network-script/ifcfg-team0-port2
+
 $ sudo vi /etc/sysconfig/network-script/ifcfg-team0
 BRIDGE=brteam0
 :wq
-$ sudo vi /etc/sysconfig/network-script/ifcfg-team0-port1
-$ sudo vi /etc/sysconfig/network-script/ifcfg-team0-port2
 
 $ sudo vi /etc/sysconfig/network-script/ifcfg-brteam0
 DEVICE=brteam0
 ONBOOT=yes
 TYPE=Bridge
-IPADDR0=172.16.11.1
+IPADDR0=172.16.11.101
 PREFIX0=24
 :wq
 
 $ sudo systemctl restart network
 $ ip address
+$ teamdctl team0 state
 
-$ ping -I brteam0 172.16.11.101
+$ ping -I brteam0 172.16.11.1
 $ reboot
 ```
 
