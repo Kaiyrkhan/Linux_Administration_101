@@ -108,6 +108,14 @@ $ sudo nmcli conn modify team0 ipv4.dns 8.8.8.8
 $ sudo nmcli conn modify team0 ipv4.dns-search edu.local
 $ sudo nmcli conn modify team0 ipv4.method manual
 ```
+```shell
+$ sudo systemctl restart NetworkManager
+
+$ sudo nmcli conn down eth1 && sudo nmcli conn up eth1
+$ sudo nmcli conn down eth2 && sudo nmcli conn up eth2
+$ sudo nmcli conn down team0 && sudo nmcli conn up team0
+```
+
 ###### Configure the IPv6 settings
 ```shell
 $ sudo nmcli conn modify team0 ipv6.addresses 2001:db8:1::1/64
@@ -115,13 +123,6 @@ $ sudo nmcli conn modify team0 ipv6.gateway 2001:db8:1::fffe
 $ sudo nmcli conn modify team0 ipv6.dns 2001:db8:1::fffd
 $ sudo nmcli conn modify team0 ipv6.dns-search edu.local
 $ sudo nmcli conn modify team0 ipv6.method manual
-```
-```shell
-$ sudo systemctl restart NetworkManager
-
-$ sudo nmcli conn down eth1 && sudo nmcli conn up eth1
-$ sudo nmcli conn down eth2 && sudo nmcli conn up eth2
-$ sudo nmcli conn down team0 && sudo nmcli conn up team0
 ```
 
 ###### Verification
