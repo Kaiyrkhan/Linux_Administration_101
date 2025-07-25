@@ -25,7 +25,7 @@ $ sudo modprobe 8021q
 $ lsmod | grep 8021q
 
 8021q модулін автожүктеу (startup) қызметіне қосу
-$ echo "8021q" | sudo tee -a /etc/modules-load.d/8021q.conf
+$ echo "8021q" | sudo tee /etc/modules-load.d/8021q.conf
 ```
 
 ##### Virtual interface (VLAN11 және VLAN12) құру
