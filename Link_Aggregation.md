@@ -7,19 +7,14 @@
 $ sudo apt update
 $ sudo apt install ifenslave
 
-Debian/Ubuntu
-$ sudo nano /etc/modules
-bonding
-CTRL+O, Enter, CTRL+X
-
-RHEL/Rocky/Oracle
-Bonding модулін автожүктеу (startup) қызметіне қосу
-$ echo "bonding" | sudo tee /etc/modules-load.d/bonding.conf
-
 Bonding модулін жүктеу
 $ sudo modprobe bonding
+
 Bonding модулінің жүктелгенін тексеру
 $ lsmod | grep bonding
+
+Bonding модулін автожүктеу (startup) қызметіне қосу
+$ echo "bonding" | sudo tee /etc/modules-load.d/bonding.conf
 ```
 
 ###### Bonding Mode
