@@ -161,3 +161,7 @@ $ reboot
 > student@server:~$ iperf3 -s -p 1234
 >
 > student@desktop:~$ iperf3 -c 172.16.11.1 -p 1234
+
+### References
+
+1) [Configuring a NIC team by using nmcli](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/configuring-network-teaming_configuring-and-managing-networking#configuring-a-network-team-by-using-nmcli_configuring-network-teaming)
