@@ -27,7 +27,6 @@ $ echo "bonding" | sudo tee /etc/modules-load.d/bonding.conf
 `5 - balance-tlb`  
 `6 - balance-alb`  
 
-#### Мысал #1: Bonding Mode `active-backup`
 ```shell
 $ cat /usr/share/doc/ifenslave/examples/two_ethernet
   auto bond0
@@ -37,6 +36,26 @@ $ cat /usr/share/doc/ifenslave/examples/two_ethernet
     bond-miimon 100
     bond-primary ens3 ens4
 ```
+
+#### Мысал #1: Bonding Mode `active-backup`
+```shell
+$ sudo nano /etc/network/interfaces
+  auto ens3
+  iface ens3 inet manual
+    bond-master bond0
+
+  auto ens4
+  iface ens4 inet manual
+    bond-master bond0
+
+  auto bond0
+  iface bond0 inet dhcp
+    bond-slaves ens3 ens4
+    bond-mode 1
+    bond-miimon 100
+    bond-primary ens3 ens4
+```
+
 ```shell
 Немесе bonding модулі жүктелген кезде parameter-лерді автоматты түрде қабылдайтындай алдын-ала конфигурациялауға болады
 $ echo "options bonding mode=1 miimon=100" | sudo tee /etc/modprobe.d/bonding.conf
