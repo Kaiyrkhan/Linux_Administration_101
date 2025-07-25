@@ -19,7 +19,7 @@ $ echo "bonding" | sudo tee /etc/modules-load.d/bonding.conf
 ```
 
 ###### Bonding Mode
-`0 - balance-rr`  
+`0 - balance-rr` – Бір интерфейс белсенді, қалғаны резерв (failover)  
 `1 - active-backup`  
 `2 - balance-xor`  
 `3 - broadcast`  
