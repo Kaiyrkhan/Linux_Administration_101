@@ -10,7 +10,7 @@
   7) NAT конфигурациялау (using Firewalld).
 
 #### Physical Topology
-![Physical Topology](Topology/PhysicalTopology_interVLANRouting_NAT_Linux.png)
+![Physical Topology](Topology/Topology_interVLANRouting_NAT_Linux_Physical.png)
 #### Logical Topology
 ![Logical Topology](Topology/Topology_interVLANRouting_NAT_Linux.png)
 
