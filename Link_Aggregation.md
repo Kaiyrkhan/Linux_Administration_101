@@ -72,12 +72,14 @@ $ ip address
 Create a Team interface
 nmcli conn add type team con-name <connection-name> ifname <device-name> config '{"runner":{"name":"<runners-mode>"}}'
 $ sudo nmcli conn add type team con-name team0 ifname team0 config '{"runner": {"name": "activebackup"}}'
-немесе
-nmcli conn add type team con-name <connection-name> ifname <device-name> team.runner <runners-mode>
-$ sudo nmcli conn add type team con-name team0 ifname team0 team.runner activebackup
+
+$ sudo nmcli conn add type team con-name team0 ifname team0 \
+  config '{"runner": {"name": "lacp"}}'
+$ sudo nmcli conn add type team con-name team0 ifname team0 \
+  config '{"runner": {"name": "activebackup"}}'
 ```
 
-##### The following runners are available:
+##### The Modes/Runners of Teaming:
 - `broadcast:` - Transmits data over all ports
 - `roundrobin:` - Transmits data over all ports in turn
 - `activebackup:` - Transmits data over one port while the others are kept as a backup
