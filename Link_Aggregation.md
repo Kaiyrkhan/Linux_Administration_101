@@ -19,17 +19,22 @@ $ lsmod | grep bonding
 $ sudo nano /etc/network/interfaces
   auto ens3
   iface ens3 inet manual
-  bond-master bond0
+    bond-master bond0
 
   auto ens4
   iface ens4 inet manual
-  bond-master bond0
+    bond-master bond0
 
   auto bond0
   iface bond0 inet static
-    address 172.16.10.1/24
-  bond-slaves ens3 ens4
-  bond-mode 802.3ad
+    address 172.16.11.101/24
+    gateway 172.16.11.1
+    bond-mode 802.3ad
+    bond-slaves ens3 ens4
+
+    bond-miimon 100
+    bond-lacp-rate 1
+    bond-slaves none
 ```
 > IEEE 802.3ad – LACP (Link Aggregation Control Protocol) 
 
