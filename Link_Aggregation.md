@@ -39,10 +39,6 @@ $ cat /usr/share/doc/ifenslave/examples/two_ethernet
 ```shell
 Немесе bonding модулі жүктелген кезде parameter-лерді автоматты түрде қабылдайтындай алдын-ала конфигурациялауға болады
 $ echo "options bonding mode=1 miimon=100" | sudo tee /etc/modprobe.d/bonding.conf
-
-Parameter-дің дұрыс қолданылғанын тексеру
-$ cat /sys/class/net/bond0/bonding/mode
-$ cat /sys/class/net/bond0/bonding/miimon
 ```
 
 ```shell
@@ -74,17 +70,10 @@ $ echo "options bonding mode=4 miimon=100 lacp_rate=1 xmit_hash_policy=layer3+4"
 $ sudo systemctl restart networking
 ```
 
-###### Verify the bonding state
+###### Verification
 ```shell
 $ cat /proc/net/bonding/bond0
 ```
-
-### Қосымша ақпарат
-> student@server:~$ iperf -s
->
-> student@desktop:~$ iperf -c 172.16.11.1
->
-> student@desktop:~$ iperf -c 172.16.11.1 -P2
 
 <br>
 
@@ -157,7 +146,7 @@ $ sudo nmcli conn modify team0 ipv6.method manual
 $ teamdctl team0 state
 ```
 
-###### Troubleshooting / Testing
+###### Testing
 ```shell
 $ sudo nmcli conn down eth1
 $ teamdctl team0 state
@@ -199,6 +188,12 @@ $ reboot
 ```
 
 ### Қосымша ақпарат
+> student@server:~$ iperf -s
+>
+> student@desktop:~$ iperf -c 172.16.11.1
+>
+> student@desktop:~$ iperf -c 172.16.11.1 -P2
+
 > student@server:~$ iperf3 -s -p 1234
 >
 > student@desktop:~$ iperf3 -c 172.16.11.1 -p 1234
