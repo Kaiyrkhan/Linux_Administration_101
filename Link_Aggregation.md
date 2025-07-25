@@ -70,12 +70,10 @@ $ ip address
 ```
 
 ```shell
-Create the Team interface
+Create a Team interface
 nmcli conn add type team con-name <connection-name> ifname <device-name> config '{"runner":{"name":"<runners-mode>"}}'
 $ sudo nmcli conn add type team con-name team0 ifname team0 config '{"runner": {"name": "activebackup"}}'
-
 немесе
-
 nmcli conn add type team con-name <connection-name> ifname <device-name> team.runner <runners-mode>
 $ sudo nmcli conn add type team con-name team0 ifname team0 team.runner activebackup
 ```
@@ -85,6 +83,9 @@ Add NIC interfaces to the Team
 nmcli conn add type team-slave con-name <connection-name> ifname <device-name> master <teamed-interface>
 $ sudo nmcli conn add type team-slave con-name team0-port1 ifname eth1 master team0
 $ sudo nmcli conn add type team-slave con-name team0-port2 ifname eth2 master team0
+немесе
+$ sudo nmcli connection add type ethernet slave-type team con-name team0-port1 ifname eth1 master team0
+$ sudo nmcli connection add type ethernet slave-type team con-name team0-port2 ifname eth2 master team0
 ```
 
 ```shell
@@ -92,12 +93,13 @@ $ teamdctl team0 state
 ```
 
 ```shell
-1-ші тәсіл: Configure IP settings for the Teamed interface
+1-ші тәсіл: Configure the IPv4 settings
 
-$ sudo nmcli conn modify team1 ipv4.addresses 172.16.11.101/24
-$ sudo nmcli conn mod team1 ipv4.gateway 172.16.11.1
-$ sudo nmcli conn mod team1 ipv4.dns 8.8.8.8
-$ sudo nmcli conn modify team1 ipv4.method manual
+$ sudo nmcli conn modify team0 ipv4.addresses 172.16.11.101/24
+$ sudo nmcli conn modify team0 ipv4.gateway 172.16.11.1
+$ sudo nmcli conn modify team0 ipv4.dns 8.8.8.8
+$ sudo nmcli conn modify team0 ipv4.dns-search edu.local
+$ sudo nmcli conn modify team0 ipv4.method manual
 
 $ sudo systemctl restart NetworkManager
 
@@ -120,7 +122,7 @@ $ teamdctl team0 state
 ```
 
 ```shell
-2-ші тәсіл: Configure IP settings for the Teamed interface
+2-ші тәсіл: Configure the IPv4 settings
 
 $ sudo nmcli dev dis team0
 $ sudo systemctl stop NetworkManager
