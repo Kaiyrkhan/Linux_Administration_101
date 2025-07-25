@@ -63,7 +63,7 @@ $ cat /proc/net/bonding/bond0
 
 ## Link Aggregation on RHEL
 
-### NIC Teaming
+### NIC Teaming using nmcli
 
 ```shell
 $ ip address
@@ -108,6 +108,14 @@ $ sudo nmcli conn down team0 && sudo nmcli conn up team0
 
 $ ip address
 
+$ teamdctl team0 state
+```
+
+```shell
+Troubleshooting
+
+$ teamdctl team0 state
+$ sudo nmcli conn down eth1
 $ teamdctl team0 state
 ```
 
