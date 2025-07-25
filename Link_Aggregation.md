@@ -71,6 +71,8 @@ $ ip address
 ```shell
 Create a Team interface
 nmcli conn add type team con-name <connection-name> ifname <device-name> config '{"runner":{"name":"<runners-mode>"}}'
+
+$ sudo nmcli conn add type team con-name team0 ifname team0 config '{"runner": {"name": "lacp"}}'
 $ sudo nmcli conn add type team con-name team0 ifname team0 config '{"runner": {"name": "activebackup"}}'
 
 $ sudo nmcli conn add type team con-name team0 ifname team0 \
