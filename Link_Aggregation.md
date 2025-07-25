@@ -61,7 +61,7 @@ $ sudo nano /etc/network/interfaces
 $ echo "options bonding mode=1 miimon=100" | sudo tee /etc/modprobe.d/bonding.conf
 ```
 
-#### Мысал #2: Bonding Mode `802.3ad (LACP)`
+#### Мысал #2: Bonding Mode `802.3ad / LACP`
 ```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
