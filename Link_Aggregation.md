@@ -48,12 +48,10 @@ $ sudo nano /etc/network/interfaces
   iface bond0 inet static
     address 172.16.11.101/24
     gateway 172.16.11.1
-    bond-mode 802.3ad
     bond-slaves ens3 ens4
-
+    bond-mode 802.3ad
     bond-miimon 100
     bond-lacp-rate 1
-    bond-slaves none
 
 $ sudo systemctl restart networking
 ```
