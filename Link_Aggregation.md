@@ -50,7 +50,7 @@ $ sudo nano /etc/network/interfaces
     gateway 172.16.11.1
     bond-slaves ens3 ens4
     bond-mode 4
-    bond-miimon 100
+    bond-miimon 120
     bond-lacp-rate 1
 
 $ sudo systemctl restart networking
