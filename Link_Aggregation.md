@@ -120,6 +120,8 @@ $ sudo nmcli conn modify team0 ipv4.method manual
 ```shell
 $ sudo systemctl restart NetworkManager
 
+$ nmcli connection status
+
 $ sudo nmcli conn down team0-port1 && sudo nmcli conn up team0-port1
 $ sudo nmcli conn down team0-port2 && sudo nmcli conn up team0-port2
 $ sudo nmcli conn down team0 && sudo nmcli conn up team0
