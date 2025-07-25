@@ -16,7 +16,7 @@ $ lsmod | grep bonding
 ```
 
 ```shell
-$ cat /usr/share/doc/ifenslave/examplestwo_ethernet
+$ cat /usr/share/doc/ifenslave/examples/two_ethernet
   auto bond0
   iface bond0 inet dhcp
     bond-slaves ens3 ens4
