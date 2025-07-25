@@ -27,6 +27,7 @@ $ echo "bonding" | sudo tee /etc/modules-load.d/bonding.conf
 `5 - balance-tlb`  
 `6 - balance-alb`  
 
+##### Мысал #1: Bonding Mode `active-backup`
 ```shell
 $ cat /usr/share/doc/ifenslave/examples/two_ethernet
   auto bond0
@@ -41,6 +42,7 @@ $ cat /usr/share/doc/ifenslave/examples/two_ethernet
 $ echo "options bonding mode=1 miimon=100" | sudo tee /etc/modprobe.d/bonding.conf
 ```
 
+##### Мысал #2: Bonding Mode `802.3ad (LACP)`
 ```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
