@@ -64,8 +64,13 @@ $ cat /proc/net/bonding/bond0
 ## Link Aggregation on RHEL
 
 ### NIC Teaming
+
 ```shell
 $ ip address
+
+nmcli conn add type team con-name <connection-name> ifname <device-name> config '{"runner":{"name":"<runners-mode>"}}'
+немесе
+nmcli conn add type team con-name <connection-name> ifname <device-name> team.runner <runners-mode>
 
 $ sudo nmcli conn add type team con-name team0 ifname team0 config '{"runner": {"name": "activebackup"}}'
 $ sudo nmcli conn add type team-slave con-name team0-port1 ifname eth1
