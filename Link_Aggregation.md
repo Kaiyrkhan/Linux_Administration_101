@@ -48,7 +48,8 @@ $ sudo nano /etc/network/interfaces
 
 $ sudo systemctl restart networking
 ```
-> IEEE 802.3ad – LACP (Link Aggregation Control Protocol) 
+
+`IEEE 802.3ad` – LACP (Link Aggregation Control Protocol)
 
 ```shell
 $ cat /proc/net/bonding/bond0
@@ -85,12 +86,12 @@ $ sudo nmcli conn add type team con-name team0 ifname team0 \
 ```
 
 ###### The Modes/Runners of Teaming:
-- `broadcast:` - Transmits data over all ports
-- `roundrobin:` - Transmits data over all ports in turn
-- `activebackup:` - Transmits data over one port while the others are kept as a backup
-- `loadbalance:` - Transmits data over all ports with active Tx load balancing and Berkeley Packet Filter (BPF)-based Tx port selectors
-- `random:` - Transmits data on a randomly selected port
-- `lacp:` - Implements the 802.3ad Link Aggregation Control Protocol (LACP)
+`broadcast:` – Transmits data over all ports  
+`roundrobin:` – Transmits data over all ports in turn  
+`activebackup:` – Transmits data over one port while the others are kept as a backup  
+`loadbalance:` – Transmits data over all ports with active Tx load balancing and Berkeley Packet Filter (BPF)-based Tx port selectors  
+`random:` – Transmits data on a randomly selected port  
+`lacp:` – Implements the 802.3ad Link Aggregation Control Protocol (LACP)  
 
 ###### Add NIC interfaces to the Team
 ```shell
