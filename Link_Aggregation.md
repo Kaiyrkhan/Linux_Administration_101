@@ -89,33 +89,34 @@ $ sudo nmcli connection add type ethernet slave-type team con-name team0-port2 i
 ```
 
 ```shell
-$ teamdctl team0 state
-```
-
-```shell
-1-ші тәсіл: Configure the IPv4 settings
-
+Configure the IPv4 settings
 $ sudo nmcli conn modify team0 ipv4.addresses 172.16.11.101/24
 $ sudo nmcli conn modify team0 ipv4.gateway 172.16.11.1
 $ sudo nmcli conn modify team0 ipv4.dns 8.8.8.8
 $ sudo nmcli conn modify team0 ipv4.dns-search edu.local
 $ sudo nmcli conn modify team0 ipv4.method manual
 
+Configure the IPv6 settings
+$ sudo nmcli conn modify team0 ipv6.addresses 2001:db8:1::1/64
+$ sudo nmcli conn modify team0 ipv6.gateway 2001:db8:1::fffe
+$ sudo nmcli conn modify team0 ipv6.dns 2001:db8:1::fffd
+$ sudo nmcli conn modify team0 ipv6.dns-search edu.local
+$ sudo nmcli conn modify team0 ipv6.method manual
+
 $ sudo systemctl restart NetworkManager
 
 $ sudo nmcli conn down eth1 && sudo nmcli conn up eth1
 $ sudo nmcli conn down eth2 && sudo nmcli conn up eth2
-
 $ sudo nmcli conn down team0 && sudo nmcli conn up team0
+```
 
-$ ip address
-
+```shell
+Verification
 $ teamdctl team0 state
 ```
 
 ```shell
 Troubleshooting
-
 $ teamdctl team0 state
 $ sudo nmcli conn down eth1
 $ teamdctl team0 state
