@@ -18,29 +18,12 @@ Bonding модулін автожүктеу (startup) қызметіне қос�
 $ echo "bonding" | sudo tee /etc/modules-load.d/bonding.conf
 ```
 
-##### Bonding модулі жүктелген кезде parameter-лерді автоматты түрде қабылдайтындай алдын-ала конфигурациялауға болады
-Мысал #1: `mode=active-backup` `miimon=100` - parameter-лерін автоматты түрде қабылдау үшін:
-```shell
-$ echo "options bonding mode=1 miimon=100" | sudo tee /etc/modprobe.d/bonding.conf
-```
-Мысал #2: `mode=802.3ad` `lacp_rate=1` `xmit_hash_policy=layer3+4` - parameter-лерін автоматты түрде қабылдау үшін:
-```shell
-options bonding mode=4 miimon=100 lacp_rate=1 xmit_hash_policy=layer3+4
-```
-```shell
-$ sudo modprobe -r bonding
-
-Parameter-дің дұрыс қолданылғанын тексеру:
-$ cat /sys/class/net/bond0/bonding/mode
-$ cat /sys/class/net/bond0/bonding/miimon
-```
-
 ###### Bonding Mode
 `0 - balance-rr`  
 `1 - active-backup`  
 `2 - balance-xor`  
 `3 - broadcast`  
-`4 - 802.3ad`  
+`4 - 802.3ad` – Link Aggregation Control Protocol (LACP)  
 `5 - balance-tlb`  
 `6 - balance-alb`  
 
@@ -52,6 +35,14 @@ $ cat /usr/share/doc/ifenslave/examples/two_ethernet
     bond-mode 1
     bond-miimon 100
     bond-primary ens3 ens4
+```
+```shell
+Bonding модулі жүктелген кезде parameter-лерді автоматты түрде қабылдайтындай алдын-ала конфигурациялауға болады
+$ echo "options bonding mode=1 miimon=100" | sudo tee /etc/modprobe.d/bonding.conf
+
+Parameter-дің дұрыс қолданылғанын тексеру
+$ cat /sys/class/net/bond0/bonding/mode
+$ cat /sys/class/net/bond0/bonding/miimon
 ```
 
 ```shell
@@ -72,11 +63,16 @@ $ sudo nano /etc/network/interfaces
     bond-mode 4
     bond-miimon 100
     bond-lacp-rate 1
-
-$ sudo systemctl restart networking
+    bond-xmit-hash-policy layer3+4
+```
+```shell
+Bonding модулі жүктелген кезде parameter-лерді автоматты түрде қабылдайтындай алдын-ала конфигурациялауға болады
+$ echo "options bonding mode=4 miimon=100 lacp_rate=1 xmit_hash_policy=layer3+4" | sudo tee /etc/modprobe.d/bonding.conf
 ```
 
-`IEEE 802.3ad` – Link Aggregation Control Protocol (LACP)
+```shell
+$ sudo systemctl restart networking
+```
 
 ###### Verify the bonding state
 ```shell
