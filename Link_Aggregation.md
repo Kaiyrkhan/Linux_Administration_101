@@ -37,7 +37,7 @@ $ cat /usr/share/doc/ifenslave/examples/two_ethernet
     bond-primary ens3 ens4
 ```
 ```shell
-Bonding модулі жүктелген кезде parameter-лерді автоматты түрде қабылдайтындай алдын-ала конфигурациялауға болады
+Немесе bonding модулі жүктелген кезде parameter-лерді автоматты түрде қабылдайтындай алдын-ала конфигурациялауға болады
 $ echo "options bonding mode=1 miimon=100" | sudo tee /etc/modprobe.d/bonding.conf
 
 Parameter-дің дұрыс қолданылғанын тексеру
@@ -66,7 +66,7 @@ $ sudo nano /etc/network/interfaces
     bond-xmit-hash-policy layer3+4
 ```
 ```shell
-Bonding модулі жүктелген кезде parameter-лерді автоматты түрде қабылдайтындай алдын-ала конфигурациялауға болады
+Немесе bonding модулі жүктелген кезде parameter-лерді автоматты түрде қабылдайтындай алдын-ала конфигурациялауға болады
 $ echo "options bonding mode=4 miimon=100 lacp_rate=1 xmit_hash_policy=layer3+4" | sudo tee /etc/modprobe.d/bonding.conf
 ```
 
