@@ -9,7 +9,4 @@
 4. KVM  
 5. ...
 
-### References
-
-1) [How to Set Up Ethernet Channel Bonding in Linux for Load Balancing](https://www.tecmint.com/ethernet-channel-bonding-in-linux)
 
