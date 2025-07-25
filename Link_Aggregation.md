@@ -51,6 +51,7 @@ $ sudo systemctl restart networking
 
 `IEEE 802.3ad` – Link Aggregation Control Protocol (LACP)
 
+###### Verify the bonding state
 ```shell
 $ cat /proc/net/bonding/bond0
 ```
