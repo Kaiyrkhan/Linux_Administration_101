@@ -15,6 +15,15 @@ $ sudo modprobe bonding
 $ lsmod | grep bonding
 ```
 
+###### Bonding Mode
+`0 - balance-rr`  
+`1 - active-backup`  
+`2 - balance-xor`  
+`3 - broadcast`  
+`4 - 802.3ad`  
+`5 - balance-tlb`  
+`6 - balance-alb`  
+
 ```shell
 $ cat /usr/share/doc/ifenslave/examples/two_ethernet
   auto bond0
