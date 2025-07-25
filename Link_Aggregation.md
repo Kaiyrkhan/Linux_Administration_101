@@ -9,6 +9,7 @@ $ sudo apt install ifenslave
 
 Bonding модулін жүктеу
 $ sudo modprobe bonding
+$ sudo modprobe -r bonding      // егер бұрын жүктелген болса
 
 Bonding модулінің жүктелгенін тексеру
 $ lsmod | grep bonding
