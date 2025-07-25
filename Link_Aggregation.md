@@ -16,6 +16,16 @@ $ lsmod | grep bonding
 ```
 
 ```shell
+$ cat /usr/share/doc/ifenslave/examplestwo_ethernet
+  auto bond0
+  iface bond0 inet dhcp
+    bond-slaves ens3 ens4
+    bond-mode 1
+    bond-miimon 100
+    bond-primary ens3 ens4
+```
+
+```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
   iface ens3 inet manual
