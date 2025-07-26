@@ -3,6 +3,8 @@
 ### Топология
 ![Topology](Topology/Topology_LinkAggregation_Linux.png)
 
+> ***Ескерту:** Эмуляторғы (PNETLab немесе EVE-NG) Linux Qemu NIC қасиетін `Linux -> Edit Node -> Qemu NIC -> e1000` өзгерту қажет!
+
 ## Link Aggregation on Debian
 
 ```shell
