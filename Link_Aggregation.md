@@ -133,8 +133,8 @@ $ ls /sys/class/net/bond0/bonding/
 
 $ cat /sys/class/net/bond0/bonding/mode
 802.3ad 4
-$ cat /sys/class/net/bond0/bonding/miimon
-100
+$ cat /sys/class/net/bond0/bonding/lacp_rate
+fast  1
 $ cat /sys/class/net/bond0/bonding/xmit_hash_policy
 layer3+4 1
 ```
@@ -160,6 +160,49 @@ $ sudo cat /proc/net/vlan/config
 $ cat /proc/net/bonding/bond0
 ```
 ![images](images/bonding_state.png)
+
+#### Cisco Switch конфигурациялау
+
+**LACP конфигурациялау**
+```shell
+configure terminal
+int range g0/1-2
+description Linux bonding LACP
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport nonegotiate
+channel-protocol lacp
+channel-group 1 mode active
+spanning-tree portfast trunk
+spanning-tree bpduguard enable
+
+show run int g0/1
+show run int g0/2
+```
+
+**LACP Group конфигурациялау**
+```shell
+show ip int brief
+show run int Port-channel1
+
+interface Port-channel1
+description Linux Bonding (LACP)
+switchport
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport nonegotiate
+spanning-tree portfast trunk
+spanning-tree bpduguard enable
+
+show run int Port-channel1
+```
+```shell
+show etherchannel summary 
+show lacp neighbor
+
+show etherchannel load-balance
+src-dst-ip
+```
 
 <br>
 
