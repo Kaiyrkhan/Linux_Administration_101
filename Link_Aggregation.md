@@ -44,7 +44,7 @@ $ echo "bonding" | sudo tee /etc/modules-load.d/bonding.conf
 $ cat /usr/share/doc/ifenslave/examples/two_ethernet
 ```
 
-#### Мысал #1: Bonding Mode `active-backup`
+#### Bonding Mode `active-backup`
 ```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
@@ -65,17 +65,8 @@ $ sudo nano /etc/network/interfaces
     bond-miimon 100
     bond-primary ens3 ens4
 ```
-```shell
-Parameters
-$ ls /sys/class/net/bond0/bonding/
 
-$ cat /sys/class/net/bond0/bonding/mode
-active-backup 1
-$ cat /sys/class/net/bond0/bonding/miimon
-100
-```
-
-#### Мысал #2: Bonding Mode `802.3ad` LACP
+#### Bonding Mode `802.3ad` LACP
 ```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
@@ -109,7 +100,7 @@ $ sudo nano /etc/network/interfaces
     vlan-raw-device bond0
 ```
 ```shell
-Parameters
+Bonding Parameters
 $ ls /sys/class/net/bond0/bonding/
 
 $ cat /sys/class/net/bond0/bonding/mode
