@@ -55,17 +55,23 @@ $ echo "8021q" | sudo tee /etc/modules-load.d/8021q.conf
 `5 - balance-tlb`  
 `6 - balance-alb`  
 
-```shell
-$ cat /usr/share/doc/ifenslave/examples/two_ethernet
-```
-
+#### Bonding Mode `active-backup`
 ```shell
 $ ip address
 ens3
 ens4
 ```  
 
-#### Bonding Mode `active-backup`
+```shell
+$ cat /usr/share/doc/ifenslave/examples/two_ethernet
+  auto bond0
+  iface bond0 inet dhcp
+    bond-slaves ens3 ens4
+    bond-mode 1
+    bond-miimon 100
+    bond-primary ens3 ens4
+```
+
 ```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
@@ -127,8 +133,8 @@ $ ls /sys/class/net/bond0/bonding/
 
 $ cat /sys/class/net/bond0/bonding/mode
 802.3ad 4
-$ cat /sys/class/net/bond0/bonding/lacp_rate
-fast 1
+$ cat /sys/class/net/bond0/bonding/miimon
+100
 $ cat /sys/class/net/bond0/bonding/xmit_hash_policy
 layer3+4 1
 ```
