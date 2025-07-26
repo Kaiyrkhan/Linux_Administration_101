@@ -9,7 +9,7 @@
 Құрылғының атауын (Device Name) өзгерту
 $ sudo hostnamectl set-hostname H1
 $ sudo nano /etc/hosts
-127.0.1.1  R1
+127.0.1.1  H1
 $ bash
 ```
 
