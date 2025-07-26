@@ -216,13 +216,19 @@ show run int Port-channel1
 ```shell
 show etherchannel load-balance
 src-dst-ip
-
+```
+```shell
 show lacp neighbor
-
+```
+```shell
+show ip int brief
+```
+![images](images/show_ip_int_brief.png)
+```shell
 show etherchannel summary 
 ```
 ![images](images/show_etherchannel_summary.png)
-![images](images/show_ip_int_brief.png)
+
 
 <br>
 
