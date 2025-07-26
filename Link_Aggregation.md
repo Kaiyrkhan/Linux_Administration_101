@@ -118,6 +118,9 @@ $ sudo systemctl restart networking
 немесе
 $ sudo ifdown bond0 && sudo ifup bond0
 $ sudo ifup bond0.11
+
+VLAN туралы ақпаратты көру
+$ sudo cat /proc/net/vlan/config
 ```
 
 ###### Verification
