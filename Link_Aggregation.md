@@ -79,7 +79,7 @@ $ cat /sys/class/net/bond0/bonding/miimon
 100
 ```
 
-#### Мысал #2: Bonding Mode LACP `802.3ad`
+#### Мысал #2: Bonding Mode `802.3ad` LACP
 ```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
