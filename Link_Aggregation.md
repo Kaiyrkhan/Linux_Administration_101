@@ -5,21 +5,25 @@
 
 > ***Ескерту:** Эмуляторғы (PNETLab немесе EVE-NG) Linux Qemu NIC қасиетін `Linux -> Edit Node -> Qemu NIC -> e1000` өзгерту қажет!
 
-## Link Aggregation on Debian
+## NIC Bonding on Debian
 
+
+#### Құрылғының атауын (Device Name) өзгерту
 ```shell
-Құрылғының атауын (Device Name) өзгерту
 $ sudo hostnamectl set-hostname H1
 $ bash
 $ sudo nano /etc/hosts
 127.0.1.1  H1
 ```
 
-### NIC Bonding (Permanent)
+#### Қажетті пакеттерді (package) орнату
 ```shell
 $ sudo apt update
 $ sudo apt install ifenslave ethtool
+```
 
+#### Bonding модулін жүктеу және автожүктеу қызметіне қосу
+```shell
 Bonding модулін жүктеу
 $ sudo modprobe bonding
 $ sudo modprobe -r bonding      // егер бұрын жүктелген болса
@@ -29,6 +33,18 @@ $ lsmod | grep bonding
 
 Bonding модулін автожүктеу (startup) қызметіне қосу
 $ echo "bonding" | sudo tee /etc/modules-load.d/bonding.conf
+```
+
+#### 8021q модулін жүктеу және автожүктеу қызметіне қосу (802.1Q VLAN)
+```shell
+8021q модулін жүктеу
+$ sudo modprobe 8021q
+
+8021q модулінің жүктелгенін тексеру
+$ lsmod | grep 8021q
+
+8021q модулін автожүктеу (startup) қызметіне қосу
+$ echo "8021q" | sudo tee /etc/modules-load.d/8021q.conf
 ```
 
 #### Bonding Mode
@@ -99,8 +115,19 @@ $ sudo nano /etc/network/interfaces
     gateway 172.16.12.1
     vlan-raw-device bond0
 ```
+
 ```shell
-Bonding Parameters
+$ sudo systemctl restart networking
+немесе
+$ sudo ifdown bond0 && sudo ifup bond0
+```
+```shell
+VLAN туралы ақпаратты көру
+$ sudo cat /proc/net/vlan/config
+```
+
+#### Bonding Parameters
+```shell
 $ ls /sys/class/net/bond0/bonding/
 
 $ cat /sys/class/net/bond0/bonding/mode
@@ -111,17 +138,7 @@ $ cat /sys/class/net/bond0/bonding/xmit_hash_policy
 layer3+4 1
 ```
 
-```shell
-$ sudo systemctl restart networking
-немесе
-$ sudo ifdown bond0 && sudo ifup bond0
-$ sudo ifup bond0.11
-
-VLAN туралы ақпаратты көру
-$ sudo cat /proc/net/vlan/config
-```
-
-###### Verification
+#### Verification
 ```shell
 $ cat /proc/net/bonding/bond0
 ```
