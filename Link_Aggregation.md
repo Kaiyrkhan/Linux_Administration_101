@@ -1,7 +1,7 @@
 # Link Aggregation (LACP) and Bridging on Linux
 
 ### Топология
-![Topology](Topology/Topology_LinkAggregation_LACP_Linux.png)
+![Topology](Topology/Topology_LinkAggregation_Linux.png)
 
 ## Link Aggregation on Debian
 
