@@ -90,6 +90,11 @@ $ echo "options bonding mode=4 miimon=100 lacp_rate=1 xmit_hash_policy=layer3+4"
 
 ```shell
 $ sudo systemctl restart networking
+
+немесе
+
+$ sudo ifdown bond0 && sudo ifup bond0
+$ sudo ifup bond0.11
 ```
 
 ###### Verification
