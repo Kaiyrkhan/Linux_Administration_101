@@ -1,6 +1,17 @@
 # Link Aggregation (LACP) and Bridging on Linux
 
+### Топология
+![Topology](Topology/Topology_LinkAggregation_LACP_Linux.png)
+
 ## Link Aggregation on Debian
+
+```shell
+Құрылғының атауын (Device Name) өзгерту
+$ sudo hostnamectl set-hostname H1
+$ sudo nano /etc/hosts
+127.0.1.1  R1
+$ bash
+```
 
 ### NIC Bonding (Permanent)
 ```shell
