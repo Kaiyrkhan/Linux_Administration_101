@@ -65,7 +65,7 @@ $ sudo nano /etc/network/interfaces
     netmask 255.255.255.0
     gateway 172.16.11.1
     bond-slaves ens3 ens4
-    bond-mode active-backup
+    bond-mode 1
     bond-miimon 100
     bond-primary ens3 ens4
 ```
