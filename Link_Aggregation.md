@@ -13,6 +13,7 @@ $ sudo hostnamectl set-hostname H1
 $ bash
 $ sudo nano /etc/hosts
 127.0.1.1  H1
+
 Ctrl+O -> Enter -> Ctrl+X -> Ctrl+L
 ```
 
