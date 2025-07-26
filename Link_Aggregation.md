@@ -22,7 +22,6 @@ Ctrl+O -> Enter -> Ctrl+X -> Ctrl+L
 $ sudo apt update
 $ sudo apt install ifenslave ethtool
 ```
-
 ```shell
 $ sudo ethtool ens3
 ```
