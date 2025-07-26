@@ -121,6 +121,18 @@ $ sudo nano /etc/network/interfaces
     vlan-raw-device bond0
 ```
 
+#### Bonding Parameters
+```shell
+$ ls /sys/class/net/bond0/bonding/
+
+$ cat /sys/class/net/bond0/bonding/mode
+802.3ad 4
+$ cat /sys/class/net/bond0/bonding/lacp_rate
+fast 1
+$ cat /sys/class/net/bond0/bonding/xmit_hash_policy
+layer3+4 1
+```
+
 ```shell
 $ sudo systemctl restart networking
 немесе
@@ -135,18 +147,6 @@ VLAN туралы ақпаратты көру
 $ sudo cat /proc/net/vlan/config
 ```
 ![images](images/cat_vlan.png)
-
-#### Bonding Parameters
-```shell
-$ ls /sys/class/net/bond0/bonding/
-
-$ cat /sys/class/net/bond0/bonding/mode
-802.3ad 4
-$ cat /sys/class/net/bond0/bonding/lacp_rate
-fast 1
-$ cat /sys/class/net/bond0/bonding/xmit_hash_policy
-layer3+4 1
-```
 
 #### Verification
 ```shell
