@@ -7,7 +7,6 @@
 
 ## NIC Bonding on Debian
 
-
 #### Құрылғының атауын (Device Name) өзгерту
 ```shell
 $ sudo hostnamectl set-hostname H1
@@ -59,6 +58,12 @@ $ echo "8021q" | sudo tee /etc/modules-load.d/8021q.conf
 ```shell
 $ cat /usr/share/doc/ifenslave/examples/two_ethernet
 ```
+
+```shell
+$ ip address
+ens3
+ens4
+```  
 
 #### Bonding Mode `active-backup`
 ```shell
