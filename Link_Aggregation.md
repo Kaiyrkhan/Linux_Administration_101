@@ -138,6 +138,7 @@ $ cat /sys/class/net/bond0/bonding/miimon
 $ cat /sys/class/net/bond0/bonding/xmit_hash_policy
 layer3+4 1
 ```
+![images](images/parameters.png)
 
 ```shell
 $ sudo systemctl restart networking
