@@ -111,6 +111,7 @@ $ sudo nano /etc/network/interfaces
     address 172.16.11.101
     netmask 255.255.255.0
     gateway 172.16.11.1
+    vlan-raw-device bond0
 ```
 ```shell
 $ sudo systemctl restart networking
