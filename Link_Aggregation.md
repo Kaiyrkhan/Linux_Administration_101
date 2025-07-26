@@ -60,51 +60,25 @@ $ sudo nano /etc/network/interfaces
     bond-master bond0
 
   auto bond0
-  iface bond0 inet dhcp
-    bond-slaves ens3 ens4
-    bond-mode 1
-    bond-miimon 100
-    bond-primary ens3 ens4
-```
-
-```shell
-Немесе bonding модулі жүктелген кезде parameter-лерді автоматты түрде қабылдайтындай алдын-ала конфигурациялауға болады
-$ echo "options bonding mode=1 miimon=100" | sudo tee /etc/modprobe.d/bonding.conf
-```
-
-#### Мысал #2: Bonding Mode LACP `802.3ad`
-```shell
-$ sudo nano /etc/network/interfaces
-  auto ens3
-  iface ens3 inet manual
-    bond-master bond0
-
-  auto ens4
-  iface ens4 inet manual
-    bond-master bond0
-
-  auto bond0
   iface bond0 inet static
     address 172.16.11.101
     netmask 255.255.255.0
     gateway 172.16.11.1
     bond-slaves ens3 ens4
-    bond-mode 802.3ad
+    bond-mode active-backup
     bond-miimon 100
-    bond-lacp-rate 1
-    bond-xmit-hash-policy layer3+4
+    bond-primary ens3 ens4
 ```
 ```shell
 $ ls /sys/class/net/bond0/bonding/
 
 $ cat /sys/class/net/bond0/bonding/mode
-802.3ad 4
-$ cat /sys/class/net/bond0/bonding/lacp_rate
-fast 1
-$ cat /sys/class/net/bond0/bonding/xmit_hash_policy
-layer3+4 1
+active-backup 1
+$ cat /sys/class/net/bond0/bonding/miimon
+100
 ```
-Егер, `bond0` интерфейс Trunk (VLAN id 11 Target Frame) болатын болса
+
+#### Мысал #2: Bonding Mode LACP `802.3ad`
 ```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
@@ -130,6 +104,17 @@ $ sudo nano /etc/network/interfaces
     gateway 172.16.11.1
     vlan-raw-device bond0
 ```
+```shell
+$ ls /sys/class/net/bond0/bonding/
+
+$ cat /sys/class/net/bond0/bonding/mode
+802.3ad 4
+$ cat /sys/class/net/bond0/bonding/lacp_rate
+fast 1
+$ cat /sys/class/net/bond0/bonding/xmit_hash_policy
+layer3+4 1
+```
+
 ```shell
 $ sudo systemctl restart networking
 немесе
