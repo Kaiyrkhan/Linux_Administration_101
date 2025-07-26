@@ -163,8 +163,9 @@ $ cat /proc/net/bonding/bond0
 
 #### Cisco Switch конфигурациялау
 
-**LACP конфигурациялау**
 ```shell
+LACP конфигурациялау
+
 configure terminal
 int range g0/1-2
 description Linux bonding LACP
@@ -180,8 +181,8 @@ show run int g0/1
 show run int g0/2
 ```
 
-**LACP Group конфигурациялау**
 ```shell
+LACP Group конфигурациялау
 show ip int brief
 show run int Port-channel1
 
@@ -197,12 +198,14 @@ spanning-tree bpduguard enable
 show run int Port-channel1
 ```
 ```shell
-show etherchannel summary 
-show lacp neighbor
-
 show etherchannel load-balance
 src-dst-ip
+
+show lacp neighbor
+
+show etherchannel summary 
 ```
+![show etherchannel summary](images/show_etherchannel_summary.png)
 
 <br>
 
