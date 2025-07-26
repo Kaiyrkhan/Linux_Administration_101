@@ -102,15 +102,15 @@ $ sudo nano /etc/network/interfaces
 #### Bonding Mode `802.3ad` LACP
 ```shell
 $ sudo nano /etc/network/interfaces
-  auto ens3
+  allow-hotplug ens3
   iface ens3 inet manual
     bond-master bond0
 
-  auto ens4
+  allow-hotplug ens4
   iface ens4 inet manual
     bond-master bond0
 
-  auto bond0
+  allow-hotplug bond0
   iface bond0 inet manual
     bond-slaves ens3 ens4
     bond-mode 802.3ad
@@ -118,14 +118,14 @@ $ sudo nano /etc/network/interfaces
     bond-lacp-rate fast
     bond-xmit-hash-policy layer3+4
 
-  auto bond0.11
+  allow-hotplug bond0.11
   iface bond0.11 inet static
     address 172.16.11.101
     netmask 255.255.255.0
     gateway 172.16.11.1
     vlan-raw-device bond0
 
-  auto bond0.12
+  allow-hotplug bond0.12
   iface bond0.12 inet static
     address 172.16.12.101
     netmask 255.255.255.0
