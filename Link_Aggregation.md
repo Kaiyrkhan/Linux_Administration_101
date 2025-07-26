@@ -168,6 +168,7 @@ SVI интерфейсті конфигурациялау
 configure terminal
 vlan 11
 vlan 12
+show vlan brief
 
 int vlan 11
 ip address 172.16.11.1 255.255.255.0
@@ -175,6 +176,8 @@ no shutdown
 int vlan 12
 ip address 172.16.12.1 255.255.255.0
 no shutdown
+
+show ip int brief
 ```
 
 ```shell
@@ -198,8 +201,6 @@ show run int g0/2
 ```shell
 LACP Group конфигурациялау
 
-show ip int brief
-
 configure terminal
 interface Port-channel1
 description Linux Bonding (LACP)
@@ -220,7 +221,8 @@ show lacp neighbor
 
 show etherchannel summary 
 ```
-![show etherchannel summary](images/show_etherchannel_summary.png)
+![images](images/show_etherchannel_summary.png)
+![images](images/show_ip_int_brief.png)
 
 <br>
 
