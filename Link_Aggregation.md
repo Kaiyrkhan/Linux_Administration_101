@@ -87,12 +87,34 @@ $ sudo nano /etc/network/interfaces
 Немесе bonding модулі жүктелген кезде parameter-лерді автоматты түрде қабылдайтындай алдын-ала конфигурациялауға болады
 $ echo "options bonding mode=4 miimon=100 lacp_rate=1 xmit_hash_policy=layer3+4" | sudo tee /etc/modprobe.d/bonding.conf
 ```
+Егер, `bond0` интерфейс Trunk (VLAN id 11 Target Frame) болатын болса
+```shell
+$ sudo nano /etc/network/interfaces
+  auto ens3
+  iface ens3 inet manual
+    bond-master bond0
 
+  auto ens4
+  iface ens4 inet manual
+    bond-master bond0
+
+  auto bond0
+  iface bond0 inet manual
+    bond-slaves ens3 ens4
+    bond-mode 802.3ad
+    bond-miimon 100
+    bond-lacp-rate fast
+    bond-xmit-hash-policy layer3+4
+
+  auto bond0.11
+  iface bond0.11 inet static
+    address 172.16.11.101
+    netmask 255.255.255.0
+    gateway 172.16.11.1
+```
 ```shell
 $ sudo systemctl restart networking
-
 немесе
-
 $ sudo ifdown bond0 && sudo ifup bond0
 $ sudo ifup bond0.11
 ```
