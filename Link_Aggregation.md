@@ -23,6 +23,11 @@ $ sudo apt update
 $ sudo apt install ifenslave ethtool
 ```
 
+```shell
+$ sudo ethtool ens3
+```
+![images](images/ethtool.png)
+
 #### Bonding модулін жүктеу және автожүктеу қызметіне қосу
 ```shell
 Bonding модулін жүктеу
