@@ -189,8 +189,6 @@ show ip int brief
 ```shell
 LACP конфигурациялау
 
-show ip int brief
-
 configure terminal
 int range g0/1-2
 description Linux Bonding LACP
@@ -208,6 +206,8 @@ show run int g0/2
 
 ```shell
 LACP Group конфигурациялау
+
+show ip int brief
 
 configure terminal
 interface Port-channel1
