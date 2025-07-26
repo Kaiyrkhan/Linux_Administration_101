@@ -162,6 +162,20 @@ $ cat /proc/net/bonding/bond0
 ![images](images/bonding_state.png)
 
 #### Cisco Switch конфигурациялау
+```shell
+SVI интерфейсті конфигурациялау
+
+configure terminal
+vlan 11
+vlan 12
+
+int vlan 11
+ip address 172.16.11.1 255.255.255.0
+no shutdown
+int vlan 12
+ip address 172.16.12.1 255.255.255.0
+no shutdown
+```
 
 ```shell
 LACP конфигурациялау
@@ -183,9 +197,10 @@ show run int g0/2
 
 ```shell
 LACP Group конфигурациялау
-show ip int brief
-show run int Port-channel1
 
+show ip int brief
+
+configure terminal
 interface Port-channel1
 description Linux Bonding (LACP)
 switchport
