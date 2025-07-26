@@ -238,6 +238,11 @@ show etherchannel summary
 ```
 ![images](images/show_etherchannel_summary.png)
 
+#### Testing
+```shell
+$ ping 172.16.11.1
+$ ping 172.16.12.1
+```
 
 <br>
 
