@@ -191,7 +191,7 @@ LACP конфигурациялау
 
 configure terminal
 int range g0/1-2
-description Linux bonding LACP
+description Linux Bonding LACP
 switchport trunk encapsulation dot1q
 switchport mode trunk
 switchport nonegotiate
