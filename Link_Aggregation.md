@@ -95,8 +95,14 @@ $ sudo nano /etc/network/interfaces
     bond-xmit-hash-policy layer3+4
 ```
 ```shell
-Немесе bonding модулі жүктелген кезде parameter-лерді автоматты түрде қабылдайтындай алдын-ала конфигурациялауға болады
-$ echo "options bonding mode=4 miimon=100 lacp_rate=1 xmit_hash_policy=layer3+4" | sudo tee /etc/modprobe.d/bonding.conf
+$ ls /sys/class/net/bond0/bonding/
+
+$ cat /sys/class/net/bond0/bonding/mode
+802.3ad 4
+$ cat /sys/class/net/bond0/bonding/lacp_rate
+fast 1
+$ cat /sys/class/net/bond0/bonding/xmit_hash_policy
+layer3+4 1
 ```
 Егер, `bond0` интерфейс Trunk (VLAN id 11 Target Frame) болатын болса
 ```shell
