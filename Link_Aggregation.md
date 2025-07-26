@@ -215,6 +215,7 @@ description Linux Bonding (LACP)
 switchport
 switchport trunk encapsulation dot1q
 switchport mode trunk
+switchport trunk allowed vlan 11,12
 switchport nonegotiate
 spanning-tree portfast trunk
 spanning-tree bpduguard enable
