@@ -125,11 +125,16 @@ $ sudo nano /etc/network/interfaces
 $ sudo systemctl restart networking
 немесе
 $ sudo ifdown bond0 && sudo ifup bond0
+
+$ ip address
 ```
+![images](images/ip_address.png)
+
 ```shell
 VLAN туралы ақпаратты көру
 $ sudo cat /proc/net/vlan/config
 ```
+![images](images/cat_vlan.png)
 
 #### Bonding Parameters
 ```shell
@@ -147,6 +152,7 @@ layer3+4 1
 ```shell
 $ cat /proc/net/bonding/bond0
 ```
+![images](images/bonding_state.png)
 
 <br>
 
