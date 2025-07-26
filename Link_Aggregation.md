@@ -16,7 +16,7 @@ $ bash
 ### NIC Bonding (Permanent)
 ```shell
 $ sudo apt update
-$ sudo apt install ifenslave
+$ sudo apt install ifenslave ethtool
 
 Bonding модулін жүктеу
 $ sudo modprobe bonding
