@@ -70,6 +70,7 @@ $ sudo nano /etc/network/interfaces
     bond-primary ens3 ens4
 ```
 ```shell
+Parameters
 $ ls /sys/class/net/bond0/bonding/
 
 $ cat /sys/class/net/bond0/bonding/mode
@@ -105,6 +106,7 @@ $ sudo nano /etc/network/interfaces
     vlan-raw-device bond0
 ```
 ```shell
+Parameters
 $ ls /sys/class/net/bond0/bonding/
 
 $ cat /sys/class/net/bond0/bonding/mode
