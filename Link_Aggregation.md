@@ -442,3 +442,4 @@ $ reboot
 3) [How to Set Up Ethernet Channel Bonding in Linux for Load Balancing](https://www.tecmint.com/ethernet-channel-bonding-in-linux/)
 4) [Creating Network Bonding and Bridging in Ubuntu](https://www.tecmint.com/create-network-bond-bridge-in-ubuntu/)
 5) [How To Configure Network Bonding & Network Teaming In Linux](https://tekneed.com/configure-network-bonding-network-teaming-in-linux/#what-is-the-difference-between-teaming-and-bonding-in-linux)
+6) [Example netplan config files *.yaml](https://github.com/canonical/netplan/tree/main/examples)
