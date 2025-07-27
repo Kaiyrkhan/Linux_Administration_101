@@ -27,6 +27,7 @@ $ sudo ethtool ens3
 speed: 1000Mb/s
 duplex: Full
 auto-negotiation: on
+Link detected: yes
 ```
 ![images](images/ethtool_interface.png)
 
