@@ -203,9 +203,7 @@ spanning-tree bpduguard enable
 
 show run int g0/1
 show run int g0/2
-```
 
-```shell
 LACP Group конфигурациялау (Access Port)
 
 show ip int brief
@@ -236,9 +234,7 @@ spanning-tree bpduguard enable
 
 show run int g0/1
 show run int g0/2
-```
 
-```shell
 LACP Group конфигурациялау (Trunk Port)
 
 show ip int brief
