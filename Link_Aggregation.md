@@ -318,7 +318,7 @@ $ ping 172.16.12.1
 
 <br>
 
-## NIC Teaming using nmcli on RHEL/Rocky
+## NIC Teaming using nmcli on RHEL9/Rocky9
 
 ###### Create a Team interface
 ```shell
