@@ -1,4 +1,4 @@
-# Dynamic Routing on Linux
+# Dynamic Routing (OSPF) on Linux
 
 ### Топология
 ![Topology](Topology/Topology_Dynamic_Routing_Linux.png)
@@ -15,7 +15,7 @@ VPC2> show ip
 VPC2> save
 ```
 
-## Dynamic Routing on Debian
+## Dynamic Routing (OSPF) on Debian
 
 **R1**
 ```shell
