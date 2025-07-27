@@ -22,8 +22,22 @@ Ctrl+O -> Enter -> Ctrl+X -> Ctrl+L
 $ sudo apt update
 $ sudo apt install ifenslave ethtool
 ```
+
+#### Testing Physical NIC
+```shell
+$ sudo nano /etc/network/interfaces
+  auto ens3
+  iface ens3 inet manual
+
+  auto ens4
+  iface ens4 inet manual
+```
+```shell
+$ sudo systemctl restart networking
+```
 ```shell
 $ sudo ethtool ens3
+$ sudo ethtool ens4
 speed: 1000Mb/s
 duplex: Full
 auto-negotiation: on
