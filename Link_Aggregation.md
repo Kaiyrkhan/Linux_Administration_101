@@ -53,7 +53,6 @@ Link detected: yes
 ![images](images/ethtool_interface.png)
 
 ```shell
-sudo apt update
 sudo apt install lshw
 lshw -class network
 lspci | grep -i ethernet
