@@ -26,6 +26,7 @@ $ sudo apt install ifenslave ethtool
 $ sudo ethtool ens3
 speed: 1000Mb/s
 duplex: Full
+auto-negotiation: on
 ```
 ![images](images/ethtool_interface.png)
 
