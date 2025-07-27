@@ -7,8 +7,8 @@
 4. Link Aggregation (LACP)  
     3.1. NIC Bonding (Redundancy, Load Balancing, Single IP)  
     3.2. NIC Teaming (Redundancy, Load Balancing, Single IP)  
-5. Bridging (vSwitch)  
-6. Virtualization. Hypervisor KVM  
+5. Virtualization. Hypervisor KVM  
+6. Linux Bridge (vSwitch)  
 7. ...  
 
 
