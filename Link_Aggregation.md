@@ -216,6 +216,9 @@ channel-protocol lacp
 channel-group 1 mode active
 spanning-tree portfast edge
 spanning-tree bpduguard enable
+
+show run int g0/1
+show run int g0/2
 ```
 
 ```shell
@@ -238,12 +241,16 @@ show run int Port-channel1
 
 LACP Group конфигурациялау (Access Port)
 
+show ip int brief
+
 configure terminal
 interface Port-channel1
 switchport mode access
 switchport access vlan 11
 spanning-tree portfast edge
 spanning-tree bpduguard enable
+
+show run int Port-channel1
 ```
 ```shell
 show etherchannel load-balance
