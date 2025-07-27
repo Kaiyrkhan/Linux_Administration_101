@@ -23,6 +23,9 @@ ens4
 ```
 ```shell
 $ sudo nano /etc/network/interfaces
+  iface ens4 inet static
+  address 10.1.1.101
+  netmask 255.255.255.252
   up ip route add 0.0.0.0/0 via 10.0.137.1 dev ens4
 ```
 
