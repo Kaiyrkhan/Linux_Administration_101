@@ -1,5 +1,9 @@
 # Link Aggregation (LACP) and Bridging on Linux
 
+Link Aggregation (LACP):
+    - NIC Bonding (Redundancy, Load Balancing, Single IP)
+    - NIC Teaming (Redundancy, Load Balancing, Single IP)
+
 ### Топология
 ![Topology](Topology/Topology_LinkAggregation_LACP_Linux.png)
 
