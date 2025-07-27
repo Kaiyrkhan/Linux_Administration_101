@@ -23,6 +23,7 @@ ens4
 ```
 ```shell
 $ sudo nano /etc/network/interfaces
+  auto ens4
   iface ens4 inet static
   address 10.1.1.101
   netmask 255.255.255.252
