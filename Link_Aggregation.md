@@ -190,7 +190,7 @@ show ip int brief
 ```
 
 ```shell
-LACP конфигурациялау
+LACP конфигурациялау (Trunk Port)
 
 configure terminal
 int range g0/1-2
@@ -205,10 +205,21 @@ spanning-tree bpduguard enable
 
 show run int g0/1
 show run int g0/2
+
+LACP конфигурациялау (Access Port)
+
+configure terminal
+int range g0/1-2
+switchport mode access
+switchport access vlan 11
+channel-protocol lacp
+channel-group 1 mode active
+spanning-tree portfast edge
+spanning-tree bpduguard enable
 ```
 
 ```shell
-LACP Group конфигурациялау
+LACP Group конфигурациялау (Trunk Port)
 
 show ip int brief
 
@@ -224,6 +235,15 @@ spanning-tree portfast edge trunk
 spanning-tree bpduguard enable
 
 show run int Port-channel1
+
+LACP Group конфигурациялау (Access Port)
+
+configure terminal
+interface Port-channel1
+switchport mode access
+switchport access vlan 11
+spanning-tree portfast edge
+spanning-tree bpduguard enable
 ```
 ```shell
 show etherchannel load-balance
