@@ -37,6 +37,8 @@ $ sudo nano /etc/network/interfaces
 $ sudo systemctl restart networking
 ```
 ```shell
+$ ip -br link
+
 $ sudo ethtool ens3
 $ sudo ethtool ens4
 speed: 1000Mb/s
