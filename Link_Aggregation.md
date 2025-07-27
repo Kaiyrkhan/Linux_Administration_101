@@ -24,7 +24,7 @@ $ sudo apt install ifenslave ethtool
 ```
 
 #### Testing Physical NIC
-> **Ескерту:** PNETLab немесе EVE-NG эмуляторындағы Linux Qemu NIC қасиетін `e1000` мәніне өзгерту қажет!
+> Ескерту: PNETLab немесе EVE-NG эмуляторындағы Linux Qemu NIC қасиетін `e1000` мәніне өзгерту қажет!
 ```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
