@@ -236,6 +236,7 @@ spanning-tree bpduguard enable
 show run int Port-channel1
 
 show vlan brief
+show int status
 ```
 
 ```shell
@@ -271,6 +272,8 @@ spanning-tree portfast edge trunk
 spanning-tree bpduguard enable
 
 show run int Port-channel1
+
+show int status
 ```
 
 ```shell
