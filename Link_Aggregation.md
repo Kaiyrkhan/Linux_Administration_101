@@ -3,7 +3,7 @@
 ### Топология
 ![Topology](Topology/Topology_LinkAggregation_Linux.png)
 
-> **Ескерту:** PNETLab немесе EVE-NG эмуляторындағы Linux Qemu NIC қасиетін `Linux -> Edit Node -> Qemu NIC -> e1000` өзгерту қажет!
+> **Ескерту:** PNETLab немесе EVE-NG эмуляторындағы Linux Qemu NIC қасиетін `Linux -> Edit Node -> Qemu NIC -> e1000` мәніне өзгерту қажет!
 
 ## NIC Bonding on Debian
 
