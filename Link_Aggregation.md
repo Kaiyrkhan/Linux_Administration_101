@@ -200,7 +200,7 @@ switchport mode trunk
 switchport nonegotiate
 channel-protocol lacp
 channel-group 1 mode active
-spanning-tree portfast trunk
+spanning-tree portfast edge trunk
 spanning-tree bpduguard enable
 
 show run int g0/1
@@ -220,7 +220,7 @@ switchport trunk encapsulation dot1q
 switchport mode trunk
 switchport trunk allowed vlan 11,12
 switchport nonegotiate
-spanning-tree portfast trunk
+spanning-tree portfast edge trunk
 spanning-tree bpduguard enable
 
 show run int Port-channel1
