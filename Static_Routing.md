@@ -15,6 +15,12 @@ VPC2> show ip
 VPC2> save
 ```
 
+## Default Static Route on Debian
+```shell
+$ sudo nano /etc/network/interfaces
+  up ip route add 0.0.0.0/0 via 10.0.137.1 dev ens4
+```
+
 ## Static Route on Debian
 
 **R1**
