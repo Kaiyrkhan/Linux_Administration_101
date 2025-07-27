@@ -291,6 +291,10 @@ show ip int brief
 show etherchannel summary 
 ```
 ![images](images/show_etherchannel_summary.png)
+```shell
+configure terminal
+ip routing
+```
 
 #### Testing
 ```shell
