@@ -222,6 +222,7 @@ LACP конфигурациялау (Access Port)
 
 configure terminal
 int range g0/1-2
+description Linux Bonding ens3 ens4
 switchport mode access
 switchport access vlan 11
 channel-protocol lacp
@@ -238,6 +239,7 @@ show ip int brief
 
 configure terminal
 interface Port-channel1
+description Linux Bonding ens3 ens4
 switchport mode access
 switchport access vlan 11
 spanning-tree portfast edge
@@ -254,7 +256,7 @@ LACP конфигурациялау (Trunk Port)
 
 configure terminal
 int range g0/1-2
-description Linux Bonding LACP
+description Linux Bonding ens3 ens4
 switchport trunk encapsulation dot1q
 switchport mode trunk
 switchport nonegotiate
@@ -272,7 +274,7 @@ show ip int brief
 
 configure terminal
 interface Port-channel1
-description Linux Bonding (LACP)
+description Linux Bonding ens3 ens4
 switchport
 switchport trunk encapsulation dot1q
 switchport mode trunk
