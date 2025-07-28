@@ -92,7 +92,7 @@ $ echo "8021q" | sudo tee /etc/modules-load.d/8021q.conf
 `5 - balance-tlb`  
 `6 - balance-alb`  
 
-#### Bonding Mode `active-backup`
+#### Bonding Mode `active-backup` (Access and VLAN)
 ```shell
 $ ip address
 ens3
@@ -130,7 +130,7 @@ $ sudo nano /etc/network/interfaces
     bond-primary ens3 ens4
 ```
 
-#### Bonding Mode `802.3ad` LACP
+#### Bonding Mode `802.3ad` LACP (Trunk and VLAN)
 ```shell
 $ sudo nano /etc/network/interfaces
   allow-hotplug ens3
