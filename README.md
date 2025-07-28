@@ -15,4 +15,6 @@
 
 1) [Red Hat Enterprise Linux Documentation](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/)
 2) [Debian wiki](https://wiki.debian.org/Network)
-3) [YouTube - Red Hat Linux Tutorial for Beginners](https://www.youtube.com/playlist?list=PLTPMMr47BP_jIH5m2qSwYfX1HM3P_xgru)
+
+### YouTube
+4) [Red Hat Linux Tutorial for Beginners](https://www.youtube.com/playlist?list=PLTPMMr47BP_jIH5m2qSwYfX1HM3P_xgru)
