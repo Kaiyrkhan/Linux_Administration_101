@@ -17,4 +17,4 @@
 2) [Debian wiki](https://wiki.debian.org/Network)
 
 ### YouTube
-4) [Red Hat Linux Tutorial for Beginners](https://www.youtube.com/playlist?list=PLTPMMr47BP_jIH5m2qSwYfX1HM3P_xgru)
+1) [Red Hat Linux Tutorial for Beginners](https://www.youtube.com/playlist?list=PLTPMMr47BP_jIH5m2qSwYfX1HM3P_xgru)
