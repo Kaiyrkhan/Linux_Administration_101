@@ -92,7 +92,7 @@ $ echo "8021q" | sudo tee /etc/modules-load.d/8021q.conf
 `5 - balance-tlb`  
 `6 - balance-alb`  
 
-#### Bonding Mode `active-backup` (Access and VLAN)
+#### Bonding Mode `active-backup`
 ```shell
 $ ip address
 ens3
