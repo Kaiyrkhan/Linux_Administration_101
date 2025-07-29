@@ -14,11 +14,10 @@ Link Aggregation (LACP) on Linux:
 #### Құрылғының атауын (Device Name) өзгерту
 ```shell
 $ sudo hostnamectl set-hostname H1
-$ bash
 $ sudo nano /etc/hosts
 127.0.1.1  H1
-
 Ctrl+O -> Enter -> Ctrl+X -> Ctrl+L
+$ bash
 ```
 
 #### Қажетті пакеттерді (package) орнату
