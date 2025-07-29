@@ -4,7 +4,7 @@ Link Aggregation (LACP) on Linux:
     - NIC Bonding (Redundancy, Load Balancing, Single IP);  
     - NIC Teaming (Redundancy, Load Balancing, Single IP).  
 
-### Топология
+### 🖧 Топология
 ![Topology](Topology/Topology_LinkAggregation_LACP_Linux.png)
 
 > **Ескерту:** PNETLab немесе EVE-NG эмуляторындағы Linux Qemu NIC қасиетін `Linux -> Edit Node -> Qemu NIC -> e1000` мәніне өзгерту қажет!
