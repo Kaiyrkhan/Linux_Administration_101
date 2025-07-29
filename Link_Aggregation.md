@@ -24,7 +24,7 @@ Ctrl+O -> Enter -> Ctrl+X -> Ctrl+L
 #### Қажетті пакеттерді (package) орнату
 ```shell
 $ sudo apt update
-$ sudo apt install ifenslave ethtool
+$ sudo apt install ifenslave ethtool bridge-utils net-tools
 ```
 
 #### Testing Physical NIC
