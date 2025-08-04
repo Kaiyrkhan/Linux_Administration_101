@@ -113,16 +113,16 @@ student@H1:~$ ping 8.8.8.8
 student@H1:~$ ping google.com
 ```
 
-Allow SSH, DNS, HTTP, HTTPS
-```shell
-$ sudo nft add rule inet filter input tcp dport {22, 53, 80, 443} accept  
-$ sudo nft add rule inet filter input udp dport 53 accept
-```
-
 Save configuration
 ```shell
 $ sudo nft list ruleset | sudo tee /etc/nftables.conf
 $ sudo systemctl restart nftables
+```
+
+Allow SSH, DNS, HTTP, HTTPS
+```shell
+$ sudo nft add rule inet filter input tcp dport {22, 53, 80, 443} accept  
+$ sudo nft add rule inet filter input udp dport 53 accept
 ```
 
 Delete Rule
@@ -132,9 +132,6 @@ $ sudo nft -a list ruleset
 $ sudo nft --handle list ruleset
 
 $ sudo nft delete rule inet filter input handle 1
-```
-
-```shell
 ```
 
 ### 2) Firewall, NAT using iptables
