@@ -4,5 +4,5 @@
   1) NAT конфигурациялау (using nftables);
   2) NAT конфигурациялау (using iptables).
 
-#### 🖧 Топология
+#### 🖧 Topology
 ![Logical Topology](Topology/Topology_interVLANRouting_NAT_Linux.png)
