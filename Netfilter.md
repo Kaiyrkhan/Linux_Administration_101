@@ -67,7 +67,16 @@ student@H1:~$ ping -c4 172.16.12.101
 student@H2:~$ ping -c4 172.16.11.101
 ```
 
-##### 4-мысал: ping 8.8.8.8 ping LAN to internet
+##### 4-мысал: LAN желідегі құрылғыларды internet желісімен байланыстыру
+```shell
+student@netfilter:~$ ping 8.8.8.8
+student@netfilter:~$ ping google.com
+```
+
+```shell
+student@H1:~$ ping 8.8.8.8
+student@H1:~$ ping google.com
+```
 
 | Symbolic Name | Equivalent Numeric Value |
 |---------------|--------------------------|
@@ -87,14 +96,22 @@ $ sudo nft add rule ip nat postrouting ip saddr 172.16.11.0/24 oifname "ens3" ma
 ```
 
 ```shell
+Conntrack
+$ sudo nft add rule inet filter input ct state established,related accept
+```
+```shell
+student@netfilter:~$ ping 8.8.8.8
+student@netfilter:~$ ping google.com
+```
+
+```shell
 IP Packet Forwarding
 $ sudo nft add rule inet filter forward ip saddr 172.16.11.0/24 oifname "ens3" accept
 $ sudo nft add rule inet filter forward ip daddr 172.16.11.0/24 iifname "ens3" accept
 ```
-
 ```shell
-Conntrack
-$ sudo nft add rule inet filter input ct state established,related accept
+student@H1:~$ ping 8.8.8.8
+student@H1:~$ ping google.com
 ```
 
 Allow SSH, DNS, HTTP, HTTPS
