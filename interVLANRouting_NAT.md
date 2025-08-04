@@ -139,6 +139,14 @@ $ sudo nano /etc/network/interfaces
   dns-nameservers 8.8.8.8
   dns-search edu.local
 ```
+```shell
+$ sudo systemctl restart networking
+
+$ ip address
+$ ip route
+$ cat /etc/resolv.conf
+```
+
 H2 құрылғы
 ```shell
 $ sudo nano /etc/network/interfaces
