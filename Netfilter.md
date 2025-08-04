@@ -53,13 +53,12 @@ student@H1:~$ ping -c4 172.16.11.1
 student@H1:~$ ping -c4 172.16.12.1
 ```
 
-##### 3-мысал: FORWARD бойынша ICMP хаттамаға рұқсат ету
+##### 3-мысал: ping H1 to H2
 ```shell
 ping H1 to H2
 student@H1:~$ ping -c4 172.16.12.101
 student@H2:~$ ping -c4 172.16.11.101
 
-$ sudo nft add rule inet filter forward icmp type echo-request accept
 $ sudo nft add rule inet filter forward ip saddr 172.16.11.0/24 ip daddr 172.16.12.0/24
 $ sudo nft add rule inet filter forward ip saddr 172.16.12.0/24 ip daddr 172.16.11.0/24
 
