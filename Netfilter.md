@@ -89,7 +89,7 @@ student@H1:~$ ping google.com
 
 
 ```shell
-Network address translation (NAT)
+Network Address Translation (NAT)
 $ sudo nft add table ip nat
 $ sudo nft add chain ip nat postrouting { type nat hook postrouting priority srcnat \; policy accept \; }
 $ sudo nft add rule ip nat postrouting ip saddr 172.16.11.0/24 oifname "ens3" masquerade
@@ -105,7 +105,7 @@ student@netfilter:~$ ping google.com
 ```
 
 ```shell
-IP Packet Forwarding
+Allow LAN IP address
 $ sudo nft add rule inet filter forward ip saddr 172.16.11.0/24 oifname "ens3" accept
 $ sudo nft add rule inet filter forward ip daddr 172.16.11.0/24 iifname "ens3" accept
 ```
