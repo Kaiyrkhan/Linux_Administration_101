@@ -157,8 +157,8 @@ $ cat /etc/resolv.conf
 ```shell
 ping H1 to H2
 
-student@H1:~$ ping 172.16.11.1
-student@H1:~$ ping 172.16.12.101
+student@H1:~$ ping -c4 172.16.11.1
+student@H1:~$ ping -c4 172.16.12.101
 ```
 
 ### 6) NAT конфигурациялау (using iptables)
