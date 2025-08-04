@@ -25,12 +25,16 @@ $ sudo systemctl enable nftables
 $ sudo nft list ruleset
 ```
 
+Allow SSH, DNS, HTTP, HTTPS
 ```shell
+$ sudo nft add rule inet filter input iifname "lo" accept
+$ sudo nft add rule inet filter input icmp type echo-request accept
+$ sudo nft add rule inet filter input tcp dport {22, 53, 80, 443} accept  
+$ sudo nft add rule inet filter input udp dport 53 accept
 ```
 
 ```shell
-$ sudo nft add rule inet filter input tcp dport 80 accept
-$ sudo nft add rule inet filter input icmp type echo-request accept
+
 ```
 
 Save config
