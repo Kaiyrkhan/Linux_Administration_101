@@ -159,17 +159,17 @@ $ sudo nano /etc/network/interfaces
 ```
 
 ##### Нəтижені тексеру
-```shel
-ping VPC1 to VPC2
+```shell
+ping H1 to H2
 
-VPC1> ping 172.16.11.1
-VPC1> ping 172.16.12.101
+student@H1:~$ ping 172.16.11.1
+student@H1:~$ ping 172.16.12.101
 ```
 
 ### 6) NAT конфигурациялау (using iptables)
 
 ##### iptables пакетін орнату және конфигурациялау
-```shel
+```shell
 $ sudo apt update
 $ sudo apt install iptables
 
@@ -181,7 +181,7 @@ Check Current Rules
 $ sudo iptables -L
 ```
 
-```shel
+```shell
 $ sudo iptables -A INPUT -i lo -j ACCEPT
 $ sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 $ sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
@@ -191,7 +191,7 @@ $ sudo iptables -vnL
 $ sudo iptables -t filter -vnL
 ```
 
-```shel
+```shell
 Inserting Rules
 $ sudo iptables -I INPUT 1 -p tcp --dport 443 -j ACCEPT
 
@@ -202,7 +202,7 @@ Deleting Rules
 $ sudo iptables -D INPUT 1
 ```
 
-```shel
+```shell
 sudo iptables -P INPUT DROP
 sudo iptables -P FORWARD DROP
 
@@ -210,7 +210,7 @@ sudo iptables -P INPUT ACCEPT
 sudo iptables -P FORWARD ACCEPT
 ```
 
-```shel
+```shell
 Clear input chain
 $ sudo iptables -F INPUT
 
@@ -218,7 +218,7 @@ Flush the whole iptables
 $ sudo iptables -F
 ```
 
-```shel
+```shell
 Өзгерісті сақтау және қайта жүктеу (Saving and Reloading IPTables Rules)
 
 $ sudo apt install iptables-persistent
@@ -234,26 +234,26 @@ $ sudo iptables-restore < /etc/iptables/rules.v4
 ```
 
 ##### Network Address Translation (NAT)
-```shel
+```shell
 $ sudo iptables -t nat -vnL
 
 $ sudo iptables -t nat -A POSTROUTING -s 172.16.11.0/24 -o ens3 -j MASQUERADE
 $ sudo iptables -t nat -A POSTROUTING -s 172.16.12.0/24 -o ens3 -j MASQUERADE
 ```
 
-```shel
+```shell
 $ sudo netfilter-persistent save
 $ sudo netfilter-persistent reload
 ```
 
-```shel
+```shell
 Нəтижені тексеру
 VPC1> ping 8.8.8.8
 VPC2> ping 8.8.8.8
 ```
 
 ### Troubleshooting
-```shel
+```shell
 $ sudo iptables -F
 
 sudo iptables -P INPUT DROP
@@ -263,14 +263,14 @@ $ sudo netfilter-persistent save
 $ sudo netfilter-persistent reload
 ```
 ###### 1-мысал: INPUT бойынша ICMP хаттамаға рұқсат ету
-```shel
+```shell
 VPC1> ping 172.16.11.1
 $ sudo iptables -A INPUT -p icmp -j ACCEPT
 VPC1> ping 172.16.11.1
 ```
 
 ###### 2-мысал: FORWARD бойынша ICMP хаттамаға рұқсат ету
-```shel
+```shell
 VPC1> ping 172.16.12.101
 VPC1> ping 8.8.8.8
 $ sudo iptables -A FORWARD -p icmp -j ACCEPT
@@ -279,7 +279,7 @@ VPC1> ping 8.8.8.8
 ```
 
 ###### 3-мысал: Conntrack және DNS портына рұқсат ету
-```shel
+```shell
 VPC1> ping google.com
 
 $ sudo iptables -A FORWARD -p udp --dport 53 -s 172.16.11.0/24 -j ACCEPT
@@ -290,14 +290,14 @@ VPC1> ping google.com
 ```
 
 ###### 4-мысал: HTTP, HTTPS хаттамаларына рұқсат ету
-```shel
+```shell
 $ sudo iptables -A FORWARD -p tcp -m multiport --ports 80,443 -s 172.16.11.0/24 -j ACCEPT
 
 nc -w1 -vz 172.16.11.1 80
 ```
 
 ###### 5-мысал: Port Forwarding
-```shel
+```shell
 Change external port 8080 to internal port 80:
 $ sudo iptables -t nat -A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
 ```
