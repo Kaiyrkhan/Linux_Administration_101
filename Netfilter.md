@@ -22,6 +22,26 @@ $ sudo systemctl enable nftables
 ```
 
 ```shell
+$ sudo nft list ruleset
+```
+
+```shell
+```
+
+```shell
+$ sudo nft add rule inet filter input tcp dport 80 accept
+$ sudo nft add rule inet filter input icmp type echo-request accept
+```
+
+Save config
+```shell
+$ sudo nft list ruleset | sudo tee /etc/nftables.conf
+$ sudo systemctl restart nftables
+```
+
+Delete Rule
+```shell
+$ sudo nft delete rule inet filter input handle 1
 ```
 
 ```shell
