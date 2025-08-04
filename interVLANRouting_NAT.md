@@ -38,6 +38,10 @@ $ sudo nano /etc/network/interfaces
   auto ens3
   iface ens3 inet dhcp
 
+  # Physical Interface ens4
+  auto ens4
+  iface ens4 inet manual
+
   # Virtual interface VLAN11
   auto ens4.11
   iface ens4.11 inet static
