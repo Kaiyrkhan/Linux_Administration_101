@@ -25,6 +25,18 @@ $ sudo systemctl enable nftables
 $ sudo nft list ruleset
 ```
 
+```shell
+sudo nft chain inet filter input { policy drop \; }
+sudo nft сhain inet filter forward { policy drop \; }
+```
+немесе
+```shell
+sudo nft add table inet filter
+sudo nft add chain inet filter input { type filter hook input priority 0 \; policy drop \; }
+sudo nft add chain inet filter forward { type filter hook forward priority 0 \; policy drop \; }
+sudo nft add chain inet filter output { type filter hook output priority 0 \; policy accept \; }
+```
+
 Allow SSH, DNS, HTTP, HTTPS
 ```shell
 $ sudo nft add rule inet filter input iifname "lo" accept
@@ -33,11 +45,7 @@ $ sudo nft add rule inet filter input tcp dport {22, 53, 80, 443} accept
 $ sudo nft add rule inet filter input udp dport 53 accept
 ```
 
-```shell
-
-```
-
-Save config
+Save configuration
 ```shell
 $ sudo nft list ruleset | sudo tee /etc/nftables.conf
 $ sudo systemctl restart nftables
@@ -45,6 +53,10 @@ $ sudo systemctl restart nftables
 
 Delete Rule
 ```shell
+$ sudo nft -a list ruleset
+немесе
+$ sudo nft --handle list ruleset
+
 $ sudo nft delete rule inet filter input handle 1
 ```
 
