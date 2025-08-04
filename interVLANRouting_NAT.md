@@ -128,18 +128,26 @@ show vlan brief
 copy run start
 ```
 
-### 4) Virtual PC Simulator-ды конфигурациялау
+### 4) End Device (H1, H2) құрылғыны конфигурациялау
+H1 құрылғы
 ```shell
-VPC1> ip 172.16.11.101/24 172.16.11.1
-VPCS> ip dns 8.8.8.8
-VPC1> show ip
-VPC1> save
+$ sudo nano /etc/network/interfaces
+  auto ens3
+  iface ens3 inet static
+  address 172.16.11.101/24
+  gateway 172.16.11.1
+  dns-nameservers 8.8.8.8
+  dns-search edu.local
 ```
+H2 құрылғы
 ```shell
-VPC2> ip 172.16.12.101/24 172.16.12.1
-VPCS> ip dns 8.8.8.8
-VPC2> show ip
-VPC2> save
+$ sudo nano /etc/network/interfaces
+  auto ens3
+  iface ens3 inet static
+  address 172.16.12.101/24
+  gateway 172.16.12.1
+  dns-nameservers 8.8.8.8
+  dns-search edu.local
 ```
 
 ##### Нəтижені тексеру
