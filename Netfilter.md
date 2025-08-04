@@ -1,6 +1,5 @@
-# Netfilter
 
-#### Firewall, NAT on Debian
+## Netfilter on Debian
   1) Firewall, NAT using nftables;
   2) Firewall, NAT using iptables.
 
@@ -28,7 +27,6 @@ $ sudo nft list ruleset
 ```shell
 $ sudo nft chain inet filter input { policy drop \; }
 $ sudo nft сhain inet filter forward { policy drop \; }
-$ sudo nft list ruleset
 ```
 
 > sudo nft add table inet filter  
@@ -59,12 +57,14 @@ student@H1:~$ ping -c4 172.16.12.1
 ```shell
 ping H1 to H2
 student@H1:~$ ping -c4 172.16.12.101
-student@H1:~$ ping -c4 8.8.8.8
+student@H2:~$ ping -c4 172.16.11.101
 
 $ sudo nft add rule inet filter forward icmp type echo-request accept
+$ sudo nft add rule inet filter forward ip saddr 172.16.11.0/24 ip daddr 172.16.12.0/24
+$ sudo nft add rule inet filter forward ip saddr 172.16.12.0/24 ip daddr 172.16.11.0/24
 
 student@H1:~$ ping -c4 172.16.12.101
-student@H1:~$ ping -c4 8.8.8.8
+student@H2:~$ ping -c4 172.16.11.101
 ```
 
 Allow SSH, DNS, HTTP, HTTPS
