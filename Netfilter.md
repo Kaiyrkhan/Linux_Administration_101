@@ -26,15 +26,39 @@ $ sudo nft list ruleset
 ```
 
 ```shell
-sudo nft chain inet filter input { policy drop \; }
-sudo nft сhain inet filter forward { policy drop \; }
+$ sudo nft chain inet filter input { policy drop \; }
+$ sudo nft сhain inet filter forward { policy drop \; }
+$ sudo nft list ruleset
 ```
-немесе
+
+> sudo nft add table inet filter  
+> sudo nft add chain inet filter input { type filter hook input priority 0 \; policy drop \; }  
+> sudo nft add chain inet filter forward { type filter hook forward priority 0 \; policy drop \; }  
+> sudo nft add chain inet filter output { type filter hook output priority 0 \; policy accept \; }  
+
+##### 1-мысал: Loopback интерфейске рұқсат ету
 ```shell
-sudo nft add table inet filter
-sudo nft add chain inet filter input { type filter hook input priority 0 \; policy drop \; }
-sudo nft add chain inet filter forward { type filter hook forward priority 0 \; policy drop \; }
-sudo nft add chain inet filter output { type filter hook output priority 0 \; policy accept \; }
+student@netfilter:~$ ping -c4 127.0.0.1
+
+$ sudo nft add rule inet filter input iifname "lo" accept
+
+student@netfilter:~$ ping -c4 127.0.0.1
+```
+
+##### 2-мысал: INPUT бойынша ICMP хаттамаға рұқсат ету
+```shell
+student@H1:~$ ping -c4 172.16.11.1
+
+$ sudo iptables -A INPUT -p icmp -j ACCEPT
+
+student@H1:~$ ping -c4 172.16.11.1
+student@H1:~$ ping -c4 172.16.12.1
+```
+
+ping H1 to H2
+```shell
+student@H1:~$ ping -c4 172.16.11.1
+student@H1:~$ ping -c4 172.16.12.101
 ```
 
 Allow SSH, DNS, HTTP, HTTPS
