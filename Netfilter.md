@@ -131,7 +131,7 @@ $ sudo nft -a list ruleset
 немесе
 $ sudo nft --handle list ruleset
 
-$ sudo nft delete rule inet filter input handle 1
+$ sudo nft delete rule inet filter input handle 12
 ```
 
 ### 2) Firewall, NAT using iptables
