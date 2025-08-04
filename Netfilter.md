@@ -47,16 +47,16 @@ student@netfilter:~$ ping -c4 127.0.0.1
 ##### 2-мысал: INPUT бойынша ICMP хаттамаға рұқсат ету
 ```shell
 student@H1:~$ ping -c4 172.16.11.1
+student@netfilter:~$ ping -c4 172.16.11.101
 
-$ sudo iptables -A INPUT -p icmp -j ACCEPT
+$ sudo nft add rule inet filter input icmp type echo-request accept
 
 student@H1:~$ ping -c4 172.16.11.1
-student@H1:~$ ping -c4 172.16.12.1
+student@netfilter:~$ ping -c4 172.16.11.101
 ```
 
 ##### 3-мысал: ping H1 to H2
 ```shell
-ping H1 to H2
 student@H1:~$ ping -c4 172.16.12.101
 student@H2:~$ ping -c4 172.16.11.101
 
@@ -72,7 +72,6 @@ student@H2:~$ ping -c4 172.16.11.101
 student@netfilter:~$ ping 8.8.8.8
 student@netfilter:~$ ping google.com
 ```
-
 ```shell
 student@H1:~$ ping 8.8.8.8
 student@H1:~$ ping google.com
@@ -105,7 +104,7 @@ student@netfilter:~$ ping google.com
 ```
 
 ```shell
-Allow LAN IP address
+Allow LAN IP addresses
 $ sudo nft add rule inet filter forward ip saddr 172.16.11.0/24 oifname "ens3" accept
 $ sudo nft add rule inet filter forward ip daddr 172.16.11.0/24 iifname "ens3" accept
 ```
@@ -116,8 +115,6 @@ student@H1:~$ ping google.com
 
 Allow SSH, DNS, HTTP, HTTPS
 ```shell
-$ sudo nft add rule inet filter input iifname "lo" accept
-$ sudo nft add rule inet filter input icmp type echo-request accept
 $ sudo nft add rule inet filter input tcp dport {22, 53, 80, 443} accept  
 $ sudo nft add rule inet filter input udp dport 53 accept
 ```
