@@ -1,13 +1,13 @@
 # Netfilter
 
 #### Firewall, NAT on Debian
-  1) NAT конфигурациялау (using nftables);
-  2) NAT конфигурациялау (using iptables).
+  1) Firewall, NAT using nftables;
+  2) Firewall, NAT using iptables.
 
 #### 🖧 Topology
-![Logical Topology](Topology/Topology_interVLANRouting_NAT_Linux.png)
+![Topology](Topology/Topology_interVLANRouting_NAT_Linux.png)
 
-### 1) NAT конфигурациялау (using nftables)
+### 1) Firewall, NAT using nftables
 
 ```shell
 $ dpkg -l nftables
@@ -55,10 +55,16 @@ student@H1:~$ ping -c4 172.16.11.1
 student@H1:~$ ping -c4 172.16.12.1
 ```
 
-ping H1 to H2
+##### 3-мысал: FORWARD бойынша ICMP хаттамаға рұқсат ету
 ```shell
-student@H1:~$ ping -c4 172.16.11.1
+ping H1 to H2
 student@H1:~$ ping -c4 172.16.12.101
+student@H1:~$ ping -c4 8.8.8.8
+
+$ sudo nft add rule inet filter forward icmp type echo-request accept
+
+student@H1:~$ ping -c4 172.16.12.101
+student@H1:~$ ping -c4 8.8.8.8
 ```
 
 Allow SSH, DNS, HTTP, HTTPS
@@ -87,7 +93,7 @@ $ sudo nft delete rule inet filter input handle 1
 ```shell
 ```
 
-### 2) NAT конфигурациялау (using iptables)
+### 2) Firewall, NAT using iptables
 
 ##### iptables пакетін орнату және конфигурациялау
 ```shell
