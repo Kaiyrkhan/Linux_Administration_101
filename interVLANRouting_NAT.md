@@ -91,7 +91,7 @@ $ cat /proc/sys/net/ipv4/ip_forward
 
 ### 3) Cisco Switch конфигурациялау
 
-##### Trunk Port
+##### Trunk Port тағайындау
 ```shell
 configure terminal
 
@@ -106,7 +106,7 @@ show int status
 show int g0/1 switchport
 ```
 
-##### Access Port
+##### Access Port тағайындау
 ```shell
 configure terminal
 vlan 11
