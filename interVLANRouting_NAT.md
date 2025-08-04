@@ -72,7 +72,7 @@ $ ip -d link show ens4.11
 $ ip -d link show ens4.12
 ```
 
-### 2) IP Packet Forwarding қызметін қосу (enable)
+### 2) IP Packet Forwarding қызметін іске қосу (enable)
 ```shell
 $ cat /proc/sys/net/ipv4/ip_forward
 0
