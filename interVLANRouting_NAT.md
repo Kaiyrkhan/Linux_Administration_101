@@ -4,7 +4,7 @@
   1) 802.1Q VLAN құру;
   2) IP Packet Forwarding қызметін қосу;
   3) Cisco Switch конфигурациялау;
-  4) Virtual PC Simulator-ды конфигурациялау;
+  4) End Device (H1, H2) құрылғыны конфигурациялау;
   5) NAT конфигурациялау (using nftables);
   6) NAT конфигурациялау (using iptables);
   7) NAT конфигурациялау (using Firewalld).
