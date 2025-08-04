@@ -10,6 +10,15 @@
 ### 1) NAT конфигурациялау (using nftables)
 
 ```shell
+$ dpkg -l nftables
+$ dpkg -s nftables
+```
+
+```shell
+$ sudo systemctl status nftables
+
+$ sudo systemctl start nftables
+$ sudo systemctl enable nftables
 ```
 
 ```shell
@@ -156,4 +165,4 @@ $ sudo iptables -t nat -A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 8
 
 ### References
 
-1) [Netfilter](https://en.wikipedia.org/wiki/Netfilter)
+1) [Wikipedia Netfilter](https://en.wikipedia.org/wiki/Netfilter)
