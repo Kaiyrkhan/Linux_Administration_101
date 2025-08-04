@@ -129,7 +129,7 @@ copy run start
 ```
 
 ### 4) End Device (H1, H2) құрылғыны конфигурациялау
-H1 құрылғы
+
 ```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
@@ -140,22 +140,17 @@ $ sudo nano /etc/network/interfaces
   dns-search edu.local
 ```
 ```shell
+$ sudo nano /etc/resolv.conf
+  dns-nameservers 8.8.8.8
+  dns-search edu.local
+```
+```shell
 $ sudo systemctl restart networking
-
+```
+```shell
 $ ip address
 $ ip route
 $ cat /etc/resolv.conf
-```
-
-H2 құрылғы
-```shell
-$ sudo nano /etc/network/interfaces
-  auto ens3
-  iface ens3 inet static
-  address 172.16.12.101/24
-  gateway 172.16.12.1
-  dns-nameservers 8.8.8.8
-  dns-search edu.local
 ```
 
 ##### Нəтижені тексеру
