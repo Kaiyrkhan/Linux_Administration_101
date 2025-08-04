@@ -125,7 +125,7 @@ show vlan brief
 
 ##### Save Configuration
 ```shell
-copy run startup
+copy run start
 ```
 
 ### 4) Virtual PC Simulator-ды конфигурациялау
