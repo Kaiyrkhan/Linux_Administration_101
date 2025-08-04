@@ -37,22 +37,22 @@ $ sudo nft сhain inet filter forward { policy drop \; }
 
 ##### 1-мысал: Loopback интерфейске рұқсат ету
 ```shell
-student@netfilter:~$ ping -c4 127.0.0.1
+student@gateway:~$ ping -c4 127.0.0.1
 
 $ sudo nft add rule inet filter input iifname "lo" accept
 
-student@netfilter:~$ ping -c4 127.0.0.1
+student@gateway:~$ ping -c4 127.0.0.1
 ```
 
 ##### 2-мысал: INPUT бойынша ICMP хаттамаға рұқсат ету
 ```shell
 student@H1:~$ ping -c4 172.16.11.1
-student@netfilter:~$ ping -c4 172.16.11.101
+student@gateway:~$ ping -c4 172.16.11.101
 
 $ sudo nft add rule inet filter input icmp type echo-request accept
 
 student@H1:~$ ping -c4 172.16.11.1
-student@netfilter:~$ ping -c4 172.16.11.101
+student@gateway:~$ ping -c4 172.16.11.101
 ```
 
 ##### 3-мысал: ping H1 to H2
@@ -69,8 +69,8 @@ student@H2:~$ ping -c4 172.16.11.101
 
 ##### 4-мысал: LAN желідегі құрылғыларды internet желісімен байланыстыру
 ```shell
-student@netfilter:~$ ping 8.8.8.8
-student@netfilter:~$ ping google.com
+student@gateway:~$ ping 8.8.8.8
+student@gateway:~$ ping google.com
 ```
 ```shell
 student@H1:~$ ping 8.8.8.8
@@ -99,8 +99,8 @@ Conntrack
 $ sudo nft add rule inet filter input ct state established,related accept
 ```
 ```shell
-student@netfilter:~$ ping 8.8.8.8
-student@netfilter:~$ ping google.com
+student@gateway:~$ ping 8.8.8.8
+student@gateway:~$ ping google.com
 ```
 
 ```shell
