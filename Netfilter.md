@@ -21,6 +21,7 @@ $ sudo systemctl enable nftables
 ```
 
 ```shell
+Check Current Rules
 $ sudo nft list ruleset
 ```
 
@@ -64,6 +65,36 @@ $ sudo nft add rule inet filter forward ip saddr 172.16.12.0/24 ip daddr 172.16.
 
 student@H1:~$ ping -c4 172.16.12.101
 student@H2:~$ ping -c4 172.16.11.101
+```
+
+##### 4-мысал: ping 8.8.8.8 ping LAN to internet
+
+| Symbolic Name | Equivalent Numeric Value |
+|---------------|--------------------------|
+| `raw`         | -300                     |
+| `mangle`      | -150                     |
+| `dstnat`      | -100                     |
+| `filter`      | 0                        |
+| `srcnat`      | 100                      |
+| `security`    | 150                      |
+
+
+```shell
+Network address translation (NAT)
+$ sudo nft add table ip nat
+$ sudo nft add chain ip nat postrouting { type nat hook postrouting priority srcnat \; policy accept \; }
+$ sudo nft add rule ip nat postrouting ip saddr 172.16.11.0/24 oifname "ens3" masquerade
+```
+
+```shell
+IP Packet Forwarding
+$ sudo nft add rule inet filter forward ip saddr 172.16.11.0/24 oifname "ens3" accept
+$ sudo nft add rule inet filter forward ip daddr 172.16.11.0/24 iifname "ens3" accept
+```
+
+```shell
+Conntrack
+$ sudo nft add rule inet filter input ct state established,related accept
 ```
 
 Allow SSH, DNS, HTTP, HTTPS
