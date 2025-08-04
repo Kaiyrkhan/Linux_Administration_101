@@ -64,13 +64,12 @@ $ sudo ifup ens4.12
 ```
 
 ```shell
-$ ip -d link show ens4.11
-$ ip -d link show ens4.12
-```
-
-```shell
 VLAN құрылғанын тексеру
 $ sudo cat /proc/net/vlan/config
+```
+```shell
+$ ip -d link show ens4.11
+$ ip -d link show ens4.12
 ```
 
 ### 2) IP Packet Forwarding қызметін қосу (enable)
