@@ -111,7 +111,6 @@ show int g0/1 switchport
 configure terminal
 vlan 11
 vlan 12
-show vlan brief
 
 interface g0/2
 switchport mode access
