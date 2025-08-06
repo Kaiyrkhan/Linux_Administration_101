@@ -235,7 +235,9 @@ exit
 
 > show logging  
 > show ip protocols  
-> show ip ospf database
+> show ip ospf database  
+> sudo frr-reload.py --reload /etc/frr/frr.conf  
+> debug ospf events  
 
 #### Enable Packet IP Forwarding (R1, R2, R3)
 ```shell
