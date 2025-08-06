@@ -152,10 +152,12 @@ network:
   ethernets:
     ens3:
       dhcp4: false
-      addresses: [192.168.1.1/24]
+      addresses:
+        - 192.168.1.1/24
     ens4:
       dhcp4: false
-      addresses: [10.1.1.101/30]
+      addresses:
+        - 10.1.1.101/30
       routes:
         - to: 172.16.1.0/24
           via: 10.1.1.102
@@ -163,6 +165,7 @@ network:
 
 ```shell
 $ sudo netplan apply
+немесе
 $ sudo netplan try
 ```
 ```shell
@@ -177,13 +180,15 @@ network:
   ethernets:
     ens3:
       dhcp4: false
-      addresses: [10.1.1.102/30]
-      routers:
+      addresses:
+        - 10.1.1.102/30
+      routes:
         - to: 192.168.1.0/24
           via: 10.1.1.101
     ens4:
       dhcp4: false
-      addresses: [10.2.2.102/30]
+      addresses:
+        - 10.2.2.102/30
       routes:
         - to: 172.16.1.0/24
           via: 10.2.2.101
@@ -197,10 +202,12 @@ network:
   ethernets:
     ens3:
       dhcp4: false
-      addresses: [172.16.1.1/24]
+      addresses:
+        - 172.16.1.1/24
     ens4:
       dhcp4: false
-      addresses: [10.2.2.101/30]
+      addresses:
+        - 10.2.2.101/30
       routes:
         - to: 192.168.1.0/24
           via: 10.2.2.102
