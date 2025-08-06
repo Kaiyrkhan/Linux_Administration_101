@@ -67,7 +67,6 @@ OSPF конфигурациялау
 
 $ sudo vtysh
 configure terminal
-
 router ospf
 router-id 50.1.1.1
 network 10.1.1.100/30 area 0
@@ -84,10 +83,14 @@ ip ospf passive
 end
 
 show ip route
+show running-config
 
 copy run start
 exit
 ```
+
+> interface ens4
+> ip ospf hello-interval 10
 
 ```shell
 $ sudo cat /etc/frr/frr.conf
@@ -158,6 +161,7 @@ end
 
 show ip ospf neighbor
 show ip route
+show running-config
 
 copy run start
 exit
