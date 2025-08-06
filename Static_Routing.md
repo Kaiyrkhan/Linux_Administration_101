@@ -257,107 +257,6 @@ VPC1> ping 172.16.1.100
 VPC2> ping 192.168.1.100
 ```
 
-## Static Route on Oracle7 / RHEL7
-
-**R1**
-```shell
-$ ip address
-eth0
-eth1
-$ ls /etc/sysconfig/network-scripts/
-ifcfg-eth0
-
-Жаңа Profile құру
-$ sudo nmcli conn add type ethernet con-name eth1 ifname eth1
-$ ls /etc/sysconfig/network-scripts/
-ifcfg-eth0
-ifcfg-eth1
-
-$ sudo vi /etc/sysconfig/network-scripts/ifcfg-eth0
-BOOTPROTO=static
-IPADDR=192.168.1.1
-NETMASK=255.255.255.0
-$ sudo vi /etc/sysconfig/network-scripts/ifcfg-eth1
-BOOTPROTO=static
-IPADDR=10.1.1.101
-NETMASK=255.255.255.252
-$ sudo systemctl restart network
-
-$ sudo vi /etc/sysconfig/network-scripts/route-eth1
-172.16.1.0/24 via 10.1.1.102 dev eth1
-```
-
-**R2**
-```shell
-$ ip address
-eth0
-eth1
-$ ls /etc/sysconfig/network-scripts/
-ifcfg-eth0
-
-Жаңа Profile құру
-$ sudo nmcli conn add type ethernet con-name eth1 ifname eth1
-$ ls /etc/sysconfig/network-scripts/
-ifcfg-eth0
-ifcfg-eth1
-
-$ sudo vi /etc/sysconfig/network-scripts/ifcfg-eth0
-BOOTPROTO=static
-IPADDR=10.1.1.102
-NETMASK=255.255.255.252
-$ sudo vi /etc/sysconfig/network-scripts/ifcfg-eth1
-BOOTPROTO=static
-IPADDR=10.2.2.102
-NETMASK=255.255.255.252
-$ sudo systemctl restart network
-
-$ sudo vi /etc/sysconfig/network-scripts/route-eth0
-192.168.1.0/24 via 10.1.1.101 dev eth0
-$ sudo vi /etc/sysconfig/network-scripts/route-eth1
-172.16.1.0/24 via 10.2.2.101 dev eth1
-```
-
-**R3**
-```shell
-$ ip address
-eth0
-eth1
-$ ls /etc/sysconfig/network-scripts/
-ifcfg-eth0
-
-Жаңа Profile құру
-$ sudo nmcli conn add type ethernet con-name eth1 ifname eth1
-$ ls /etc/sysconfig/network-scripts/
-ifcfg-eth0
-ifcfg-eth1
-
-$ sudo vi /etc/sysconfig/network-scripts/ifcfg-eth0
-BOOTPROTO=static
-IPADDR=172.16.1.1
-NETMASK=255.255.255.0
-$ sudo vi /etc/sysconfig/network-scripts/ifcfg-eth1
-BOOTPROTO=static
-IPADDR=10.2.2.101
-NETMASK=255.255.255.252
-$ sudo systemctl restart network
-
-$ sudo vi /etc/sysconfig/network-scripts/route-eth1
-192.168.1.0/24 via 10.2.2.102 dev eth1
-```
-
-**Enable IP Packet Forwarding (R1, R2, R3)**
-```shell
-$ sudo vi /etc/sysctl.conf
-net.ipv4.ip_forward=1
-$ sudo sysctl -p
-```
-
-**Verification**
-```shell
-VPC1> ping 172.16.1.100
-VPC2> ping 192.168.1.100
-```
-
 ## Static Route on Rocky9 / RHEL9
 
 **R1**
@@ -455,6 +354,107 @@ $ ip route
 **Enable Packet IP Forwarding (R1, R2, R3)**
 ```shell
 $ echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf
+$ sudo sysctl -p
+```
+
+**Verification**
+```shell
+VPC1> ping 172.16.1.100
+VPC2> ping 192.168.1.100
+```
+
+## Static Route on Oracle7 / RHEL7
+
+**R1**
+```shell
+$ ip address
+eth0
+eth1
+$ ls /etc/sysconfig/network-scripts/
+ifcfg-eth0
+
+Жаңа Profile құру
+$ sudo nmcli conn add type ethernet con-name eth1 ifname eth1
+$ ls /etc/sysconfig/network-scripts/
+ifcfg-eth0
+ifcfg-eth1
+
+$ sudo vi /etc/sysconfig/network-scripts/ifcfg-eth0
+BOOTPROTO=static
+IPADDR=192.168.1.1
+NETMASK=255.255.255.0
+$ sudo vi /etc/sysconfig/network-scripts/ifcfg-eth1
+BOOTPROTO=static
+IPADDR=10.1.1.101
+NETMASK=255.255.255.252
+$ sudo systemctl restart network
+
+$ sudo vi /etc/sysconfig/network-scripts/route-eth1
+172.16.1.0/24 via 10.1.1.102 dev eth1
+```
+
+**R2**
+```shell
+$ ip address
+eth0
+eth1
+$ ls /etc/sysconfig/network-scripts/
+ifcfg-eth0
+
+Жаңа Profile құру
+$ sudo nmcli conn add type ethernet con-name eth1 ifname eth1
+$ ls /etc/sysconfig/network-scripts/
+ifcfg-eth0
+ifcfg-eth1
+
+$ sudo vi /etc/sysconfig/network-scripts/ifcfg-eth0
+BOOTPROTO=static
+IPADDR=10.1.1.102
+NETMASK=255.255.255.252
+$ sudo vi /etc/sysconfig/network-scripts/ifcfg-eth1
+BOOTPROTO=static
+IPADDR=10.2.2.102
+NETMASK=255.255.255.252
+$ sudo systemctl restart network
+
+$ sudo vi /etc/sysconfig/network-scripts/route-eth0
+192.168.1.0/24 via 10.1.1.101 dev eth0
+$ sudo vi /etc/sysconfig/network-scripts/route-eth1
+172.16.1.0/24 via 10.2.2.101 dev eth1
+```
+
+**R3**
+```shell
+$ ip address
+eth0
+eth1
+$ ls /etc/sysconfig/network-scripts/
+ifcfg-eth0
+
+Жаңа Profile құру
+$ sudo nmcli conn add type ethernet con-name eth1 ifname eth1
+$ ls /etc/sysconfig/network-scripts/
+ifcfg-eth0
+ifcfg-eth1
+
+$ sudo vi /etc/sysconfig/network-scripts/ifcfg-eth0
+BOOTPROTO=static
+IPADDR=172.16.1.1
+NETMASK=255.255.255.0
+$ sudo vi /etc/sysconfig/network-scripts/ifcfg-eth1
+BOOTPROTO=static
+IPADDR=10.2.2.101
+NETMASK=255.255.255.252
+$ sudo systemctl restart network
+
+$ sudo vi /etc/sysconfig/network-scripts/route-eth1
+192.168.1.0/24 via 10.2.2.102 dev eth1
+```
+
+**Enable IP Packet Forwarding (R1, R2, R3)**
+```shell
+$ sudo vi /etc/sysctl.conf
+net.ipv4.ip_forward=1
 $ sudo sysctl -p
 ```
 
