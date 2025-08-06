@@ -156,7 +156,7 @@ network:
     ens4:
       dhcp4: false
       addresses: [10.1.1.101/30]
-      routers:
+      routes:
         - to: 172.16.1.0/24
           via: 10.1.1.102
 ```
@@ -184,7 +184,7 @@ network:
     ens4:
       dhcp4: false
       addresses: [10.2.2.102/30]
-      routers:
+      routes:
         - to: 172.16.1.0/24
           via: 10.2.2.101
 ```
@@ -201,7 +201,7 @@ network:
     ens4:
       dhcp4: false
       addresses: [10.2.2.101/30]
-      routers:
+      routes:
         - to: 192.168.1.0/24
           via: 10.2.2.102
 ```
