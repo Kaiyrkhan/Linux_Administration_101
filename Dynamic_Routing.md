@@ -79,6 +79,7 @@ write memory
 exit
 ```
 
+**Қосымша ақпарат**
 ```shell
 $ sudo vtysh
 show running-config
