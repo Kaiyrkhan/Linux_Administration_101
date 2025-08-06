@@ -120,7 +120,7 @@ $ sudo nano /etc/network/interfaces
   pre-down ip route del 192.168.1.0/24 via 10.2.2.102
 ```
 
-#### Enable IP Packet Forwarding (R1, R2, R3)
+**Enable IP Packet Forwarding (R1, R2, R3)**
 ```shell
 $ sudo nano /etc/sysctl.conf
 net.ipv4.ip_forward=1
@@ -128,7 +128,7 @@ net.ipv6.conf.all.forwarding=1
 $ sudo sysctl -p
 ```
 
-#### Verify
+**Verification**
 ```shell
 VPC1> ping 172.16.1.100
 VPC2> ping 192.168.1.100
