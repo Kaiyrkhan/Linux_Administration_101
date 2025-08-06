@@ -89,7 +89,7 @@ copy run start
 exit
 ```
 
-> interface ens4
+> interface ens4  
 > ip ospf hello-interval 10
 
 ```shell
