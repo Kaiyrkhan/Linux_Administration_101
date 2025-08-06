@@ -18,21 +18,18 @@ VPC2> show ip
 VPC2> save
 ```
 
-## Dynamic Routing with OSPF (FRR) on Debian
+## R1
 
-**R1**
+**Құрылғының атауын (Device Name) өзгерту**
 ```shell
-Құрылғының атауын (Device Name) өзгерту
-
 $ sudo hostnamectl set-hostname R1
 $ sudo nano /etc/hosts
 127.0.1.1  R1
 $ bash
 ```
 
+**FRR (FRRouting) пакетін орнату және конфигурациялау**
 ```shell
-FRR (FRRouting) пакетін орнату және конфигурациялау
-
 $ sudo apt update
 $ sudo apt install frr frr-pythontools
 
@@ -49,9 +46,8 @@ $ sudo systemctl restart frr
 $ sudo systemctl status frr
 ```
 
+**Желілік интерфейсті конфигурациялау**
 ```shell
-Желілік интерфейсті конфигурациялау
-
 $ sudo nano /etc/network/interfaces
   auto ens3
   iface ens3 inet static
@@ -65,9 +61,8 @@ $ sudo systemctl restart networking
 $ ip address
 ```
 
+**OSPF конфигурациялау**
 ```shell
-OSPF конфигурациялау
-
 $ sudo vtysh
 configure terminal
 router ospf
@@ -104,10 +99,10 @@ show ip route
 $ ip route
 ```
 
-**R2**
-```shell
-Желілік интерфейсті конфигурациялау
+## R2
 
+**Желілік интерфейсті конфигурациялау**
+```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
   iface ens3 inet static
@@ -121,9 +116,8 @@ $ sudo systemctl restart networking
 $ ip address
 ```
 
+**OSPF конфигурациялау**
 ```shell
-OSPF конфигурациялау
-
 $ sudo vtysh
 configure terminal
 router ospf
@@ -137,10 +131,10 @@ write memory
 exit
 ```
 
-**R3**
-```shell
-Желілік интерфейсті конфигурациялау
+## R3
 
+**Желілік интерфейсті конфигурациялау**
+```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
   iface ens3 inet static
@@ -154,9 +148,8 @@ $ sudo systemctl restart networking
 $ ip address
 ```
 
+**OSPF конфигурациялау**
 ```shell
-OSPF конфигурациялау
-
 $ sudo vtysh
 configure terminal
 router ospf
@@ -174,7 +167,7 @@ write memory
 exit
 ```
 
-**Enable IP Packet Forwarding (R1, R2, R3)**
+## Enable IP Packet Forwarding (R1, R2, R3)
 ```shell
 $ sudo nano /etc/sysctl.conf
 net.ipv4.ip_forward=1
@@ -182,7 +175,7 @@ net.ipv6.conf.all.forwarding=1
 $ sudo sysctl -p
 ```
 
-**Verification**
+## Verification
 ```shell
 VPC1> ping 172.16.1.100
 VPC2> ping 192.168.1.100
