@@ -41,11 +41,12 @@ $ sudo nano /etc/frr/daemons
 zebra=yes
 ospfd=yes
 
+немесе
+$ sudo sed -i 's/ospfd=no/ospfd=yes/' /etc/frr/daemons
+
 $ sudo systemctl restart frr
 $ sudo systemctl status frr
 ```
-
-> $ sudo sed -i 's/ospfd=no/ospfd=yes/' /etc/frr/daemons  
 
 ```shell
 $ sudo nano /etc/network/interfaces
@@ -72,11 +73,6 @@ network 10.1.1.100/30 area 0
 network 192.168.1.0/24 area 0
 exit
 
-interface ens4
-ip ospf network broadcast
-ip ospf mtu-ignore
-exit
-
 interface ens3
 ip ospf passive
 end
@@ -88,9 +84,6 @@ copy run start
 write memory
 exit
 ```
-
-> interface ens4  
-> ip ospf hello-interval 10
 
 ```shell
 $ sudo cat /etc/frr/frr.conf
@@ -144,19 +137,10 @@ OSPF конфигурациялау
 
 $ sudo vtysh
 configure terminal
-
 router ospf
 router-id 50.2.2.2
 network 10.1.1.100/30 area 0
 network 10.2.2.100/30 area 0
-exit
-
-interface ens3
-ip ospf network broadcast
-ip ospf mtu-ignore
-interface ens4
-ip ospf network broadcast
-ip ospf mtu-ignore
 end
 
 show ip ospf neighbor
@@ -218,9 +202,6 @@ network 10.2.2.100/30 area 0
 network 172.16.1.0/24 area 0
 exit
 
-interface ens4
-ip ospf network broadcast
-ip ospf mtu-ignore
 interface ens3
 ip ospf passive
 end
@@ -231,12 +212,6 @@ show ip route
 copy run start
 exit
 ```
-
-> show logging  
-> show ip protocols  
-> show ip ospf database  
-> sudo frr-reload.py --reload /etc/frr/frr.conf  
-> debug ospf events  
 
 **Enable IP Packet Forwarding (R1, R2, R3)**
 ```shell
@@ -250,6 +225,28 @@ $ sudo sysctl -p
 ```shell
 VPC1> ping 172.16.1.100
 VPC2> ping 192.168.1.100
+```
+
+## Қосымша ақпарат
+```shell
+show ip ospf interface ens3
+```
+```shell
+interface ens4
+ip ospf hello-interval 10
+ip ospf network broadcast
+ip ospf mtu-ignore
+```
+```shell
+show logging
+show ip protocols
+show ip ospf database
+```
+```shell
+sudo frr-reload.py --reload /etc/frr/frr.conf
+```
+```shell
+debug ospf events
 ```
 
 ## References
