@@ -4,7 +4,10 @@ Static Routing:
   1) Default Static Route;
   2) Static Route.
 
-### 🖧 Topology
+### 🖧 Topology for Default Static Route
+![Topology](Topology/Topology_Default_Static_Route_Linux.png)  
+
+### 🖧 Topology for Static Route
 ![Topology](Topology/Topology_Static_Routing_Linux.png)  
 [Download Link for PNETLab Topology File](Topology/Topology_Static_Routing_Linux.unl)
 
