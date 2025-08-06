@@ -163,6 +163,7 @@ VPC2> ping 192.168.1.100
 $ sudo nano /etc/netplan/*.yaml
 network:
   version: 2
+  renderer: networkd
   ethernets:
     ens3:
       dhcp4: false
@@ -191,6 +192,7 @@ $ ip route
 $ sudo nano /etc/netplan/*.yaml
 network:
   version: 2
+  renderer: networkd
   ethernets:
     ens3:
       dhcp4: false
@@ -220,6 +222,7 @@ $ ip route
 $ sudo nano /etc/netplan/*.yaml
 network:
   version: 2
+  renderer: networkd
   ethernets:
     ens3:
       dhcp4: false
