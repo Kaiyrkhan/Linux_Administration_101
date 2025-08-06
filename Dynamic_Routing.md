@@ -23,6 +23,7 @@ VPC2> save
 **R1**
 ```shell
 Құрылғының атауын (Device Name) өзгерту
+
 $ sudo hostnamectl set-hostname R1
 $ sudo nano /etc/hosts
 127.0.1.1  R1
@@ -74,24 +75,32 @@ router-id 50.1.1.1
 network 10.1.1.100/30 area 0
 network 192.168.1.0/24 area 0
 exit
-
 interface ens3
 ip ospf passive
 end
 
-show ip route
-show running-config
-
-copy run start
+show ip ospf neighbor
 write memory
 exit
 ```
 
 ```shell
+$ sudo vtysh
+show running-config
+
+$ sudo vtysh -c 'show running-config'
+
+немесе
+
 $ sudo cat /etc/frr/frr.conf
 ```
 
 ```shell
+$ sudo vtysh
+show ip route
+
+немесе
+
 $ ip route
 ```
 
@@ -124,10 +133,7 @@ network 10.2.2.100/30 area 0
 end
 
 show ip ospf neighbor
-show ip route
-show running-config
-
-copy run start
+write memory
 exit
 ```
 
@@ -164,9 +170,7 @@ ip ospf passive
 end
 
 show ip ospf neighbor
-show ip route
-
-copy run start
+write memory
 exit
 ```
 
