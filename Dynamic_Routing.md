@@ -185,8 +185,7 @@ VPC2> ping 192.168.1.100
 ## Қосымша ақпарат
 ```shell
 show ip ospf interface ens3
-```
-```shell
+
 interface ens4
 ip ospf hello-interval 10
 ip ospf network broadcast
