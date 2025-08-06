@@ -41,12 +41,11 @@ $ sudo nano /etc/frr/daemons
 zebra=yes
 ospfd=yes
 
-немесе
-$ sudo sed -i 's/ospfd=no/ospfd=yes/' /etc/frr/daemons
-
 $ sudo systemctl restart frr
 $ sudo systemctl status frr
 ```
+
+> $ sudo sed -i 's/ospfd=no/ospfd=yes/' /etc/frr/daemons  
 
 ```shell
 $ sudo nano /etc/network/interfaces
@@ -239,7 +238,7 @@ exit
 > sudo frr-reload.py --reload /etc/frr/frr.conf  
 > debug ospf events  
 
-#### Enable Packet IP Forwarding (R1, R2, R3)
+**Enable IP Packet Forwarding (R1, R2, R3)**
 ```shell
 $ sudo nano /etc/sysctl.conf
 net.ipv4.ip_forward=1
@@ -247,7 +246,7 @@ net.ipv6.conf.all.forwarding=1
 $ sudo sysctl -p
 ```
 
-#### Verify
+**Verification**
 ```shell
 VPC1> ping 172.16.1.100
 VPC2> ping 192.168.1.100
