@@ -86,6 +86,7 @@ show ip route
 show running-config
 
 copy run start
+write memory
 exit
 ```
 
@@ -231,6 +232,10 @@ show ip route
 copy run start
 exit
 ```
+
+> show logging  
+> show ip protocols  
+> show ip ospf database
 
 #### Enable Packet IP Forwarding (R1, R2, R3)
 ```shell
