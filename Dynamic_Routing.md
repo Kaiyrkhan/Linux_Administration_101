@@ -49,6 +49,8 @@ $ sudo systemctl status frr
 ```
 
 ```shell
+Желілік интерфейсті конфигурациялау
+
 $ sudo nano /etc/network/interfaces
   auto ens3
   iface ens3 inet static
@@ -95,30 +97,8 @@ $ ip route
 
 **R2**
 ```shell
-Құрылғының атауын (Device Name) өзгерту
-$ sudo hostnamectl set-hostname R2
-$ sudo nano /etc/hosts
-127.0.1.1  R2
-$ bash
-```
+Желілік интерфейсті конфигурациялау
 
-```shell
-FRR (FRRouting) пакетін орнату және конфигурациялау
-
-$ sudo apt update
-$ sudo apt install frr frr-pythontools
-
-$ sudo systemctl status frr
-
-$ sudo nano /etc/frr/daemons
-zebra=yes
-ospfd=yes
-
-$ sudo systemctl restart frr
-$ sudo systemctl status frr
-```
-
-```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
   iface ens3 inet static
@@ -153,30 +133,8 @@ exit
 
 **R3**
 ```shell
-Құрылғының атауын (Device Name) өзгерту
-$ sudo hostnamectl set-hostname R3
-$ sudo nano /etc/hosts
-127.0.1.1  R3
-$ bash
-```
+Желілік интерфейсті конфигурациялау
 
-```shell
-FRR (FRRouting) пакетін орнату және конфигурациялау
-
-$ sudo apt update
-$ sudo apt install frr frr-pythontools
-
-$ sudo systemctl status frr
-
-$ sudo nano /etc/frr/daemons
-zebra=yes
-ospfd=yes
-
-$ sudo systemctl restart frr
-$ sudo systemctl status frr
-```
-
-```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
   iface ens3 inet static
@@ -195,7 +153,6 @@ OSPF конфигурациялау
 
 $ sudo vtysh
 configure terminal
-
 router ospf
 router-id 50.3.3.3
 network 10.2.2.100/30 area 0
