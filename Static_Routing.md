@@ -73,6 +73,7 @@ $ sudo nano /etc/network/interfaces
 $ sudo systemctl restart networking
 немесе
 $ sudo ifdown ens3 && sudo ifup ens3
+$ sudo ifdown ens4 && sudo ifup ens4
 ```
 ```shell
 $ ip route
@@ -104,6 +105,13 @@ $ sudo nano /etc/network/interfaces
   pre-down ip route del 172.16.1.0/24 via 10.2.2.101
 ```
 
+```shell
+$ sudo systemctl restart networking
+```
+```shell
+$ ip route
+```
+
 **R3**
 ```shell
 Құрылғының атауын (Device Name) өзгерту
@@ -128,11 +136,17 @@ $ sudo nano /etc/network/interfaces
   pre-down ip route del 192.168.1.0/24 via 10.2.2.102
 ```
 
+```shell
+$ sudo systemctl restart networking
+```
+```shell
+$ ip route
+```
+
 **Enable IP Packet Forwarding (R1, R2, R3)**
 ```shell
 $ sudo nano /etc/sysctl.conf
 net.ipv4.ip_forward=1
-net.ipv6.conf.all.forwarding=1
 $ sudo sysctl -p
 ```
 
@@ -194,6 +208,13 @@ network:
           via: 10.2.2.101
 ```
 
+```shell
+$ sudo netplan apply
+```
+```shell
+$ ip route
+```
+
 **R3**
 ```shell
 $ sudo nano /etc/netplan/*.yaml
@@ -211,6 +232,13 @@ network:
       routes:
         - to: 192.168.1.0/24
           via: 10.2.2.102
+```
+
+```shell
+$ sudo netplan apply
+```
+```shell
+$ ip route
 ```
 
 **Enable IP Packet Forwarding (R1, R2, R3)**
