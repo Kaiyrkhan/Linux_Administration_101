@@ -434,11 +434,11 @@ $ reboot
 >
 > student@desktop:~$ iperf3 -c 172.16.11.1 -p 1234
 
-### References
+## References
 
 1) [Configuring a NIC team by using nmcli](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/configuring-network-teaming_configuring-and-managing-networking#configuring-a-network-team-by-using-nmcli_configuring-network-teaming)
 2) [Configuring a network bond by using nmcli](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/configuring-network-bonding_configuring-and-managing-networking#configuring-a-network-bond-by-using-nmcli_configuring-network-bonding)
 3) [How to Set Up Ethernet Channel Bonding in Linux for Load Balancing](https://www.tecmint.com/ethernet-channel-bonding-in-linux/)
 4) [Creating Network Bonding and Bridging in Ubuntu](https://www.tecmint.com/create-network-bond-bridge-in-ubuntu/)
 5) [How To Configure Network Bonding & Network Teaming In Linux](https://tekneed.com/configure-network-bonding-network-teaming-in-linux/#what-is-the-difference-between-teaming-and-bonding-in-linux)
-6) [Example netplan config files *.yaml](https://github.com/canonical/netplan/tree/main/examples)
+6) [Example YAML Files on GitHub](https://github.com/canonical/netplan/tree/main/examples)
