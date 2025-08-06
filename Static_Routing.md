@@ -1,4 +1,8 @@
-# Static Route on Linux (permanent - тұрақты)
+# Static Routing on Linux (Permanent Configuration)
+
+Static Routing:
+  1) Default Static Route;
+  2) Static Route.
 
 ### 🖧 Topology
 ![Topology](Topology/Topology_Static_Routing_Linux.png)  
@@ -21,16 +25,20 @@ VPC2> save
 ## Default Static Route on Debian
 ```shell
 $ ip address
-ens3
-ens4
+  ens3
+  ens4
 ```
 ```shell
 $ sudo nano /etc/network/interfaces
+  auto ens3
+  iface ens3 inet dhcp
+
   auto ens4
   iface ens4 inet static
   address 10.1.1.101
   netmask 255.255.255.252
-  up ip route add 0.0.0.0/0 via 10.0.137.1 dev ens4
+  post-up ip route add 0.0.0.0/0 via 10.0.137.1 dev ens4
+  pre-down ip route del 0.0.0.0/0 via 10.0.137.1 dev ens4
 ```
 
 ## Static Route on Debian
@@ -55,7 +63,8 @@ $ sudo nano /etc/network/interfaces
   iface ens4 inet static
   address 10.1.1.101
   netmask 255.255.255.252
-  up ip route add 172.16.1.0/24 via 10.1.1.102
+  post-up ip route add 172.16.1.0/24 via 10.1.1.102
+  pre-down ip route del 172.16.1.0/24 via 10.1.1.102
 ```
 
 **R2**
@@ -73,13 +82,15 @@ $ sudo nano /etc/network/interfaces
   iface ens3 inet static
   address 10.1.1.102
   netmask 255.255.255.252
-  up ip route add 192.168.1.0/24 via 10.1.1.101
+  post-up ip route add 192.168.1.0/24 via 10.1.1.101
+  pre-down ip route del 192.168.1.0/24 via 10.1.1.101
 
   auto ens4
   iface ens4 inet static
   address 10.2.2.102
   netmask 255.255.255.252
-  up ip route add 172.16.1.0/24 via 10.2.2.101
+  post-up ip route add 172.16.1.0/24 via 10.2.2.101
+  pre-down ip route del 172.16.1.0/24 via 10.2.2.101
 ```
 
 **R3**
@@ -102,7 +113,8 @@ $ sudo nano /etc/network/interfaces
   iface ens4 inet static
   address 10.2.2.101
   netmask 255.255.255.252
-  up ip route add 192.168.1.0/24 via 10.2.2.102
+  post-up ip route add 192.168.1.0/24 via 10.2.2.102
+  pre-down ip route del 192.168.1.0/24 via 10.2.2.102
 ```
 
 #### Enable IP Packet Forwarding (R1, R2, R3)
