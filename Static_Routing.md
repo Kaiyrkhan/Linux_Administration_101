@@ -1,17 +1,19 @@
 # Static Route on Linux (permanent - тұрақты)
 
-#### 🖧 Topology
+### 🖧 Topology
+![Topology](Topology/Topology_Static_Routing_Linux.png)  
 [Download Link for PNETLab Topology File](Topology/Topology_Static_Routing_Linux.unl)
-![Topology](Topology/Topology_Static_Routing_Linux.png)
 
 ## Virtual PC Simulator
 ```shell
 VPC1> ip 192.168.1.100/24 192.168.1.1
+VPC1> ip dns 8.8.8.8
 VPC1> show ip
 VPC1> save
 ```
 ```shell
 VPC2> ip 172.16.1.100/24 172.16.1.1
+VPC2> ip dns 8.8.8.8
 VPC2> show ip
 VPC2> save
 ```
