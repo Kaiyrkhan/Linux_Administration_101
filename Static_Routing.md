@@ -5,7 +5,6 @@ Static Routing:
   2) Static Route.
 
 ### 🖧 Topology for Default Static Route
-![](Topology/Topology_Default_Static_Route_Linux.png)  
 
 ### 🖧 Topology for Static Route
 ![Topology](Topology/Topology_Static_Routing_Linux.png)  
@@ -68,6 +67,15 @@ $ sudo nano /etc/network/interfaces
   netmask 255.255.255.252
   post-up ip route add 172.16.1.0/24 via 10.1.1.102
   pre-down ip route del 172.16.1.0/24 via 10.1.1.102
+```
+
+```shell
+$ sudo systemctl restart networking
+немесе
+$ sudo ifdown ens3 && sudo ifup ens3
+```
+```shell
+$ ip route
 ```
 
 **R2**
@@ -140,6 +148,7 @@ VPC2> ping 192.168.1.100
 ```shell
 $ sudo nano /etc/netplan/*.yaml
 network:
+  version: 2
   ethernets:
     ens3:
       dhcp4: false
@@ -150,13 +159,21 @@ network:
       routers:
         - to: 172.16.1.0/24
           via: 10.1.1.102
-version: 2
+```
+
+```shell
+$ sudo netplan apply
+$ sudo netplan try
+```
+```shell
+$ ip route
 ```
 
 **R2**
 ```shell
 $ sudo nano /etc/netplan/*.yaml
 network:
+  version: 2
   ethernets:
     ens3:
       dhcp4: false
@@ -170,13 +187,13 @@ network:
       routers:
         - to: 172.16.1.0/24
           via: 10.2.2.101
-version: 2
 ```
 
 **R3**
 ```shell
 $ sudo nano /etc/netplan/*.yaml
 network:
+  version: 2
   ethernets:
     ens3:
       dhcp4: false
@@ -187,17 +204,16 @@ network:
       routers:
         - to: 192.168.1.0/24
           via: 10.2.2.102
-version: 2
 ```
 
-#### Enable Packet IP Forwarding (R1, R2, R3)
+**Enable IP Packet Forwarding (R1, R2, R3)**
 ```shell
 $ sudo nano /etc/sysctl.conf
 net.ipv4.ip_forward=1
 $ sudo sysctl -p
 ```
 
-#### Verify
+**Verification**
 ```shell
 VPC1> ping 172.16.1.100
 VPC2> ping 192.168.1.100
@@ -291,14 +307,14 @@ $ sudo vi /etc/sysconfig/network-scripts/route-eth1
 192.168.1.0/24 via 10.2.2.102 dev eth1
 ```
 
-#### Enable Packet IP Forwarding (R1, R2, R3)
+**Enable IP Packet Forwarding (R1, R2, R3)**
 ```shell
 $ sudo vi /etc/sysctl.conf
 net.ipv4.ip_forward=1
 $ sudo sysctl -p
 ```
 
-#### Verify
+**Verification**
 ```shell
 VPC1> ping 172.16.1.100
 VPC2> ping 192.168.1.100
@@ -398,13 +414,13 @@ $ ip route
 192.168.1.0/24 via 10.2.2.102 dev ens4
 ```
 
-#### Enable Packet IP Forwarding (R1, R2, R3)
+**Enable Packet IP Forwarding (R1, R2, R3)**
 ```shell
 $ echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf
 $ sudo sysctl -p
 ```
 
-#### Verify
+**Verification**
 ```shell
 VPC1> ping 172.16.1.100
 VPC2> ping 192.168.1.100
