@@ -102,7 +102,7 @@ $ sudo nano /etc/network/interfaces
   up ip route add 192.168.1.0/24 via 10.2.2.102
 ```
 
-#### Enable Packet IP Forwarding (R1, R2, R3)
+#### Enable IP Packet Forwarding (R1, R2, R3)
 ```shell
 $ sudo nano /etc/sysctl.conf
 net.ipv4.ip_forward=1
