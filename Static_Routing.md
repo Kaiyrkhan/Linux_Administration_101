@@ -5,7 +5,7 @@ Static Routing:
   2) Static Route.
 
 ### 🖧 Topology for Default Static Route
-![Topology](Topology/Topology_Default_Static_Route_Linux.png)  
+![](Topology/Topology_Default_Static_Route_Linux.png)  
 
 ### 🖧 Topology for Static Route
 ![Topology](Topology/Topology_Static_Routing_Linux.png)  
