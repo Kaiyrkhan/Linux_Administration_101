@@ -11,7 +11,7 @@
 ![Physical Topology](Topology/Topology_interVLANRouting_NAT_Linux_Physical.png)
 #### Logical Topology
 ![Logical Topology](Topology/Topology_interVLANRouting_NAT_Linux.png)  
-[Download Link for PNETLab Topology File](Topology_interVLANRouting_NAT_Linux.unl)
+[Download Link for PNETLab Topology File](Topology/Topology_interVLANRouting_NAT_Linux.unl)
 
 ### 1) 802.1Q VLAN құру
 
