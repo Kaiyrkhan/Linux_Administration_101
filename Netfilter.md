@@ -130,9 +130,10 @@ $ sudo nft list ruleset | sudo tee /etc/nftables.conf
 $ sudo systemctl restart nftables
 ```
 
-Allow SSH, DNS, HTTP, HTTPS
+Allow SSH, HTTP, HTTPS, DNS
 ```shell
-$ sudo nft add rule inet filter input tcp dport {22, 53, 80, 443} accept  
+$ sudo nft add rule inet filter input tcp dport { 22, 80, 443 } ct state new accept
+$ sudo nft add rule inet filter input tcp dport 53 accept  
 $ sudo nft add rule inet filter input udp dport 53 accept
 ```
 
