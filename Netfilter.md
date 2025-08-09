@@ -56,6 +56,8 @@ $ sudo nft add rule inet filter input icmp type echo-request accept
 student@H1:~$ ping -c4 172.16.11.1
 student@gateway:~$ ping -c4 172.16.11.101
 ```
+> $ sudo nft add rule inet filter input icmp type { echo-request, echo-reply, destination-unreachable, time-exceeded } accept  
+$ sudo nft add rule inet filter input ip protocol icmp accept
 
 ##### 3-мысал: ping H1 to H2
 ```shell
@@ -79,6 +81,7 @@ student@H1:~$ ping 8.8.8.8
 student@H1:~$ ping google.com
 ```
 
+Priority мәндері:
 | Symbolic Name | Equivalent Numeric Value |
 |---------------|--------------------------|
 | `raw`         | -300                     |
