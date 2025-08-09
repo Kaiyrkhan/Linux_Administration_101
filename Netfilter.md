@@ -41,7 +41,7 @@ $ sudo nft add chain inet filter output { type filter hook output priority 0 \; 
 ```shell
 student@gateway:~$ ping -c4 127.0.0.1
 
-$ sudo nft add rule inet filter input iifname "lo" accept
+$ sudo nft add rule inet filter input iifname "lo" counter accept
 
 student@gateway:~$ ping -c4 127.0.0.1
 ```
@@ -57,7 +57,7 @@ student@H1:~$ ping -c4 172.16.11.1
 student@gateway:~$ ping -c4 172.16.11.101
 ```
 > $ sudo nft add rule inet filter input icmp type { echo-request, echo-reply, destination-unreachable, time-exceeded } accept  
-$ sudo nft add rule inet filter input ip protocol icmp accept
+> $ sudo nft add rule inet filter input ip protocol icmp accept  
 
 ##### 3-мысал: ping H1 to H2
 ```shell
@@ -104,8 +104,7 @@ Netfilter Connection Tracking (Conntrack)
 
 $ sudo nft add rule inet filter input ct state established,related accept
 ```
-> ct state аргументтері: new, established, related, invalid  
-
+*ct state-тің негізгі аргументтері:* new, established, related, invalid  
 > $ sudo nft add rule inet filter input tcp dport { 22, 80, 443 } ct state new accept  
 > $ sudo nft add rule inet filter input ct state invalid drop  
 
