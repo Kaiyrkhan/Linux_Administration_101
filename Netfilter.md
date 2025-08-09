@@ -30,8 +30,9 @@ Add a Rule to the INPUT Chain
 $ sudo nft add rule inet filter input tcp dport 22 counter accept
 ```
 
-Save configuration
 ```shell
+Save nftables Configuration
+
 $ sudo nft list ruleset | sudo tee /etc/nftables.conf
 $ sudo systemctl restart nftables
 
@@ -40,10 +41,13 @@ $ cat /etc/nftables.conf
 ```
 
 ```shell
+Set Default Policy to DROP (INPUT and FORWARD Chains)
+
 $ sudo nft chain inet filter input { policy drop \; }
 $ sudo nft сhain inet filter forward { policy drop \; }
 ```
-немесе
+
+**Қосымша ақпарат**
 ```shell
 $ sudo nft add table inet filter  
 $ sudo nft add chain inet filter input { type filter hook input priority 0 \; policy drop \; }  
