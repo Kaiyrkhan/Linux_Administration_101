@@ -36,8 +36,8 @@ Save nftables Configuration
 $ sudo nft list ruleset | sudo tee /etc/nftables.conf
 $ sudo systemctl restart nftables
 
-$ sudo nft list ruleset                // RAM жадыда сақталған nftables конфигурациясы
-$ cat /etc/nftables.conf               // NVRAM жадыда сақталған nftables конфигурациясы
+$ sudo nft list ruleset                // running-config – жедел жадыда (RAM) сақталған kernel-дегі ережелер
+$ cat /etc/nftables.conf               // saved-config – дискде (HDD/SSD) сақталған конфигурация
 ```
 
 ```shell
