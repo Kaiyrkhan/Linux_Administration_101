@@ -26,6 +26,19 @@ $ sudo nft list ruleset
 ```
 
 ```shell
+$ sudo nft add rule inet filter input tcp dport 22 counter accept
+```
+
+Save configuration
+```shell
+$ sudo nft list ruleset | sudo tee /etc/nftables.conf
+$ sudo systemctl restart nftables
+
+$ sudo nft list ruleset
+$ cat /etc/nftables.conf  
+```
+
+```shell
 $ sudo nft chain inet filter input { policy drop \; }
 $ sudo nft сhain inet filter forward { policy drop \; }
 ```
@@ -51,7 +64,7 @@ student@gateway:~$ ping -c4 127.0.0.1
 student@H1:~$ ping -c4 172.16.11.1
 student@gateway:~$ ping -c4 172.16.11.101
 
-$ sudo nft add rule inet filter input icmp type echo-request counter accept
+$ sudo nft add rule inet filter input icmp type echo-request accept
 
 student@H1:~$ ping -c4 172.16.11.1
 student@gateway:~$ ping -c4 172.16.11.101
@@ -129,12 +142,6 @@ $ sudo nft add rule inet filter forward ip daddr 172.16.11.0/24 iifname "ens3" a
 ```shell
 student@H1:~$ ping 8.8.8.8
 student@H1:~$ ping google.com
-```
-
-Save configuration
-```shell
-$ sudo nft list ruleset | sudo tee /etc/nftables.conf
-$ sudo systemctl restart nftables
 ```
 
 Allow SSH, HTTP, HTTPS, DNS
