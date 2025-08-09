@@ -312,8 +312,14 @@ $ sudo iptables -t nat -A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 8
 ###### Қосымша ақпарат
 
 ```shell
+Translating from iptables to nftables
+
 $ sudo iptables-translate -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -j ACCEPT
   nft add rule ip filter input tcp dport 22 ct state new counter accept
+$ sudo ip6tables-translate -A FORWARD -i eth0 -o eth2 -p udp -m multiport --dport 111,222 -j ACCEPT
+немесе
+$ sudo iptables-save > save.txt
+$ sudo iptables-restore-translate -f save.txt > ruleset.nft
 ```
 
 ### References
