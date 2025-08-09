@@ -106,10 +106,10 @@ $ sudo nft add rule ip nat postrouting ip saddr 172.16.11.0/24 oifname "ens3" ma
 Netfilter Connection Tracking (Conntrack)
 
 $ sudo nft add rule inet filter input ct state established,related accept
+$ sudo nft add rule inet filter input ct state invalid drop
 ```
 *ct state-тің негізгі аргументтері:* new, established, related, invalid  
 > $ sudo nft add rule inet filter input tcp dport { 22, 80, 443 } ct state new accept  
-> $ sudo nft add rule inet filter input ct state invalid drop  
 
 > $ ... ct state snat log  
 > $ ... ct state dnat log  
