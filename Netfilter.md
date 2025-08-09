@@ -41,7 +41,7 @@ $ sudo nft add chain inet filter output { type filter hook output priority 0 \; 
 ```shell
 student@gateway:~$ ping -c4 127.0.0.1
 
-$ sudo nft add rule inet filter input iifname "lo" counter accept
+$ sudo nft add rule inet filter input iifname "lo" accept
 
 student@gateway:~$ ping -c4 127.0.0.1
 ```
@@ -51,11 +51,12 @@ student@gateway:~$ ping -c4 127.0.0.1
 student@H1:~$ ping -c4 172.16.11.1
 student@gateway:~$ ping -c4 172.16.11.101
 
-$ sudo nft add rule inet filter input icmp type echo-request accept
+$ sudo nft add rule inet filter input icmp type echo-request counter accept
 
 student@H1:~$ ping -c4 172.16.11.1
 student@gateway:~$ ping -c4 172.16.11.101
 ```
+> $ sudo nft add rule inet filter input icmp type echo-request accept  
 > $ sudo nft add rule inet filter input icmp type { echo-request, echo-reply, destination-unreachable, time-exceeded } accept  
 > $ sudo nft add rule inet filter input ip protocol icmp accept  
 
