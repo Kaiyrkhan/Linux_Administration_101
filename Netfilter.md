@@ -26,6 +26,7 @@ $ sudo nft list ruleset
 ```
 
 ```shell
+Add a Rule to the INPUT Chain
 $ sudo nft add rule inet filter input tcp dport 22 counter accept
 ```
 
