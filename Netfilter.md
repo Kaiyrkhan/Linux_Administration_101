@@ -100,9 +100,15 @@ $ sudo nft add rule ip nat postrouting ip saddr 172.16.11.0/24 oifname "ens3" ma
 ```
 
 ```shell
-Conntrack (Netfilter Connection Tracking)
+Netfilter Connection Tracking (Conntrack)
+
 $ sudo nft add rule inet filter input ct state established,related accept
 ```
+> ct state аргументтері: new, established, related, invalid  
+
+> $ sudo nft add rule inet filter input tcp dport { 22, 80, 443 } ct state new accept  
+> $ sudo nft add rule inet filter input ct state invalid drop  
+
 ```shell
 student@gateway:~$ ping 8.8.8.8
 student@gateway:~$ ping google.com
