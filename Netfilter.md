@@ -109,6 +109,11 @@ $ sudo nft add rule inet filter input ct state established,related accept
 > $ sudo nft add rule inet filter input tcp dport { 22, 80, 443 } ct state new accept  
 > $ sudo nft add rule inet filter input ct state invalid drop  
 
+> $ ... ct state snat log  
+> $ ... ct state dnat log  
+> $ ... ct status dnat  
+> $ ... ct status snat  
+
 ```shell
 student@gateway:~$ ping 8.8.8.8
 student@gateway:~$ ping google.com
