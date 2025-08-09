@@ -64,7 +64,7 @@ $ sudo nft add rule inet filter input iifname "lo" accept
 student@gateway:~$ ping -c4 127.0.0.1
 ```
 
-##### 2-мысал: INPUT бойынша ICMP хаттамаға рұқсат ету
+##### 2-мысал: ICMP хаттамаға рұқсат ету (ping H1,H2 to Gateway)
 ```shell
 student@H1:~$ ping -c4 172.16.11.1
 student@gateway:~$ ping -c4 172.16.11.101
