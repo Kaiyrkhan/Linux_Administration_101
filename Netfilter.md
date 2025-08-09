@@ -29,11 +29,13 @@ $ sudo nft list ruleset
 $ sudo nft chain inet filter input { policy drop \; }
 $ sudo nft сhain inet filter forward { policy drop \; }
 ```
-
-> sudo nft add table inet filter  
-> sudo nft add chain inet filter input { type filter hook input priority 0 \; policy drop \; }  
-> sudo nft add chain inet filter forward { type filter hook forward priority 0 \; policy drop \; }  
-> sudo nft add chain inet filter output { type filter hook output priority 0 \; policy accept \; }  
+немесе
+```shell
+$ sudo nft add table inet filter  
+$ sudo nft add chain inet filter input { type filter hook input priority 0 \; policy drop \; }  
+$ sudo nft add chain inet filter forward { type filter hook forward priority 0 \; policy drop \; }  
+$ sudo nft add chain inet filter output { type filter hook output priority 0 \; policy accept \; }
+```
 
 ##### 1-мысал: Loopback интерфейске рұқсат ету
 ```shell
