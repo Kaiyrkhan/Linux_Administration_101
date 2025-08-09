@@ -100,7 +100,7 @@ $ sudo nft add rule ip nat postrouting ip saddr 172.16.11.0/24 oifname "ens3" ma
 ```
 
 ```shell
-Conntrack
+Conntrack (Netfilter Connection Tracking)
 $ sudo nft add rule inet filter input ct state established,related accept
 ```
 ```shell
