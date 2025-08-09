@@ -56,6 +56,8 @@ $ sudo nft add rule inet filter input icmp type echo-request counter accept
 student@H1:~$ ping -c4 172.16.11.1
 student@gateway:~$ ping -c4 172.16.11.101
 ```
+*ICMP (IPv4) type: echo-reply, echo-request, destination-unreachable, time-exceeded, parameter-problem т.б.*
+
 > $ sudo nft add rule inet filter input icmp type echo-request accept  
 > $ sudo nft add rule inet filter input icmp type { echo-request, echo-reply, destination-unreachable, time-exceeded } accept  
 > $ sudo nft add rule inet filter input ip protocol icmp accept  
