@@ -270,6 +270,13 @@ Change external port 8080 to internal port 80:
 $ sudo iptables -t nat -A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
 ```
 
+###### Қосымша ақпарат
+
+```shell
+$ sudo iptables-translate -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -j ACCEPT
+  nft add rule ip filter input tcp dport 22 ct state new counter accept
+```
+
 ### References
 
 1) [Wikipedia Netfilter](https://en.wikipedia.org/wiki/Netfilter)
