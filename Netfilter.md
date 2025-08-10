@@ -38,7 +38,7 @@ Set Default Policy to DROP (INPUT and FORWARD Chains)
 
 $ sudo nft chain inet filter INPUT { policy drop \; }
 $ sudo nft сhain inet filter FORWARD { policy drop \; }
-$ sudo nft сhain inet filter OUTPUT { policy drop \; }
+$ sudo nft сhain inet filter OUTPUT { policy accept \; }
 ```
 немесе
 ```shell
