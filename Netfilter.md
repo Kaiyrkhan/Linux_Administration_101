@@ -124,7 +124,7 @@ student@gateway:~$ ping -c4 127.0.0.1
 student@H1:~$ ping -c4 172.16.11.1
 student@gateway:~$ ping -c4 172.16.11.101
 
-$ sudo nft add rule inet filter input ip protocol icmp accept
+$ sudo nft add rule inet filter input iifname "ens3" ip protocol icmp accept
 
 student@H1:~$ ping -c4 172.16.11.1
 student@gateway:~$ ping -c4 172.16.11.101
@@ -141,8 +141,8 @@ student@gateway:~$ ping -c4 172.16.11.101
 student@H1:~$ ping -c4 172.16.12.101
 student@H2:~$ ping -c4 172.16.11.101
 
-$ sudo nft add rule inet filter forward ip saddr 172.16.11.0/24 ip daddr 172.16.12.0/24
-$ sudo nft add rule inet filter forward ip saddr 172.16.12.0/24 ip daddr 172.16.11.0/24
+$ sudo nft add rule inet filter forward iifname "ens3" ip saddr 172.16.11.0/24 ip daddr 172.16.12.0/24
+$ sudo nft add rule inet filter forward iifname "ens3" ip saddr 172.16.12.0/24 ip daddr 172.16.11.0/24
 
 student@H1:~$ ping -c4 172.16.12.101
 student@H2:~$ ping -c4 172.16.11.101
@@ -201,8 +201,8 @@ student@gateway:~$ ping google.com
 
 ```shell
 Allow LAN IP addresses
-$ sudo nft add rule inet filter forward ip saddr 172.16.11.0/24 oifname "ens3" accept
-$ sudo nft add rule inet filter forward ip daddr 172.16.11.0/24 iifname "ens3" accept
+$ sudo nft add rule inet filter forward oifname "ens3" ip saddr 172.16.11.0/24 accept
+$ sudo nft add rule inet filter forward iifname "ens3" ip daddr 172.16.11.0/24 accept
 ```
 ```shell
 student@H1:~$ ping 8.8.8.8
