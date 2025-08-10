@@ -27,7 +27,7 @@ $ sudo nft list ruleset
 
 ```shell
 Add a New Rule to the INPUT Chain
-$ sudo nft add rule inet filter input tcp dport 22 counter accept
+$ sudo nft add rule inet filter INPUT tcp dport 22 counter accept
 ```
 
 ```shell
@@ -45,6 +45,7 @@ Set Default Policy to DROP (INPUT and FORWARD Chains)
 
 $ sudo nft chain inet filter INPUT { policy drop \; }
 $ sudo nft сhain inet filter FORWARD { policy drop \; }
+$ sudo nft сhain inet filter OUTPUT { policy accept \; }
 ```
 
 **Қосымша ақпарат**
@@ -119,9 +120,9 @@ Priority мәндері:
 ```shell
 Network Address Translation (NAT)
 
-$ sudo nft add table ip nat
-$ sudo nft add chain ip nat POSTROUTING { type nat hook postrouting priority srcnat \; policy accept \; }
-$ sudo nft add rule ip nat POSTROUTING ip saddr 172.16.11.0/24 oifname "ens3" masquerade
+$ sudo nft add table inet nat
+$ sudo nft add chain inet nat POSTROUTING { type nat hook postrouting priority srcnat \; policy accept \; }
+$ sudo nft add rule inet nat POSTROUTING ip saddr 172.16.11.0/24 oifname "ens3" masquerade
 ```
 
 ```shell
@@ -160,31 +161,35 @@ $ sudo nft add rule inet filter INPUT tcp dport 53 accept
 $ sudo nft add rule inet filter INPUT udp dport 53 accept
 ```
 
-insert Rule
 ```shell
-position – ережелердің орналасуының реттік нөмірі (яғни, реттік нөмір бойынша ережелер орындалады)
-
-$ sudo nft list chain       // Ережелердің position нөмірін көру
-$ sudo nft list chain inet filter input
-
-$ sudo nft insert rule inet filter INPUT position 10   tcp dport 22 counter accept
+Add a New Rule (жаңа ереже қосу)
+$ sudo nft add rule inet filter INPUT tcp dport 22 counter accept
 ```
 
-Replace (алмастыру) Rule
+insert a Rule
+```shell
+insert – ережелердің орналасу/орындалу реттілігін (position) ауыстыру үшін қолданады
+
+$ sudo nft -a list ruleset        // Ережелердің handle нөмірін көру
+
+$ sudo nft insert rule inet filter INPUT handle 12   tcp dport 22 counter accept
+```
+
+Replace a Rule (ережені алмастыру)
 ```shell
 $ sudo nft -a list ruleset
 
 $ sudo nft replace rule inet filter INPUT handle 12   tcp dport 22 ct state new counter accept
 ```
 
-Delete a Rule to the INPUT Chain
+Delete a Rule (ережені жою)
 ```shell
 $ sudo nft -a list ruleset        // Ережелердің handle нөмірін көру
 
 $ sudo nft delete rule inet filter INPUT handle 12
 ```
 
-Clear all Rules in a Chains
+Clear all Rules (ережелерді тазалау)
 ```shell
 $ sudo nft flush ruleset
 ```
@@ -199,6 +204,7 @@ $ sudo nft list tables inet
 $ sudo nft list table inet filter
 
 $ sudo nft list chains
+$ sudo nft list chains inet
 $ sudo nft list chain inet filter input
 ```
 
