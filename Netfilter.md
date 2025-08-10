@@ -285,6 +285,7 @@ $ sudo nft add rule inet filter input ether saddr 5C:60:BA:58:9F:2B tcp dport 22
 $ sudo nft add rule inet filter input iifname "ens3" ip saddr 172.16.11.0/24 tcp dport { 80,443,445 } counter accept
 $ sudo nft add rule inet filter input iifname "ens3" ip saddr 172.16.11.0/24 udp dport { 53,67,68,123,138 } counter accept
 ```
+
 ```shell
 $ sudo nft add rule inet filter input ip protocol icmp counter log prefix \"ICMP_TRACE\ "
 $ sudo nft add rule inet filter input ip protocol icmp counter accept
@@ -295,8 +296,11 @@ $ sudo nft add rule inet filter input ip protocol icmp counter accept
 $ ping 172.16.11.1 -L 32      // Windows default 32 byte
 $ ping 172.16.11.1 -L 64      // Linux default 64 byte
 $ ping 172.16.11.1 -L 65
-```
 
+$ sudo nft add rule inet filter input icmp type echo-request meta length 93-65535 counter drop
+$ sudo nft add rule inet filter input ip protocol icmp limit rate 50/second burst 25 packets counter accept
+$ ping 172.16.11.1 -t
+```
 
 Allow/Open Ports for LAN and WAN
 ```shell
