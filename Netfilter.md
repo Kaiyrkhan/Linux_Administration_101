@@ -94,6 +94,15 @@ $ sudo nft list ruleset
 $ cat ~/rules.nftables
 ```
 
+nftables-тегі family түрлері
+
+| Family атауы | Хаттамалар  |
+| ------------ | ----------- |
+| ip           | IPv4        |
+| ip6          | IPv6        |
+| inet         | IPv4 + IPv6 |
+
+
 ##### 1-мысал: Loopback интерфейске рұқсат ету
 ```shell
 student@gateway:~$ ping -c4 127.0.0.1
