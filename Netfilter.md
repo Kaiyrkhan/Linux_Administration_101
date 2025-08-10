@@ -275,13 +275,26 @@ $ sudo nft list chain inet filter input
 > `Web (HTTP, HTTPS)` - TCP 80,443  
 > `FTP` - TCP 21 + PASV port TCP "10090-10100"  
 
-```shell
 Allow/Open Ports for LAN
+```shell
+$ sudo nft add rule inet filter input iifname "lo" counter accept
+
 $ sudo nft add rule inet filter input ip saddr 172.16.11.101/32 tcp dport 22 counter accept
+$ sudo nft add rule inet filter input ether saddr 5C:60:BA:58:9F:2B tcp dport 22 counter accept
+
 $ sudo nft add rule inet filter input iifname "ens3" ip saddr 172.16.11.0/24 tcp dport { 80,443,445 } counter accept
 $ sudo nft add rule inet filter input iifname "ens3" ip saddr 172.16.11.0/24 udp dport { 53,67,68,123,138 } counter accept
+```
+```shell
+$ sudo nft add rule inet filter input ip protocol icmp counter log prefix \"ICMP_TRACE\ "
+$ sudo nft add rule inet filter input ip protocol icmp counter accept
+
+$ sudo tail -f /var/log/messages
+```
+
 
 Allow/Open Ports for LAN and WAN
+```shell
 $ sudo nft add rule inet filter input tcp dport 21 counter accept
 $ sudo nft add rule inet filter input tcp dport 10090-10100 counter accept
 ```
