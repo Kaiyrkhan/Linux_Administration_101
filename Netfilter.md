@@ -136,17 +136,18 @@ student@gateway:~$ ping -c4 172.16.11.101
   
 > $ sudo nft add rule inet filter input ip protocol icmp accept  
 
-##### 3-мысал: ping H1 to H2
+##### 3-мысал: ping H1 to H2 (ICMP хаттамаға рұқсат ету)
 ```shell
 student@H1:~$ ping -c4 172.16.12.101
 student@H2:~$ ping -c4 172.16.11.101
 
-$ sudo nft add rule inet filter forward iifname "ens3" ip saddr 172.16.11.0/24 ip daddr 172.16.12.0/24 counter accept 
-$ sudo nft add rule inet filter forward iifname "ens3" ip saddr 172.16.12.0/24 ip daddr 172.16.11.0/24 counter accept 
+$ sudo nft add rule inet filter forward ip protocol icmp counter accept
 
 student@H1:~$ ping -c4 172.16.12.101
 student@H2:~$ ping -c4 172.16.11.101
 ```
+> $ sudo nft add rule inet filter forward iifname "ens3" ip saddr 172.16.11.0/24 ip daddr 172.16.12.0/24 counter accept  
+> $ sudo nft add rule inet filter forward iifname "ens3" ip saddr 172.16.12.0/24 ip daddr 172.16.11.0/24 counter accept
 
 ##### 4-мысал: LAN желідегі құрылғыларды internet желісімен байланыстыру
 ```shell
