@@ -28,7 +28,10 @@ $ sudo systemctl status nftables
 
 $ sudo systemctl start nftables
 $ sudo systemctl enable nftables
+
+$ sudo nft list ruleset
 ```
+![images](images/default_filter_table.png)
 
 ```shell
 Add a New Rule to the INPUT Chain
