@@ -209,7 +209,7 @@ student@H1:~$ ping 8.8.8.8
 student@H1:~$ ping google.com
 ```
 
-##### Қосымша ақпарат
+### Қосымша ақпарат
 
 Add a New Rule (жаңа ереже қосу)
 ```shell
@@ -283,6 +283,11 @@ $ sudo nft add rule inet filter input ether saddr 5C:60:BA:58:9F:2B tcp dport 22
 
 $ sudo nft add rule inet filter input iifname "ens3" ip saddr 172.16.11.0/24 tcp dport { 80,443,445 } counter accept
 $ sudo nft add rule inet filter input iifname "ens3" ip saddr 172.16.11.0/24 udp dport { 53,67,68,123,138 } counter accept
+```
+
+```shell
+$ nc -w1 -vz 172.16.11.1 22
+$ nc -w1 -vz 172.16.11.1 80
 ```
 
 ```shell
