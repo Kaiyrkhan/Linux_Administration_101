@@ -26,7 +26,7 @@ $ sudo nft list ruleset
 ```
 
 ```shell
-Add a Rule to the INPUT Chain
+Add a New Rule to the INPUT Chain
 $ sudo nft add rule inet filter input tcp dport 22 counter accept
 ```
 
@@ -49,6 +49,8 @@ $ sudo nft сhain inet filter FORWARD { policy drop \; }
 
 **Қосымша ақпарат**
 ```shell
+Create a New Table and Chains
+
 $ sudo nft add table inet filter  
 $ sudo nft add chain inet filter INPUT { type filter hook input priority 0 \; policy drop \; }  
 $ sudo nft add chain inet filter FORWARD { type filter hook forward priority 0 \; policy drop \; }  
@@ -116,6 +118,7 @@ Priority мәндері:
 
 ```shell
 Network Address Translation (NAT)
+
 $ sudo nft add table ip nat
 $ sudo nft add chain ip nat POSTROUTING { type nat hook postrouting priority srcnat \; policy accept \; }
 $ sudo nft add rule ip nat POSTROUTING ip saddr 172.16.11.0/24 oifname "ens3" masquerade
