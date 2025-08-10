@@ -34,8 +34,10 @@ $ sudo nft list ruleset
 ![images](images/default_filter_table.png)
 
 ```shell
-Add a New Rule to the INPUT Chain
-$ sudo nft add rule inet filter INPUT tcp dport 22 counter accept
+Set Default Policy to DROP (INPUT and FORWARD Chains)
+
+$ sudo nft chain inet filter INPUT { policy drop \; }
+$ sudo nft сhain inet filter FORWARD { policy drop \; }
 ```
 
 ```shell
@@ -56,11 +58,10 @@ $ cat /etc/nftables.conf               // дискде (HDD/SSD) сақталғ�
 > $ sudo nft list ruleset  
 
 ```shell
-Set Default Policy to DROP (INPUT and FORWARD Chains)
+Add a New Rule to the INPUT Chain
+$ sudo nft add rule inet filter INPUT tcp dport 22 counter accept
 
-$ sudo nft chain inet filter INPUT { policy drop \; }
-$ sudo nft сhain inet filter FORWARD { policy drop \; }
-$ sudo nft сhain inet filter OUTPUT { policy accept \; }
+$ sudo nft list ruleset  
 ```
 
 **Қосымша ақпарат**
