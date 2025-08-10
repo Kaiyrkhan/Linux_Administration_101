@@ -43,8 +43,8 @@ $ cat /etc/nftables.conf               // дискде (HDD/SSD) сақталғ�
 > $ sudo systemctl restart nftables  
 > $ sudo nft list ruleset  
 
-> $ sudo nano ~/rules.conf  
-> $ sudo nft -f ~/rules.conf  
+> $ sudo nano ~/rules.nftables  
+> $ sudo nft -f ~/rules.nftables  
 > $ sudo nft list ruleset  
 
 ```shell
