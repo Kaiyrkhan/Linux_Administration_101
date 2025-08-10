@@ -68,7 +68,7 @@ $ cat /etc/nftables.conf               // дискде (HDD/SSD) сақталғ�
 
 ```shell
 Add a New Rule to the INPUT Chain
-$ sudo nft add rule inet filter input tcp dport 22 counter accept
+$ sudo nft add rule inet filter input ip saddr 172.16.11.101/32 tcp dport 22 counter accept
 
 Check Current Rules
 $ sudo nft list ruleset
@@ -114,7 +114,7 @@ nftables-тегі family түрлері
 ```shell
 student@gateway:~$ ping -c4 127.0.0.1
 
-$ sudo nft add rule inet filter input iifname "lo" accept
+$ sudo nft add rule inet filter input iifname "lo" counter accept
 
 student@gateway:~$ ping -c4 127.0.0.1
 ```
@@ -124,7 +124,10 @@ student@gateway:~$ ping -c4 127.0.0.1
 student@H1:~$ ping -c4 172.16.11.1
 student@gateway:~$ ping -c4 172.16.11.101
 
-$ sudo nft add rule inet filter input iifname "ens3" ip protocol icmp accept
+$ sudo nft add rule inet filter input ip protocol icmp counter accept
+немесе
+$ sudo nft add rule inet filter input iifname "ens3" ip saddr 172.16.11.0/24 counter accept
+$ sudo nft add rule inet filter input iifname "ens3" ip saddr 172.16.12.0/24 counter accept
 
 student@H1:~$ ping -c4 172.16.11.1
 student@gateway:~$ ping -c4 172.16.11.101
