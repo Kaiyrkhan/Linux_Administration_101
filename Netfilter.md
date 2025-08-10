@@ -141,8 +141,8 @@ student@gateway:~$ ping -c4 172.16.11.101
 student@H1:~$ ping -c4 172.16.12.101
 student@H2:~$ ping -c4 172.16.11.101
 
-$ sudo nft add rule inet filter forward iifname "ens3" ip saddr 172.16.11.0/24 ip daddr 172.16.12.0/24
-$ sudo nft add rule inet filter forward iifname "ens3" ip saddr 172.16.12.0/24 ip daddr 172.16.11.0/24
+$ sudo nft add rule inet filter forward iifname "ens3" ip saddr 172.16.11.0/24 ip daddr 172.16.12.0/24 counter accept 
+$ sudo nft add rule inet filter forward iifname "ens3" ip saddr 172.16.12.0/24 ip daddr 172.16.11.0/24 counter accept 
 
 student@H1:~$ ping -c4 172.16.12.101
 student@H2:~$ ping -c4 172.16.11.101
@@ -180,8 +180,8 @@ $ sudo nft add rule inet nat POSTROUTING ip saddr 172.16.11.0/24 oifname "ens3" 
 ```shell
 Netfilter Connection Tracking (Conntrack)
 
-$ sudo nft add rule inet filter input ct state established,related accept
-$ sudo nft add rule inet filter input ct state invalid drop
+$ sudo nft add rule inet filter input ct state established,related counter accept
+$ sudo nft add rule inet filter input ct state invalid counter drop
 ```
 
 *ct state-тің негізгі аргументтері:* ***new, established, related, invalid***  
@@ -201,8 +201,8 @@ student@gateway:~$ ping google.com
 
 ```shell
 Allow LAN IP addresses
-$ sudo nft add rule inet filter forward oifname "ens3" ip saddr 172.16.11.0/24 accept
-$ sudo nft add rule inet filter forward iifname "ens3" ip daddr 172.16.11.0/24 accept
+$ sudo nft add rule inet filter forward oifname "ens3" ip saddr 172.16.11.0/24 counter accept
+$ sudo nft add rule inet filter forward iifname "ens3" ip daddr 172.16.11.0/24 counter accept
 ```
 ```shell
 student@H1:~$ ping 8.8.8.8
