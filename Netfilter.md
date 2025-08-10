@@ -6,6 +6,13 @@
 #### 🖧 Topology
 ![Topology](Topology/Topology_interVLANRouting_NAT_Linux.png)
 
+> `Web (HTTP, HTTPS)` - TCP 80,443  
+> `NTP` - UDP 123  
+> `DHCP` - UDP 67,68  
+> `DNS` - UDP 53  
+> `SAMBA` - TCP 445,139 / UDP 137,138  
+> `FTP` - TCP 21 + PASV port TCP "10090-10100"  
+
 ### 1) Firewall, NAT using nftables
 
 ```shell
