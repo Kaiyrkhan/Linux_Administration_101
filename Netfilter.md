@@ -16,6 +16,7 @@ $ dpkg -s nftables
 ```shell
 $ cat /etc/nftables.conf
 ```
+![images](images/cat_nftables.png)
 
 ```shell
 Check Current Rules
