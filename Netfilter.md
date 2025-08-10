@@ -50,9 +50,9 @@ $ sudo nft сhain inet filter forward { policy drop \; }
 **Қосымша ақпарат**
 ```shell
 $ sudo nft add table inet filter  
-$ sudo nft add chain inet filter input { type filter hook input priority 0 \; policy drop \; }  
-$ sudo nft add chain inet filter forward { type filter hook forward priority 0 \; policy drop \; }  
-$ sudo nft add chain inet filter output { type filter hook output priority 0 \; policy accept \; }
+$ sudo nft add chain inet filter INPUT { type filter hook input priority 0 \; policy drop \; }  
+$ sudo nft add chain inet filter FORWARD { type filter hook forward priority 0 \; policy drop \; }  
+$ sudo nft add chain inet filter OUTPUT { type filter hook output priority 0 \; policy accept \; }
 ```
 
 ##### 1-мысал: Loopback интерфейске рұқсат ету
@@ -116,7 +116,7 @@ Priority мәндері:
 ```shell
 Network Address Translation (NAT)
 $ sudo nft add table ip nat
-$ sudo nft add chain ip nat postrouting { type nat hook postrouting priority srcnat \; policy accept \; }
+$ sudo nft add chain ip nat POSTROUTING { type nat hook postrouting priority srcnat \; policy accept \; }
 $ sudo nft add rule ip nat postrouting ip saddr 172.16.11.0/24 oifname "ens3" masquerade
 ```
 
