@@ -254,9 +254,8 @@ Clear all Rules (ережелерді тазалау)
 $ sudo nft flush ruleset
 ```
 
-```shell
 Diagnostic Commands
-
+```shell
 $ sudo nft list ruleset
 
 $ sudo nft list tables
