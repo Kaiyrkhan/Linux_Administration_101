@@ -167,6 +167,17 @@ $ sudo nft -a list ruleset
 $ sudo nft delete rule inet filter INPUT handle 12
 ```
 
+insert Rule
+```shell
+position – ережелердің орындалу ретінің нөмірі
+
+Ережелердің position нөмірін көру
+$ sudo nft list chain
+$ sudo nft list chain inet filter input
+
+$ sudo nft insert rule inet filter INPUT position 10   tcp dport 22 counter accept
+```
+
 Replace (алмастыру) Rule
 ```shell
 $ sudo nft -a list ruleset
@@ -177,14 +188,16 @@ $ sudo nft replace rule inet filter INPUT handle 12   tcp dport 22 ct state new 
 ##### Қосымша ақпарат
 
 ```shell
-$ sudo nft list ruleset
-
 $ sudo nft flush ruleset
+
+$ sudo nft list ruleset
 
 $ sudo nft list tables
 $ sudo nft list tables inet
 $ sudo nft list table inet filter
+
 $ sudo nft list chains
+$ sudo nft list chain inet filter input
 ```
 
 ### 2) Firewall, NAT using iptables
