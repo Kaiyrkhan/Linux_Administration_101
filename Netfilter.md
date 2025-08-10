@@ -209,12 +209,7 @@ student@H1:~$ ping 8.8.8.8
 student@H1:~$ ping google.com
 ```
 
-Allow SSH, HTTP, HTTPS, DNS
-```shell
-$ sudo nft add rule inet filter input tcp dport { 22, 80, 443 } ct state new accept
-$ sudo nft add rule inet filter input tcp dport 53 accept  
-$ sudo nft add rule inet filter input udp dport 53 accept
-```
+##### Қосымша ақпарат
 
 Add a New Rule (жаңа ереже қосу)
 ```shell
@@ -259,9 +254,9 @@ Clear all Rules (ережелерді тазалау)
 $ sudo nft flush ruleset
 ```
 
-##### Қосымша ақпарат
-
 ```shell
+Diagnostic Commands
+
 $ sudo nft list ruleset
 
 $ sudo nft list tables
@@ -281,11 +276,12 @@ $ sudo nft list chain inet filter input
 > `FTP` - TCP 21 + PASV port TCP "10090-10100"  
 
 ```shell
-Open Port for LAN
+Allow/Open Ports for LAN
+$ sudo nft add rule inet filter input ip saddr 172.16.11.101/32 tcp dport 22 counter accept
 $ sudo nft add rule inet filter input iifname "ens3" ip saddr 172.16.11.0/24 tcp dport { 80,443,445 } counter accept
 $ sudo nft add rule inet filter input iifname "ens3" ip saddr 172.16.11.0/24 udp dport { 53,67,68,123,138 } counter accept
 
-Open Port for LAN and WAN
+Allow/Open Ports for LAN and WAN
 $ sudo nft add rule inet filter input tcp dport 21 counter accept
 $ sudo nft add rule inet filter input tcp dport 10090-10100 counter accept
 ```
