@@ -113,7 +113,7 @@ $ sudo nft add rule inet filter input ip protocol icmp accept
 student@H1:~$ ping -c4 172.16.11.1
 student@gateway:~$ ping -c4 172.16.11.101
 ```
-*ICMP (IPv4) type: echo-reply, echo-request, destination-unreachable, time-exceeded, parameter-problem т.б.*
+*ICMP (IPv4) type:* ***echo-reply, echo-request, destination-unreachable, time-exceeded, parameter-problem т.б.***
 
 > $ sudo nft add rule inet filter input icmp type echo-request accept  
 > $ sudo nft add rule inet filter input icmp type { echo-request, echo-reply, destination-unreachable, time-exceeded } accept
@@ -167,7 +167,8 @@ Netfilter Connection Tracking (Conntrack)
 $ sudo nft add rule inet filter input ct state established,related accept
 $ sudo nft add rule inet filter input ct state invalid drop
 ```
-*ct state-тің негізгі аргументтері:* new, established, related, invalid  
+
+*ct state-тің негізгі аргументтері:* ***new, established, related, invalid***  
 > $ sudo nft add rule inet filter input tcp dport { 22, 80, 443 } ct state **new** accept  
 > $ sudo nft add rule inet filter input ct state **established,related** accept  
 > $ sudo nft add rule inet filter input ct state **invalid** drop  
