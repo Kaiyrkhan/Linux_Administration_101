@@ -61,7 +61,11 @@ $ cat /etc/nftables.conf               // дискде (HDD/SSD) сақталғ�
 
 ```shell
 Add a New Rule to the INPUT Chain
-$ sudo nft add rule inet filter INPUT tcp dport 22 counter accept
+$ sudo nft add rule inet filter input tcp dport 22 counter accept
+
+Check Current Rules
+$ sudo nft list ruleset
+$ cat /etc/nftables.conf
 
 Save nftables Configuration
 $ sudo nft list ruleset | sudo tee /etc/nftables.conf
@@ -94,7 +98,7 @@ $ cat ~/rules.nftables
 ```shell
 student@gateway:~$ ping -c4 127.0.0.1
 
-$ sudo nft add rule inet filter INPUT iifname "lo" accept
+$ sudo nft add rule inet filter input iifname "lo" accept
 
 student@gateway:~$ ping -c4 127.0.0.1
 ```
@@ -104,25 +108,25 @@ student@gateway:~$ ping -c4 127.0.0.1
 student@H1:~$ ping -c4 172.16.11.1
 student@gateway:~$ ping -c4 172.16.11.101
 
-$ sudo nft add rule inet filter INPUT ip protocol icmp accept
+$ sudo nft add rule inet filter input ip protocol icmp accept
 
 student@H1:~$ ping -c4 172.16.11.1
 student@gateway:~$ ping -c4 172.16.11.101
 ```
 *ICMP (IPv4) type: echo-reply, echo-request, destination-unreachable, time-exceeded, parameter-problem т.б.*
 
-> $ sudo nft add rule inet filter INPUT icmp type echo-request accept  
-> $ sudo nft add rule inet filter INPUT icmp type { echo-request, echo-reply, destination-unreachable, time-exceeded } accept
+> $ sudo nft add rule inet filter input icmp type echo-request accept  
+> $ sudo nft add rule inet filter input icmp type { echo-request, echo-reply, destination-unreachable, time-exceeded } accept
   
-> $ sudo nft add rule inet filter INPUT ip protocol icmp accept  
+> $ sudo nft add rule inet filter input ip protocol icmp accept  
 
 ##### 3-мысал: ping H1 to H2
 ```shell
 student@H1:~$ ping -c4 172.16.12.101
 student@H2:~$ ping -c4 172.16.11.101
 
-$ sudo nft add rule inet filter FORWARD ip saddr 172.16.11.0/24 ip daddr 172.16.12.0/24
-$ sudo nft add rule inet filter FORWARD ip saddr 172.16.12.0/24 ip daddr 172.16.11.0/24
+$ sudo nft add rule inet filter forward ip saddr 172.16.11.0/24 ip daddr 172.16.12.0/24
+$ sudo nft add rule inet filter forward ip saddr 172.16.12.0/24 ip daddr 172.16.11.0/24
 
 student@H1:~$ ping -c4 172.16.12.101
 student@H2:~$ ping -c4 172.16.11.101
@@ -160,13 +164,13 @@ $ sudo nft add rule inet nat POSTROUTING ip saddr 172.16.11.0/24 oifname "ens3" 
 ```shell
 Netfilter Connection Tracking (Conntrack)
 
-$ sudo nft add rule inet filter INPUT ct state established,related accept
-$ sudo nft add rule inet filter INPUT ct state invalid drop
+$ sudo nft add rule inet filter input ct state established,related accept
+$ sudo nft add rule inet filter input ct state invalid drop
 ```
 *ct state-тің негізгі аргументтері:* new, established, related, invalid  
-> $ sudo nft add rule inet filter INPUT tcp dport { 22, 80, 443 } ct state **new** accept  
-> $ sudo nft add rule inet filter INPUT ct state **established,related** accept  
-> $ sudo nft add rule inet filter INPUT ct state **invalid** drop  
+> $ sudo nft add rule inet filter input tcp dport { 22, 80, 443 } ct state **new** accept  
+> $ sudo nft add rule inet filter input ct state **established,related** accept  
+> $ sudo nft add rule inet filter input ct state **invalid** drop  
 
 > $ ... ct state snat log  
 > $ ... ct state dnat log  
@@ -180,8 +184,8 @@ student@gateway:~$ ping google.com
 
 ```shell
 Allow LAN IP addresses
-$ sudo nft add rule inet filter FORWARD ip saddr 172.16.11.0/24 oifname "ens3" accept
-$ sudo nft add rule inet filter FORWARD ip daddr 172.16.11.0/24 iifname "ens3" accept
+$ sudo nft add rule inet filter forward ip saddr 172.16.11.0/24 oifname "ens3" accept
+$ sudo nft add rule inet filter forward ip daddr 172.16.11.0/24 iifname "ens3" accept
 ```
 ```shell
 student@H1:~$ ping 8.8.8.8
@@ -190,21 +194,21 @@ student@H1:~$ ping google.com
 
 Allow SSH, HTTP, HTTPS, DNS
 ```shell
-$ sudo nft add rule inet filter INPUT tcp dport { 22, 80, 443 } ct state new accept
-$ sudo nft add rule inet filter INPUT tcp dport 53 accept  
-$ sudo nft add rule inet filter INPUT udp dport 53 accept
+$ sudo nft add rule inet filter input tcp dport { 22, 80, 443 } ct state new accept
+$ sudo nft add rule inet filter input tcp dport 53 accept  
+$ sudo nft add rule inet filter input udp dport 53 accept
 ```
 
 Add a New Rule (жаңа ереже қосу)
 ```shell
-$ sudo nft add rule inet filter INPUT tcp dport 22 ct state new accept
+$ sudo nft add rule inet filter input tcp dport 22 ct state new accept
 ```
 > *add – жаңа қосқан ережені position бойынша СОҢЫНА қоюды*  
 > position – ережелердің орналасу/орындалу реті
 
 insert a New Rule (жаңа ереже енгізу)
 ```shell
-$ sudo nft insert rule inet filter INPUT tcp dport 22 ct state new accept
+$ sudo nft insert rule inet filter input tcp dport 22 ct state new accept
 ```
 > *insert – жаңа қосқан ережені position бойынша БАСЫНА қоюды*  
 > position – ережелердің орналасу/орындалу реті
@@ -213,7 +217,7 @@ handle және index нөмір қолдану арқылы ережелерд�
 ```shell
 $ sudo nft -a list ruleset        // Ережелердің handle нөмірін көру
 
-$ sudo nft insert rule inet filter INPUT handle 2  tcp dport 22 counter accept      // енгізген ережені, handle 2 нөмірдегі ереженің алдына қою арқылы орын алмасады
+$ sudo nft insert rule inet filter input handle 2  tcp dport 22 counter accept      // енгізген ережені, handle 2 нөмірдегі ереженің алдына қою арқылы орын алмасады
 
 $ sudo nft insert rule inet filter input index 2 tcp dport 22 ct state new accept      // орналасу реті бойынша үшінші орынға қоюды, себебі index мәні "0"-ден басталады
 $ sudo nft insert rule inet filter input index 0 tcp dport 22 ct state new accept      // ережелердің ең басына қоюды
@@ -223,14 +227,14 @@ Delete a Rule (ережені жою)
 ```shell
 $ sudo nft -a list ruleset        // Ережелердің handle нөмірін көру
 
-$ sudo nft delete rule inet filter INPUT handle 13
+$ sudo nft delete rule inet filter input handle 13
 ```
 
 Replace a Rule (ережені ауыстыру)
 ```shell
 $ sudo nft -a list ruleset
 
-$ sudo nft replace rule inet filter INPUT handle 14   tcp dport 22 ct state new accept      // енгізген ережені, handle 14 нөмірдегі ережемен ауыстырады
+$ sudo nft replace rule inet filter input handle 14   tcp dport 22 ct state new accept      // енгізген ережені, handle 14 нөмірдегі ережемен ауыстырады
 ```
 
 Clear all Rules (ережелерді тазалау)
