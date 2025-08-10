@@ -125,9 +125,6 @@ student@H1:~$ ping -c4 172.16.11.1
 student@gateway:~$ ping -c4 172.16.11.101
 
 $ sudo nft add rule inet filter input ip protocol icmp counter accept
-немесе
-$ sudo nft add rule inet filter input iifname "ens3" ip saddr 172.16.11.0/24 counter accept
-$ sudo nft add rule inet filter input iifname "ens3" ip saddr 172.16.12.0/24 counter accept
 
 student@H1:~$ ping -c4 172.16.11.1
 student@gateway:~$ ping -c4 172.16.11.101
@@ -274,6 +271,23 @@ $ sudo nft list table inet filter
 $ sudo nft list chains
 $ sudo nft list chains inet
 $ sudo nft list chain inet filter input
+```
+
+> `NTP` - UDP 123  
+> `DHCP` - UDP 67,68  
+> `DNS` - UDP 53  
+> `SAMBA` - TCP 445,139 / UDP 137,138  
+> `Web (HTTP, HTTPS)` - TCP 80,443  
+> `FTP` - TCP 21 + PASV port TCP "10090-10100"  
+
+```shell
+Open Port for LAN
+$ sudo nft add rule inet filter input iifname "ens3" ip saddr 172.16.11.0/24 tcp dport { 80,443,445 } counter accept
+$ sudo nft add rule inet filter input iifname "ens3" ip saddr 172.16.11.0/24 udp dport { 53,67,68,123,138 } counter accept
+
+Open Port for LAN and WAN
+$ sudo nft add rule inet filter input tcp dport 21 counter accept
+$ sudo nft add rule inet filter input tcp dport 10090-10100 counter accept
 ```
 
 ### 2) Firewall, NAT using iptables
