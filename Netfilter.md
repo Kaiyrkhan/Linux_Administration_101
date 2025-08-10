@@ -161,32 +161,42 @@ $ sudo nft add rule inet filter INPUT tcp dport 53 accept
 $ sudo nft add rule inet filter INPUT udp dport 53 accept
 ```
 
-```shell
 Add a New Rule (жаңа ереже қосу)
-$ sudo nft add rule inet filter INPUT tcp dport 22 counter accept
-```
-
-insert a Rule
 ```shell
-insert – ережелердің орналасу/орындалу реттілігін (position) ауыстыру үшін қолданады
+$ sudo nft add rule inet filter INPUT tcp dport 22 ct state new accept
+```
+> *add – жаңа қосқан ережені position бойынша СОҢЫНА қоюды*  
+> position – ережелердің орналасу/орындалу реті
 
+insert a New Rule
+```shell
+$ sudo nft insert rule inet filter INPUT tcp dport 22 ct state new accept
+```
+> *insert – жаңа қосқан ережені position бойынша БАСЫНА қоюды*  
+> position – ережелердің орналасу/орындалу реті
+
+handle және index қолдану арқылы ережелердің орналасу ретін алмастыру
+```shell
 $ sudo nft -a list ruleset        // Ережелердің handle нөмірін көру
 
-$ sudo nft insert rule inet filter INPUT handle 12   tcp dport 22 counter accept
-```
+$ sudo nft insert rule inet filter INPUT handle 2  tcp dport 22 counter accept      // көрсетілген handle нөмірдегі ереженің алдына қоюды
 
-Replace a Rule (ережені алмастыру)
-```shell
-$ sudo nft -a list ruleset
-
-$ sudo nft replace rule inet filter INPUT handle 12   tcp dport 22 ct state new counter accept
+$ sudo nft insert rule inet filter input index 2 tcp dport 22 ct state new accept      // орналасу реті бойынша үшінші орынға қоюды, себебі index 0 мәнінен басталады
+$ sudo nft insert rule inet filter input index 0 tcp dport 22 ct state new accept      // ережелердің ең басына қоюды
 ```
 
 Delete a Rule (ережені жою)
 ```shell
 $ sudo nft -a list ruleset        // Ережелердің handle нөмірін көру
 
-$ sudo nft delete rule inet filter INPUT handle 12
+$ sudo nft delete rule inet filter INPUT handle 13
+```
+
+Replace a Rule (ережені алмастыру)
+```shell
+$ sudo nft -a list ruleset
+
+$ sudo nft replace rule inet filter INPUT handle 14   tcp dport 22 ct state new accept
 ```
 
 Clear all Rules (ережелерді тазалау)
