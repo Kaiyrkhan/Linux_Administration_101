@@ -288,8 +288,13 @@ $ sudo nft add rule inet filter input iifname "ens3" ip saddr 172.16.11.0/24 udp
 ```shell
 $ sudo nft add rule inet filter input ip protocol icmp counter log prefix \"ICMP_TRACE\ "
 $ sudo nft add rule inet filter input ip protocol icmp counter accept
-
 $ sudo tail -f /var/log/messages
+
+$ sudo nft add rule inet filter input icmp type echo-request meta length 93-65535 counter drop
+$ sudo nft add rule inet filter input ip protocol icmp counter accept
+$ ping 172.16.11.1 -L 32      // Windows default 32 byte
+$ ping 172.16.11.1 -L 64      // Linux default 64 byte
+$ ping 172.16.11.1 -L 65
 ```
 
 
