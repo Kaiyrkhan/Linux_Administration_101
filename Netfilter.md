@@ -129,12 +129,6 @@ $ sudo nft add rule inet filter input ip protocol icmp counter accept
 student@H1:~$ ping -c4 172.16.11.1
 student@gateway:~$ ping -c4 172.16.11.101
 ```
-*ICMP (IPv4) type:* ***echo-reply, echo-request, destination-unreachable, time-exceeded, parameter-problem т.б.***
-
-> $ sudo nft add rule inet filter input icmp type echo-request accept  
-> $ sudo nft add rule inet filter input icmp type { echo-request, echo-reply, destination-unreachable, time-exceeded } accept
-  
-> $ sudo nft add rule inet filter input ip protocol icmp accept  
 
 ##### 3-мысал: ping H1 to H2 (ICMP хаттамаға рұқсат ету)
 ```shell
@@ -146,8 +140,15 @@ $ sudo nft add rule inet filter forward ip protocol icmp counter accept
 student@H1:~$ ping -c4 172.16.12.101
 student@H2:~$ ping -c4 172.16.11.101
 ```
+*ICMP (IPv4) type:* ***echo-reply, echo-request, destination-unreachable, time-exceeded, parameter-problem т.б.***
+
+> $ sudo nft add rule inet filter input icmp type echo-request accept  
+> $ sudo nft add rule inet filter input icmp type { echo-request, echo-reply, destination-unreachable, time-exceeded } accept
+  
+> $ sudo nft add rule inet filter input ip protocol icmp accept  
+
 > $ sudo nft add rule inet filter forward iifname "ens3" ip saddr 172.16.11.0/24 ip daddr 172.16.12.0/24 counter accept  
-> $ sudo nft add rule inet filter forward iifname "ens3" ip saddr 172.16.12.0/24 ip daddr 172.16.11.0/24 counter accept
+> $ sudo nft add rule inet filter forward iifname "ens3" ip saddr 172.16.12.0/24 ip daddr 172.16.11.0/24 counter accept  
 
 ##### 4-мысал: LAN желідегі құрылғыларды internet желісімен байланыстыру
 ```shell
