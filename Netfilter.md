@@ -36,9 +36,8 @@ $ sudo nft list ruleset
 ```shell
 Set Default Policy to DROP (INPUT and FORWARD Chains)
 
-$ sudo nft chain inet filter INPUT { policy drop \; }
-$ sudo nft сhain inet filter FORWARD { policy drop \; }
-$ sudo nft сhain inet filter OUTPUT { policy accept \; }
+$ sudo nft chain inet filter input { policy drop \; }
+$ sudo nft сhain inet filter forward { policy drop \; }
 ```
 немесе
 ```shell
@@ -59,13 +58,6 @@ $ sudo systemctl restart nftables
 $ sudo nft list ruleset                // жедел жадыда (RAM) сақталған kernel-дегі ережелер (running-config)
 $ cat /etc/nftables.conf               // дискде (HDD/SSD) сақталған конфигурация (saved-config)
 ```
-> $ sudo nano /etc/nftables.conf  
-> $ sudo systemctl restart nftables  
-> $ sudo nft list ruleset  
-
-> $ sudo nano ~/rules.nftables  
-> $ sudo nft -f ~/rules.nftables  
-> $ sudo nft list ruleset  
 
 ```shell
 Add a New Rule to the INPUT Chain
@@ -78,6 +70,24 @@ $ sudo systemctl restart nftables
 Check Current Rules
 $ sudo nft list ruleset
 $ cat /etc/nftables.conf
+```
+
+**Қосымша ақпарат**
+
+```shell
+$ sudo nano /etc/nftables.conf
+$ sudo systemctl restart nftables
+
+$ sudo nft list ruleset
+$ cat /etc/nftables.conf
+```
+
+```shell
+$ sudo nano ~/rules.nftables
+$ sudo nft -f ~/rules.nftables
+
+$ sudo nft list ruleset
+$ cat ~/rules.nftables
 ```
 
 ##### 1-мысал: Loopback интерфейске рұқсат ету
