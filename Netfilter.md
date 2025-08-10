@@ -14,15 +14,19 @@ $ dpkg -s nftables
 ```
 
 ```shell
-$ sudo systemctl status nftables
-
-$ sudo systemctl start nftables
-$ sudo systemctl enable nftables
+$ cat /etc/nftables.conf
 ```
 
 ```shell
 Check Current Rules
 $ sudo nft list ruleset
+```
+
+```shell
+$ sudo systemctl status nftables
+
+$ sudo systemctl start nftables
+$ sudo systemctl enable nftables
 ```
 
 ```shell
