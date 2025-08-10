@@ -174,7 +174,8 @@ Network Address Translation (NAT)
 
 $ sudo nft add table inet nat
 $ sudo nft add chain inet nat POSTROUTING { type nat hook postrouting priority srcnat \; policy accept \; }
-$ sudo nft add rule inet nat POSTROUTING ip saddr 172.16.11.0/24 oifname "ens3" masquerade
+$ sudo nft add rule inet nat POSTROUTING ip saddr 172.16.11.0/24 oifname "ens3" counter masquerade
+$ sudo nft add rule inet nat POSTROUTING ip saddr 172.16.12.0/24 oifname "ens3" counter masquerade
 ```
 
 ```shell
@@ -197,12 +198,6 @@ $ sudo nft add rule inet filter input ct state invalid counter drop
 ```shell
 student@gateway:~$ ping 8.8.8.8
 student@gateway:~$ ping google.com
-```
-
-```shell
-Allow LAN IP addresses
-$ sudo nft add rule inet filter forward oifname "ens3" ip saddr 172.16.11.0/24 counter accept
-$ sudo nft add rule inet filter forward iifname "ens3" ip daddr 172.16.11.0/24 counter accept
 ```
 ```shell
 student@H1:~$ ping 8.8.8.8
