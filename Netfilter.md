@@ -168,7 +168,7 @@ $ sudo nft add rule inet filter INPUT tcp dport 22 ct state new accept
 > *add – жаңа қосқан ережені position бойынша СОҢЫНА қоюды*  
 > position – ережелердің орналасу/орындалу реті
 
-insert a New Rule
+insert a New Rule (жаңа ереже енгізу)
 ```shell
 $ sudo nft insert rule inet filter INPUT tcp dport 22 ct state new accept
 ```
@@ -179,9 +179,9 @@ handle және index нөмір қолдану арқылы ережелерд�
 ```shell
 $ sudo nft -a list ruleset        // Ережелердің handle нөмірін көру
 
-$ sudo nft insert rule inet filter INPUT handle 2  tcp dport 22 counter accept      // көрсетілген handle нөмірдегі ереженің алдына қоюды
+$ sudo nft insert rule inet filter INPUT handle 2  tcp dport 22 counter accept      // енгізген ережені, handle 2 нөмірдегі ереженің алдына қою арқылы орын алмасады
 
-$ sudo nft insert rule inet filter input index 2 tcp dport 22 ct state new accept      // орналасу реті бойынша үшінші орынға қоюды, себебі index 0 мәнінен басталады
+$ sudo nft insert rule inet filter input index 2 tcp dport 22 ct state new accept      // орналасу реті бойынша үшінші орынға қоюды, себебі index мәні "0"-ден басталады
 $ sudo nft insert rule inet filter input index 0 tcp dport 22 ct state new accept      // ережелердің ең басына қоюды
 ```
 
@@ -192,11 +192,11 @@ $ sudo nft -a list ruleset        // Ережелердің handle нөмірі�
 $ sudo nft delete rule inet filter INPUT handle 13
 ```
 
-Replace a Rule (ережені алмастыру)
+Replace a Rule (ережені ауыстыру)
 ```shell
 $ sudo nft -a list ruleset
 
-$ sudo nft replace rule inet filter INPUT handle 14   tcp dport 22 ct state new accept
+$ sudo nft replace rule inet filter INPUT handle 14   tcp dport 22 ct state new accept      // енгізген ережені, handle 14 нөмірдегі ережемен ауыстырады
 ```
 
 Clear all Rules (ережелерді тазалау)
