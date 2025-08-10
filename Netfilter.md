@@ -163,15 +163,13 @@ $ sudo nft add rule inet filter INPUT udp dport 53 accept
 Delete Rule
 ```shell
 $ sudo nft -a list ruleset
-немесе
-$ sudo nft --handle list ruleset
 
 $ sudo nft delete rule inet filter INPUT handle 12
 ```
 
 Replace (алмастыру) Rule
 ```shell
-$ sudo nft --handle list ruleset
+$ sudo nft -a list ruleset
 
 $ sudo nft replace rule inet filter INPUT handle 12   tcp dport 22 ct state new counter accept
 ```
