@@ -160,19 +160,11 @@ $ sudo nft add rule inet filter INPUT tcp dport 53 accept
 $ sudo nft add rule inet filter INPUT udp dport 53 accept
 ```
 
-Delete Rule
-```shell
-$ sudo nft -a list ruleset
-
-$ sudo nft delete rule inet filter INPUT handle 12
-```
-
 insert Rule
 ```shell
-position – ережелердің орындалу ретінің нөмірі
+position – ережелердің орналасуының реттік нөмірі (яғни, реттік нөмір бойынша ережелер орындалады)
 
-Ережелердің position нөмірін көру
-$ sudo nft list chain
+$ sudo nft list chain       // Ережелердің position нөмірін көру
 $ sudo nft list chain inet filter input
 
 $ sudo nft insert rule inet filter INPUT position 10   tcp dport 22 counter accept
@@ -185,11 +177,21 @@ $ sudo nft -a list ruleset
 $ sudo nft replace rule inet filter INPUT handle 12   tcp dport 22 ct state new counter accept
 ```
 
+Delete a Rule to the INPUT Chain
+```shell
+$ sudo nft -a list ruleset        // Ережелердің handle нөмірін көру
+
+$ sudo nft delete rule inet filter INPUT handle 12
+```
+
+Clear all Rules in a Chains
+```shell
+$ sudo nft flush ruleset
+```
+
 ##### Қосымша ақпарат
 
 ```shell
-$ sudo nft flush ruleset
-
 $ sudo nft list ruleset
 
 $ sudo nft list tables
