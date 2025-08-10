@@ -175,7 +175,7 @@ $ sudo nft insert rule inet filter INPUT tcp dport 22 ct state new accept
 > *insert – жаңа қосқан ережені position бойынша БАСЫНА қоюды*  
 > position – ережелердің орналасу/орындалу реті
 
-handle және index қолдану арқылы ережелердің орналасу ретін алмастыру
+handle және index нөмір қолдану арқылы ережелердің орналасу ретін (position) алмастыру
 ```shell
 $ sudo nft -a list ruleset        // Ережелердің handle нөмірін көру
 
