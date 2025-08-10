@@ -38,6 +38,16 @@ Set Default Policy to DROP (INPUT and FORWARD Chains)
 
 $ sudo nft chain inet filter INPUT { policy drop \; }
 $ sudo nft сhain inet filter FORWARD { policy drop \; }
+$ sudo nft сhain inet filter OUTPUT { policy drop \; }
+```
+немесе
+```shell
+Create a New Table and Chains
+
+$ sudo nft add table inet filter  
+$ sudo nft add chain inet filter INPUT { type filter hook input priority 0 \; policy drop \; }  
+$ sudo nft add chain inet filter FORWARD { type filter hook forward priority 0 \; policy drop \; }  
+$ sudo nft add chain inet filter OUTPUT { type filter hook output priority 0 \; policy accept \; }
 ```
 
 ```shell
@@ -61,17 +71,13 @@ $ cat /etc/nftables.conf               // дискде (HDD/SSD) сақталғ�
 Add a New Rule to the INPUT Chain
 $ sudo nft add rule inet filter INPUT tcp dport 22 counter accept
 
-$ sudo nft list ruleset  
-```
+Save nftables Configuration
+$ sudo nft list ruleset | sudo tee /etc/nftables.conf
+$ sudo systemctl restart nftables
 
-**Қосымша ақпарат**
-```shell
-Create a New Table and Chains
-
-$ sudo nft add table inet filter  
-$ sudo nft add chain inet filter INPUT { type filter hook input priority 0 \; policy drop \; }  
-$ sudo nft add chain inet filter FORWARD { type filter hook forward priority 0 \; policy drop \; }  
-$ sudo nft add chain inet filter OUTPUT { type filter hook output priority 0 \; policy accept \; }
+Check Current Rules
+$ sudo nft list ruleset
+$ cat /etc/nftables.conf
 ```
 
 ##### 1-мысал: Loopback интерфейске рұқсат ету
