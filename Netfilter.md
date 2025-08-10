@@ -132,7 +132,9 @@ $ sudo nft add rule inet filter INPUT ct state established,related accept
 $ sudo nft add rule inet filter INPUT ct state invalid drop
 ```
 *ct state-тің негізгі аргументтері:* new, established, related, invalid  
-> $ sudo nft add rule inet filter INPUT tcp dport { 22, 80, 443 } ct state new accept  
+> $ sudo nft add rule inet filter INPUT tcp dport { 22, 80, 443 } ct state **new** accept  
+> $ sudo nft add rule inet filter INPUT ct state **established,related** accept  
+> $ sudo nft add rule inet filter INPUT ct state **invalid** drop  
 
 > $ ... ct state snat log  
 > $ ... ct state dnat log  
