@@ -298,8 +298,13 @@ $ sudo nft add rule inet filter input udp dport { 53,67,68,123,138 } ip saddr 17
 ```
 
 ```shell
+Scanning TCP Ports
 $ nc -w1 -vz 172.16.11.1 22
+$ nc -w1 -vz 172.16.11.1 80 443
+
+Scanning UDP Ports
 $ nc -w1 -u -vz 172.16.11.1 123
+$ nc -w1 -u -vz 172.16.11.1 53
 ```
 
 ```shell
