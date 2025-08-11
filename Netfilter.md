@@ -204,6 +204,15 @@ student@H1:~$ ping 8.8.8.8
 student@H1:~$ ping google.com
 ```
 
+```shell
+student@H1:~$ ping google.com
+
+$ sudo nft add rule inet filter forward ct state established,related counter accept
+$ sudo nft add rule inet filter forward udp dport 53 ip saddr 172.16.11.0/24 counter accept
+
+student@H1:~$ ping google.com
+```
+
 ### Қосымша ақпарат
 
 Add a New Rule (жаңа ереже қосу)
@@ -278,11 +287,11 @@ Allow/Open Ports for LAN
 ```shell
 $ sudo nft add rule inet filter input iifname "lo" counter accept
 
-$ sudo nft add rule inet filter input ip saddr 172.16.11.101/32 tcp dport 22 counter accept
-$ sudo nft add rule inet filter input ether saddr 5C:60:BA:58:9F:2B tcp dport 22 counter accept
+$ sudo nft add rule inet filter input tcp dport 22 ip saddr 172.16.11.101/32 counter accept
+$ sudo nft add rule inet filter input tcp dport 22 ether saddr 5C:60:BA:58:9F:2B counter accept
 
-$ sudo nft add rule inet filter input iifname "ens3" ip saddr 172.16.11.0/24 tcp dport { 80,443,445 } counter accept
-$ sudo nft add rule inet filter input iifname "ens3" ip saddr 172.16.11.0/24 udp dport { 53,67,68,123,138 } counter accept
+$ sudo nft add rule inet filter input tcp dport { 80,443,445 } ip saddr 172.16.11.0/24  counter accept
+$ sudo nft add rule inet filter input udp dport { 53,67,68,123,138 } ip saddr 172.16.11.0/24 counter accept
 ```
 
 ```shell
