@@ -206,11 +206,14 @@ student@H1:~$ ping google.com
 
 ```shell
 student@H1:~$ ping google.com
+student@H2:~$ ping google.com
 
 $ sudo nft add rule inet filter forward ct state established,related counter accept
 $ sudo nft add rule inet filter forward udp dport 53 ip saddr 172.16.11.0/24 counter accept
+$ sudo nft add rule inet filter forward udp dport 53 ip saddr 172.16.12.0/24 counter accept
 
 student@H1:~$ ping google.com
+student@H2:~$ ping google.com
 ```
 
 ### Қосымша ақпарат
