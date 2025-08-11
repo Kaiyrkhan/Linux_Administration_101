@@ -282,7 +282,7 @@ $ sudo nft add rule inet filter input iifname "ens3" ip saddr 172.16.11.0/24 udp
 
 ```shell
 $ nc -w1 -vz 172.16.11.1 22
-$ nc -w1 -vz 172.16.11.1 80
+$ nc -w1 -u -vz 172.16.11.1 123
 ```
 
 ```shell
