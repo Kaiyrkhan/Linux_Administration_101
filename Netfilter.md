@@ -269,6 +269,11 @@ $ sudo nft list chain inet filter input
 > `Web (HTTP, HTTPS)` - TCP 80,443  
 > `FTP` - TCP 21 + PASV port TCP "10090-10100"  
 
+```shell
+$ ss -tulpn
+$ netstat -tulpn
+```
+
 Allow/Open Ports for LAN
 ```shell
 $ sudo nft add rule inet filter input iifname "lo" counter accept
