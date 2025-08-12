@@ -79,7 +79,7 @@ VLAN құрылғанын тексеру
 ```shell
 $ sudo cat /proc/net/vlan/config
 ```
-IEEE 802.1Q VLAN
+IEEE 802.1Q VLAN құрылғанын тексеру
 ```shell
 $ ip -d link show ens4.11
 $ ip -d link show ens4.12
