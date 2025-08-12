@@ -14,16 +14,6 @@
 ![Logical Topology](Topology/Topology_interVLANRouting_NAT_Linux.png)  
 [Download Link for PNETLab Topology File](Topology/Topology_interVLANRouting_NAT_Linux.unl)
 
-### Құрылғының атауын (Device Name) өзгерту
-
-```shell
-$ sudo hostnamectl set-hostname GW
-$ sudo nano /etc/hosts
-127.0.1.1  GW
-Ctrl+O -> Enter -> Ctrl+X -> Ctrl+L
-$ bash
-```
-
 ### 1-қадам: 802.1Q VLAN құру
 
 8021q модулін жүктеу және автожүктеу қызметіне қосу
@@ -150,6 +140,7 @@ $ sudo nano /etc/hosts
 127.0.1.1  GW
 Ctrl+O -> Enter -> Ctrl+X -> Ctrl+L
 $ bash
+```
 
 ```shell
 $ sudo nano /etc/hosts
