@@ -3,10 +3,11 @@
   1) Firewall, NAT using nftables;
   2) Firewall, NAT using iptables.
 
-### 🖧 Topology
+### 🖧 Network Topology
 ![Topology](Topology/Branch_Network_Topology.png)
 
 > `Web (HTTP, HTTPS)` - TCP 80,443  
+> `SSH` - TCP 22  
 > `NTP` - UDP 123  
 > `DHCP` - UDP 67,68  
 > `DNS` - UDP 53  
@@ -103,6 +104,7 @@ $ cat /etc/nftables.conf               // дискде (HDD/SSD) сақталғ�
 
 Add a New Rule to the INPUT Chain
 ```shell
+Allow/Open Port 22 (SSH)
 $ sudo nft add rule inet filter input ip saddr 172.16.11.101/32 tcp dport 22 counter accept
 
 Check Current Rules
@@ -111,7 +113,7 @@ $ cat /etc/nftables.conf
 
 Save nftables Configuration
 $ sudo nft list ruleset | sudo tee /etc/nftables.conf
-$ sudo systemctl restart nftables
+$ sudo systemctl restart nftables                            // nftables daemon-ын қайтажүктеу
 
 Check Current Rules
 $ sudo nft list ruleset
