@@ -266,12 +266,12 @@ student@H2:~$ nc -w1 -vz 172.16.12.1 80 443
 
 **Allow/Open Ports (FORWARD Chain)** - WAN желідегі веб-сайттың контентіне рұқсат ету
 ```shell
-Docker -> Chrome (Browser) -> https://atu.edu.kz
+PNETLab -> Docker -> Chrome (Browser) -> https://atu.edu.kz
 
 $ sudo nft add rule inet filter forward ip saddr 172.16.11.0/24 tcp dport { 80, 443 } ct state new counter accept
 $ sudo nft add rule inet filter forward ip saddr 172.16.12.0/24 tcp dport { 80, 443 } ct state new counter accept
 
-Docker -> Chrome (Browser) -> https://atu.edu.kz
+PNETLab -> Docker -> Chrome (Browser) -> https://atu.edu.kz
 ```
 
 ### Қосымша ақпарат
