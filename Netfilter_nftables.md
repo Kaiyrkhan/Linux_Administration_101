@@ -207,7 +207,7 @@ student@H1:~$ ping -c4 8.8.8.8
 student@H2:~$ ping -c4 8.8.8.8
 ```
 
-#### 5-мысал: DNS хаттамаға (UDP/53 порт) рұқсат ету 
+#### 5-мысал: DNS хаттамаға (UDP 53 port) рұқсат ету 
 ```shell
 student@H1:~$ ping -c4 google.com
 student@H2:~$ ping -c4 google.com
@@ -249,6 +249,30 @@ student@GW:~$ ping -c4 google.com
 > $ ... ct state dnat log  
 > $ ... ct status dnat  
 > $ ... ct status snat  
+
+#### 6-мысал: HTTP және HTTPS хаттамаларға (TCP 80,443 port) рұқсат ету
+
+**Allow/Open Ports (INPUT Chain)**
+```shell
+student@H1:~$ nc -w1 -vz 172.16.11.1 80 443
+student@H2:~$ nc -w1 -vz 172.16.12.1 80 443
+
+$ sudo nft add rule inet filter input ip saddr 172.16.11.0/24 tcp dport { 80, 443 } ct state new counter accept
+$ sudo nft add rule inet filter input ip saddr 172.16.12.0/24 tcp dport { 80, 443 } ct state new counter accept
+
+student@H1:~$ nc -w1 -vz 172.16.11.1 80 443
+student@H2:~$ nc -w1 -vz 172.16.12.1 80 443
+```
+
+**Allow/Open Ports (FORWARD Chain)**
+```shell
+Docker -> Chrome (Browser) -> https://atu.edu.kz
+
+$ sudo nft add rule inet filter forward ip saddr 172.16.11.0/24 tcp dport { 80, 443 } ct state new counter accept
+$ sudo nft add rule inet filter forward ip saddr 172.16.12.0/24 tcp dport { 80, 443 } ct state new counter accept
+
+Docker -> Chrome (Browser) -> https://atu.edu.kz
+```
 
 ### Қосымша ақпарат
 
