@@ -34,29 +34,31 @@ $ bash
 
 ## 1) Firewall, NAT using nftables
 
-
-
+Пакеттің (Package) жүйеге орнатылғанын тексеру
 ```shell
 $ dpkg -l nftables
 $ dpkg -s nftables
 ```
 
+Check Current Rules
+```shell
+$ sudo nft list ruleset
+```
 ```shell
 $ cat /etc/nftables.conf
 ```
 ![images](images/cat_nftables.png)
 
-```shell
-Check Current Rules
-$ sudo nft list ruleset
-```
-
+Daemon/Service-ті жүктеу және автожүктеу қызметіне қосу
 ```shell
 $ sudo systemctl status nftables
 
-$ sudo systemctl start nftables
-$ sudo systemctl enable nftables
+$ sudo systemctl start nftables          // nftables daemon-ын жүктеу
+$ sudo systemctl enable nftables         // nftables daemon-ын автожүктеу қызметіне қосу
+```
 
+Check Current Rules
+```shell
 $ sudo nft list ruleset
 ```
 ![images](images/default_filter_table.png)
@@ -77,19 +79,27 @@ $ sudo nft add chain inet filter FORWARD { type filter hook forward priority 0 \
 $ sudo nft add chain inet filter OUTPUT { type filter hook output priority 0 \; policy accept \; }
 ```
 
+Check Current Rules
 ```shell
-Save nftables Configuration
+$ sudo nft list ruleset
+$ cat /etc/nftables.conf
+```
 
+Save nftables Configuration
+```shell
 $ sudo nft list ruleset | sudo tee /etc/nftables.conf
 $ sudo systemctl restart nftables
+```
 
+Check Current Rules
+```shell
 $ sudo nft list ruleset                // жедел жадыда (RAM) сақталған kernel-дегі ережелер (running-config)
 $ cat /etc/nftables.conf               // дискде (HDD/SSD) сақталған конфигурация (saved-config)
 ```
 
-```shell
 Add a New Rule to the INPUT Chain
-$ sudo nft add rule inet filter input ip saddr 172.16.11.101/32 tcp dport 22 counter accept
+```shell
+$ sudo nft add rule inet filter input tcp dport 22 ip saddr 172.16.11.101/32 counter accept
 
 Check Current Rules
 $ sudo nft list ruleset
