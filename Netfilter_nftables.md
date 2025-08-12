@@ -212,6 +212,9 @@ student@H2:~$ ping -c4 8.8.8.8
 student@H1:~$ ping -c4 google.com
 student@H2:~$ ping -c4 google.com
 student@GW:~$ ping -c4 google.com
+
+student@H1:~$ nc -w1 -u -vz 172.16.11.1 53
+student@H2:~$ nc -w1 -u -vz 172.16.12.1 53
 ```
 
 ```shell
@@ -238,6 +241,9 @@ $ sudo nft add rule inet filter input ct state invalid counter drop
 student@H1:~$ ping -c4 google.com
 student@H2:~$ ping -c4 google.com
 student@GW:~$ ping -c4 google.com
+
+student@H1:~$ nc -w1 -u -vz 172.16.11.1 53
+student@H2:~$ nc -w1 -u -vz 172.16.12.1 53
 ```
 
 *ct state-тің негізгі аргументтері:* ***new, established, related, invalid***  
@@ -252,26 +258,38 @@ student@GW:~$ ping -c4 google.com
 
 #### 6-мысал: HTTP және HTTPS хаттамаларға (TCP 80,443 port) рұқсат ету
 
+```shell
+$ sudo apt update
+$ sudo apt install elinks curl
+```
+
 Allow/Open Ports (INPUT Chain) – LAN желідегі веб-сайттың контентіне рұқсат ету
 ```shell
-student@H1:~$ nc -w1 -vz 172.16.11.1 80 443
-student@H2:~$ nc -w1 -vz 172.16.12.1 80 443
+student@H1:~$ nc -w1 -vz 172.16.11.1 80
+Connection Timeout
+student@H1:~$ elinks http://edu.local
 
 $ sudo nft add rule inet filter input ip saddr 172.16.11.0/24 tcp dport { 80, 443 } ct state new counter accept
 $ sudo nft add rule inet filter input ip saddr 172.16.12.0/24 tcp dport { 80, 443 } ct state new counter accept
 
-student@H1:~$ nc -w1 -vz 172.16.11.1 80 443
-student@H2:~$ nc -w1 -vz 172.16.12.1 80 443
+student@H1:~$ nc -w1 -vz 172.16.11.1 80
+Connection Refused
+student@H1:~$ elinks http://edu.local
 ```
 
 Allow/Open Ports (FORWARD Chain) – WAN желідегі веб-сайттың контентіне рұқсат ету
 ```shell
-PNETLab -> Docker -> Chrome (Browser) -> https://atu.edu.kz
+
+$ elinks https://qbilim.kz
+немесе
+PNETLab -> Docker -> Chrome (Browser) -> https://qbilim.kz
 
 $ sudo nft add rule inet filter forward ip saddr 172.16.11.0/24 tcp dport { 80, 443 } ct state new counter accept
 $ sudo nft add rule inet filter forward ip saddr 172.16.12.0/24 tcp dport { 80, 443 } ct state new counter accept
 
-PNETLab -> Docker -> Chrome (Browser) -> https://atu.edu.kz
+$ elinks https://qbilim.kz
+немесе
+PNETLab -> Docker -> Chrome (Browser) -> https://qbilim.kz
 ```
 
 ### Қосымша ақпарат
