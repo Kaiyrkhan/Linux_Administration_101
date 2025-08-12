@@ -103,7 +103,7 @@ $ cat /etc/nftables.conf               // дискде (HDD/SSD) сақталғ�
 
 Add a New Rule to the INPUT Chain
 ```shell
-$ sudo nft add rule inet filter input tcp dport 22 ip saddr 172.16.11.101/32 counter accept
+$ sudo nft add rule inet filter input ip saddr 172.16.11.101/32 tcp dport 22 counter accept
 
 Check Current Rules
 $ sudo nft list ruleset
