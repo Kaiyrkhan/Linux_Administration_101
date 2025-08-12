@@ -202,6 +202,9 @@ $ sudo nft add chain inet nat POSTROUTING { type nat hook postrouting priority s
 $ sudo nft add rule inet nat POSTROUTING ip saddr 172.16.11.0/24 oifname "ens3" counter masquerade
 $ sudo nft add rule inet nat POSTROUTING ip saddr 172.16.12.0/24 oifname "ens3" counter masquerade
 ```
+```shell
+$ sudo nft add rule inet nat POSTROUTING ip saddr 172.16.11.0/24 oifname "ens3" counter snat to 125.125.125.12
+```
 
 ```shell
 student@H1:~$ ping -c4 8.8.8.8
