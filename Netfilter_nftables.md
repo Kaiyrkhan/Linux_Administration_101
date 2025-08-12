@@ -215,21 +215,29 @@ student@GW:~$ ping -c4 google.com
 ```
 
 ```shell
+$ sudo nft add rule inet filter forward ip saddr 172.16.11.0/24 udp dport 53 counter accept
+$ sudo nft add rule inet filter forward ip saddr 172.16.12.0/24 udp dport 53 counter accept
+```
+
+**Netfilter Conntrack (Connection Tracking)**
+
+```shell
+Conntrack (FORWARD Chain)
+
 $ sudo nft add rule inet filter forward ct state established,related counter accept
-$ sudo nft add rule inet filter forward udp dport 53 ip saddr 172.16.11.0/24 counter accept
-$ sudo nft add rule inet filter forward udp dport 53 ip saddr 172.16.12.0/24 counter accept
+$ sudo nft add rule inet filter forward ct state invalid counter drop
+```
+```shell
+Conntrack (INPUT Chain)
+
+$ sudo nft add rule inet filter input ct state established,related counter accept
+$ sudo nft add rule inet filter input ct state invalid counter drop
 ```
 
 ```shell
 student@H1:~$ ping -c4 google.com
 student@H2:~$ ping -c4 google.com
 student@GW:~$ ping -c4 google.com
-```
-
-**Netfilter Conntrack (Connection Tracking)**
-```shell
-$ sudo nft add rule inet filter input ct state established,related counter accept
-$ sudo nft add rule inet filter input ct state invalid counter drop
 ```
 
 *ct state-тің негізгі аргументтері:* ***new, established, related, invalid***  
