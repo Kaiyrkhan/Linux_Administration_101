@@ -16,7 +16,7 @@
 
 ### 1-қадам: 802.1Q VLAN құру
 
-**8021q модулін жүктеу және автожүктеу қызметіне қосу**
+8021q модулін жүктеу және автожүктеу қызметіне қосу
 ```shell
 8021q модулін жүктеу
 $ sudo modprobe 8021q
@@ -28,7 +28,7 @@ $ lsmod | grep 8021q
 $ echo "8021q" | sudo tee /etc/modules-load.d/8021q.conf
 ```
 
-**Virtual interface (VLAN11 және VLAN12) құру**
+Virtual interface (VLAN11 және VLAN12) құру
 ```shell
 $ ip address
 ```
@@ -93,7 +93,7 @@ $ cat /proc/sys/net/ipv4/ip_forward
 
 ### 3-қадам: Cisco Switch конфигурациялау
 
-**Trunk Port тағайындау**
+Trunk Port тағайындау
 ```shell
 configure terminal
 
@@ -108,7 +108,7 @@ show int status
 show int g0/1 switchport
 ```
 
-**Access Port тағайындау**
+Access Port тағайындау
 ```shell
 configure terminal
 vlan 11
@@ -125,14 +125,14 @@ switchport access vlan 12
 show vlan brief
 ```
 
-**Save Configuration**
+Save Configuration
 ```shell
 copy run start
 ```
 
 ### 4-қадам: End Device (H1, H2) құрылғыны конфигурациялау
 
-**Құрылғының атауын (Device Name) өзгерту**
+Құрылғының атауын (Device Name) өзгерту
 ```shell
 $ sudo nano /etc/hosts
 127.0.1.1  H1
@@ -142,7 +142,7 @@ $ sudo hostnamectl set-hostname H1
 $ bash
 ```
 
-**Желілік интерфейсті конфигурациялау**
+Желілік интерфейсті конфигурациялау
 ```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
