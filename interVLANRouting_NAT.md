@@ -1,15 +1,16 @@
 # interVLAN Routing on Debian 12.x 
 
-#### Жұмыстың орындалу қадамы: 
+### Жұмыстың орындалу қадамы: 
   1) 802.1Q VLAN құру;
   2) IP Packet Forwarding қызметін қосу;
   3) Cisco Switch конфигурациялау;
   4) End Device (H1, H2) құрылғыны конфигурациялау;
   5) Нәтижені тексеру.
 
-#### Physical Network Topology
+### Physical Network Topology
 ![Physical Topology](Topology/Topology_interVLANRouting_NAT_Linux_Physical.png)
-#### Logical Network Topology
+
+### Logical Network Topology
 ![Logical Topology](Topology/Topology_interVLANRouting_NAT_Linux.png)  
 [Download Link for PNETLab Topology File](Topology/Topology_interVLANRouting_NAT_Linux.unl)
 
