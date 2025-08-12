@@ -96,7 +96,6 @@ $ cat /etc/nftables.conf
 
 Save nftables Configuration
 $ sudo nft list ruleset | sudo tee /etc/nftables.conf
-$ sudo systemctl restart nftables                            // nftables daemon-ын қайтажүктеу
 
 Check Current Rules
 $ sudo nft list ruleset
@@ -106,8 +105,16 @@ $ cat /etc/nftables.conf
 **Қосымша ақпарат**
 
 ```shell
+$ sudo nft add rule inet filter input iifname "lo" counter accept
+$ sudo nft list ruleset | sudo tee /etc/nftables.conf
+
+$ sudo nft list ruleset
+$ cat /etc/nftables.conf
+```
+
+```shell
 $ sudo nano /etc/nftables.conf
-$ sudo systemctl restart nftables
+$ sudo systemctl restart nftables      // nftables daemon-ын қайтажүктеу
 
 $ sudo nft list ruleset
 $ cat /etc/nftables.conf
