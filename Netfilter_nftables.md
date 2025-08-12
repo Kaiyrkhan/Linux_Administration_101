@@ -252,7 +252,7 @@ student@GW:~$ ping -c4 google.com
 
 #### 6-мысал: HTTP және HTTPS хаттамаларға (TCP 80,443 port) рұқсат ету
 
-**Allow/Open Ports (INPUT Chain)**
+**Allow/Open Ports (INPUT Chain)** - LAN желідегі веб-сайттың контентіне рұқсат ету
 ```shell
 student@H1:~$ nc -w1 -vz 172.16.11.1 80 443
 student@H2:~$ nc -w1 -vz 172.16.12.1 80 443
@@ -264,7 +264,7 @@ student@H1:~$ nc -w1 -vz 172.16.11.1 80 443
 student@H2:~$ nc -w1 -vz 172.16.12.1 80 443
 ```
 
-**Allow/Open Ports (FORWARD Chain)**
+**Allow/Open Ports (FORWARD Chain)** - WAN желідегі веб-сайттың контентіне рұқсат ету
 ```shell
 Docker -> Chrome (Browser) -> https://atu.edu.kz
 
