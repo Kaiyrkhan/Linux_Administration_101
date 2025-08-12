@@ -57,9 +57,9 @@ $ sudo nano /etc/network/interfaces
 
 ```shell
 $ sudo systemctl restart networking
-```
+
 немесе
-```shell
+
 $ sudo ifdown ens4 && sudo ifup ens4
 $ sudo ifup ens4.11
 $ sudo ifup ens4.12
