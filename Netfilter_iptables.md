@@ -1,8 +1,11 @@
-# Netfilter (Firewall, NAT)
-  1) Firewall, NAT using nftables;
-  2) Firewall, NAT using iptables.
+# Netfilter (Firewall, NAT) using iptables
 
-### 🖧 Network Topology
+#### Жұмыстың орындалу қадамы: 
+  1) [interVLAN Routing конфигурациялау](https://github.com/Kaiyrkhan/Linux_Administration_101/blob/main/VLAN_interVLANRouting.md);
+  2) Firewall, NAT using iptables;
+  3) Нәтижені тексеру.
+
+#### 🖧 Network Topology
 ![Topology](Topology/Branch_Network_Topology.png)
 
 > `Web (HTTP, HTTPS)` - TCP 80,443  
@@ -13,26 +16,7 @@
 > `SAMBA` - TCP 445,139 / UDP 137,138  
 > `FTP` - TCP 21 + PASV port TCP "10090-10100"  
 
-## Құрылғының атауын (Device Name) өзгерту
-
-```shell
-$ sudo hostnamectl set-hostname GW
-$ sudo nano /etc/hosts
-127.0.1.1  GW
-Ctrl+O -> Enter -> Ctrl+X -> Ctrl+L
-$ bash
-```
-
-```shell
-$ sudo nano /etc/hosts
-127.0.1.1  H1
-Ctrl+O -> Enter -> Ctrl+X -> Ctrl+L
-
-$ sudo hostnamectl set-hostname H1
-$ bash
-```
-
-### 2) Firewall, NAT using iptables
+## Firewall, NAT using iptables
 
 ##### iptables пакетін орнату және конфигурациялау
 ```shell
