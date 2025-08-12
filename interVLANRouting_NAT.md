@@ -1,22 +1,22 @@
 # interVLAN Routing on Debian 12.x 
 
-### Жұмыстың орындалу қадамы: 
+#### Жұмыстың орындалу қадамы: 
   1) 802.1Q VLAN құру;
   2) IP Packet Forwarding қызметін қосу;
   3) Cisco Switch конфигурациялау;
   4) End Device (H1, H2) құрылғыны конфигурациялау;
   5) Нәтижені тексеру.
 
-### Physical Network Topology
+#### Physical Network Topology
 ![Physical Topology](Topology/Topology_interVLANRouting_NAT_Linux_Physical.png)
 
-### Logical Network Topology
+#### Logical Network Topology
 ![Logical Topology](Topology/Topology_interVLANRouting_NAT_Linux.png)  
 [Download Link for PNETLab Topology File](Topology/Topology_interVLANRouting_NAT_Linux.unl)
 
-### 1) 802.1Q VLAN құру
+### 1-қадам: 802.1Q VLAN құру
 
-##### 8021q модулін жүктеу және автожүктеу қызметіне қосу
+**8021q модулін жүктеу және автожүктеу қызметіне қосу**
 ```shell
 8021q модулін жүктеу
 $ sudo modprobe 8021q
@@ -28,7 +28,7 @@ $ lsmod | grep 8021q
 $ echo "8021q" | sudo tee /etc/modules-load.d/8021q.conf
 ```
 
-##### Virtual interface (VLAN11 және VLAN12) құру
+**Virtual interface (VLAN11 және VLAN12) құру**
 ```shell
 $ ip address
 ```
@@ -72,7 +72,7 @@ $ ip -d link show ens4.11
 $ ip -d link show ens4.12
 ```
 
-### 2) IP Packet Forwarding қызметін іске қосу (enable)
+### 2-қадам: IP Packet Forwarding қызметін іске қосу (enable)
 ```shell
 $ cat /proc/sys/net/ipv4/ip_forward
 0
@@ -89,9 +89,9 @@ $ cat /proc/sys/net/ipv4/ip_forward
 1
 ```
 
-### 3) Cisco Switch конфигурациялау
+### 3-қадам: Cisco Switch конфигурациялау
 
-##### Trunk Port тағайындау
+**Trunk Port тағайындау**
 ```shell
 configure terminal
 
@@ -106,7 +106,7 @@ show int status
 show int g0/1 switchport
 ```
 
-##### Access Port тағайындау
+**Access Port тағайындау**
 ```shell
 configure terminal
 vlan 11
@@ -123,13 +123,24 @@ switchport access vlan 12
 show vlan brief
 ```
 
-##### Save Configuration
+**Save Configuration**
 ```shell
 copy run start
 ```
 
-### 4) End Device (H1, H2) құрылғыны конфигурациялау
+### 4-қадам: End Device (H1, H2) құрылғыны конфигурациялау
 
+**Құрылғының атауын (Device Name) өзгерту**
+```shell
+$ sudo nano /etc/hosts
+127.0.1.1  H1
+Ctrl+O -> Enter -> Ctrl+X -> Ctrl+L
+
+$ sudo hostnamectl set-hostname H1
+$ bash
+```
+
+**Желілік интерфейсті конфигурациялау**
 ```shell
 $ sudo nano /etc/network/interfaces
   auto ens3
@@ -153,7 +164,7 @@ $ ip route
 $ cat /etc/resolv.conf
 ```
 
-##### Нəтижені тексеру
+### 5-қадам: Нəтижені тексеру
 ```shell
 ping H1 to H2
 
