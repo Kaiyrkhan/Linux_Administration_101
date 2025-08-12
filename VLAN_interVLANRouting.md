@@ -65,8 +65,8 @@ $ sudo ifup ens4.11
 $ sudo ifup ens4.12
 ```
 
-```shell
 VLAN құрылғанын тексеру
+```shell
 $ sudo cat /proc/net/vlan/config
 ```
 ```shell
