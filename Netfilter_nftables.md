@@ -172,9 +172,6 @@ student@H2:~$ ping -c4 172.16.11.101
 > $ sudo nft add rule inet filter input icmp type echo-request accept  
 > $ sudo nft add rule inet filter input icmp type { echo-request, echo-reply, destination-unreachable, time-exceeded } accept  
 
-> $ sudo nft add rule inet filter forward iifname "ens3" ip saddr 172.16.11.0/24 ip daddr 172.16.12.0/24 counter accept  
-> $ sudo nft add rule inet filter forward iifname "ens3" ip saddr 172.16.12.0/24 ip daddr 172.16.11.0/24 counter accept  
-
 ##### 4-мысал: LAN желідегі құрылғыларды internet желісімен байланыстыру
 ```shell
 student@GW:~$ ping 8.8.8.8
