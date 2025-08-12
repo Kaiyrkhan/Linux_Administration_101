@@ -16,25 +16,6 @@
 > `SAMBA` - TCP 445,139 / UDP 137,138  
 > `FTP` - TCP 21 + PASV port TCP "10090-10100"  
 
-## Құрылғының атауын (Device Name) өзгерту
-
-```shell
-$ sudo hostnamectl set-hostname GW
-$ sudo nano /etc/hosts
-127.0.1.1  GW
-Ctrl+O -> Enter -> Ctrl+X -> Ctrl+L
-$ bash
-```
-
-```shell
-$ sudo nano /etc/hosts
-127.0.1.1  H1
-Ctrl+O -> Enter -> Ctrl+X -> Ctrl+L
-
-$ sudo hostnamectl set-hostname H1
-$ bash
-```
-
 ## Firewall, NAT using nftables
 
 Пакеттің (Package) жүйеге орнатылғанын тексеру
@@ -140,7 +121,7 @@ $ sudo nft list ruleset
 $ cat ~/rules.nftables
 ```
 
-nftables-тегі family түрлері
+nftables family түрлері
 
 | Family атауы | Хаттамалар  |
 | ------------ | ----------- |
