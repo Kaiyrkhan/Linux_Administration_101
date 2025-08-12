@@ -145,6 +145,13 @@ copy run start
 
 Құрылғының атауын (Device Name) өзгерту
 ```shell
+$ sudo hostnamectl set-hostname GW
+$ sudo nano /etc/hosts
+127.0.1.1  GW
+Ctrl+O -> Enter -> Ctrl+X -> Ctrl+L
+$ bash
+
+```shell
 $ sudo nano /etc/hosts
 127.0.1.1  H1
 Ctrl+O -> Enter -> Ctrl+X -> Ctrl+L
