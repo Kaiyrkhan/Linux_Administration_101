@@ -5,7 +5,7 @@
   2) IP Packet Forwarding қызметін қосу;
   3) Cisco Switch конфигурациялау;
   4) End Device (H1, H2) құрылғыны конфигурациялау;
-  5) NAT конфигурациялау (using Firewalld).
+  5) Нәтижені тексеру.
 
 #### Physical Network Topology
 ![Physical Topology](Topology/Topology_interVLANRouting_NAT_Linux_Physical.png)
