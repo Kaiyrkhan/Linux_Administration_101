@@ -137,7 +137,7 @@ nftables family түрлері
 | inet         | IPv4 + IPv6 |
 
 
-##### 1-мысал: Loopback интерфейске рұқсат ету
+#### 1-мысал: Loopback интерфейске рұқсат ету
 ```shell
 student@GW:~$ ping -c4 127.0.0.1
 
@@ -146,7 +146,7 @@ $ sudo nft add rule inet filter input iifname "lo" counter accept
 student@GW:~$ ping -c4 127.0.0.1
 ```
 
-##### 2-мысал: ping H1,H2 to Gateway (INPUT бойынша ICMP хаттамаға рұқсат ету)
+#### 2-мысал: ping H1,H2 to Gateway (INPUT бойынша ICMP хаттамаға рұқсат ету)
 ```shell
 student@H1:~$ ping -c4 172.16.11.1
 student@GW:~$ ping -c4 172.16.11.101
@@ -157,7 +157,7 @@ student@H1:~$ ping -c4 172.16.11.1
 student@GW:~$ ping -c4 172.16.11.101
 ```
 
-##### 3-мысал: ping H1 to H2 (FORWARD бойынша ICMP хаттамаға рұқсат ету)
+#### 3-мысал: ping H1 to H2 (FORWARD бойынша ICMP хаттамаға рұқсат ету)
 ```shell
 student@H1:~$ ping -c4 172.16.12.101
 student@H2:~$ ping -c4 172.16.11.101
@@ -176,19 +176,11 @@ student@GW:~$ ping -c4 8.8.8.8
 > $ sudo nft add rule inet filter input icmp type echo-request accept  
 > $ sudo nft add rule inet filter input icmp type { echo-request, echo-reply, destination-unreachable, time-exceeded } accept  
 
-##### 4-мысал: End Device құрылғыларды (H1, H2) internet желісімен байланыстыру – NAT (Network Address Translation)
+#### 4-мысал: NAT (Network Address Translation) конфигурациялау
+
 ```shell
 student@H1:~$ ping -c4 8.8.8.8
 student@H2:~$ ping -c4 8.8.8.8
-```
-
-```shell
-NAT (Network Address Translation)
-
-$ sudo nft add table inet nat
-$ sudo nft add chain inet nat POSTROUTING { type nat hook postrouting priority srcnat \; policy accept \; }
-$ sudo nft add rule inet nat POSTROUTING ip saddr 172.16.11.0/24 oifname "ens3" counter masquerade
-$ sudo nft add rule inet nat POSTROUTING ip saddr 172.16.12.0/24 oifname "ens3" counter masquerade
 ```
 
 Priority мәндері:
@@ -201,33 +193,21 @@ Priority мәндері:
 | `srcnat`      | 100                      |
 | `security`    | 150                      |
 
-```shell
-Netfilter Connection Tracking (Conntrack)
-
-$ sudo nft add rule inet filter input ct state established,related counter accept
-$ sudo nft add rule inet filter input ct state invalid counter drop
-```
-
-*ct state-тің негізгі аргументтері:* ***new, established, related, invalid***  
-> $ sudo nft add rule inet filter input tcp dport { 22, 80, 443 } ct state **new** accept  
-> $ sudo nft add rule inet filter input ct state **established,related** accept  
-> $ sudo nft add rule inet filter input ct state **invalid** drop  
-
-> $ ... ct state snat log  
-> $ ... ct state dnat log  
-> $ ... ct status dnat  
-> $ ... ct status snat  
+> End Device құрылғыларды (H1, H2) internet желісімен байланыстыру үшін NAT қолданылады!  
 
 ```shell
-student@GW:~$ ping 8.8.8.8
-student@GW:~$ ping google.com
-```
-```shell
-student@H1:~$ ping 8.8.8.8
-student@H1:~$ ping google.com
+$ sudo nft add table inet nat
+$ sudo nft add chain inet nat POSTROUTING { type nat hook postrouting priority srcnat \; policy accept \; }
+$ sudo nft add rule inet nat POSTROUTING ip saddr 172.16.11.0/24 oifname "ens3" counter masquerade
+$ sudo nft add rule inet nat POSTROUTING ip saddr 172.16.12.0/24 oifname "ens3" counter masquerade
 ```
 
-##### 5-мысал: DNS хаттамаға (UDP/53 порт) рұқсат ету 
+```shell
+student@H1:~$ ping -c4 8.8.8.8
+student@H2:~$ ping -c4 8.8.8.8
+```
+
+#### 5-мысал: DNS хаттамаға (UDP/53 порт) рұқсат ету 
 ```shell
 student@H1:~$ ping -c4 google.com
 student@H2:~$ ping -c4 google.com
@@ -245,6 +225,22 @@ student@H1:~$ ping -c4 google.com
 student@H2:~$ ping -c4 google.com
 student@GW:~$ ping -c4 google.com
 ```
+
+**Netfilter Conntrack (Connection Tracking)**
+```shell
+$ sudo nft add rule inet filter input ct state established,related counter accept
+$ sudo nft add rule inet filter input ct state invalid counter drop
+```
+
+*ct state-тің негізгі аргументтері:* ***new, established, related, invalid***  
+> $ sudo nft add rule inet filter input tcp dport { 22, 80, 443 } ct state **new** accept  
+> $ sudo nft add rule inet filter input ct state **established,related** accept  
+> $ sudo nft add rule inet filter input ct state **invalid** drop  
+
+> $ ... ct state snat log  
+> $ ... ct state dnat log  
+> $ ... ct status dnat  
+> $ ... ct status snat  
 
 ### Қосымша ақпарат
 
