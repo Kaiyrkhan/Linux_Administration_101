@@ -45,14 +45,14 @@ $ sudo nano /etc/network/interfaces
   # Virtual interface VLAN11
   auto ens4.11
   iface ens4.11 inet static
-  address 172.16.11.1/24
-  vlan-raw-device ens4
+    address 172.16.11.1/24
+    vlan-raw-device ens4
 
   # Virtual interface VLAN12
   auto ens4.12
   iface ens4.12 inet static
-  address 172.16.12.1/24
-  vlan-raw-device ens4
+    address 172.16.12.1/24
+    vlan-raw-device ens4
 ```
 
 ```shell
