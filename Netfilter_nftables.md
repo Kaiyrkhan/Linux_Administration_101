@@ -139,22 +139,22 @@ nftables family түрлері
 
 ##### 1-мысал: Loopback интерфейске рұқсат ету
 ```shell
-student@gateway:~$ ping -c4 127.0.0.1
+student@GW:~$ ping -c4 127.0.0.1
 
 $ sudo nft add rule inet filter input iifname "lo" counter accept
 
-student@gateway:~$ ping -c4 127.0.0.1
+student@GW:~$ ping -c4 127.0.0.1
 ```
 
 ##### 2-мысал: ping H1,H2 to Gateway (ICMP хаттамаға рұқсат ету)
 ```shell
 student@H1:~$ ping -c4 172.16.11.1
-student@gateway:~$ ping -c4 172.16.11.101
+student@GW:~$ ping -c4 172.16.11.101
 
 $ sudo nft add rule inet filter input ip protocol icmp counter accept
 
 student@H1:~$ ping -c4 172.16.11.1
-student@gateway:~$ ping -c4 172.16.11.101
+student@GW:~$ ping -c4 172.16.11.101
 ```
 
 ##### 3-мысал: ping H1 to H2 (ICMP хаттамаға рұқсат ету)
@@ -177,8 +177,8 @@ student@H2:~$ ping -c4 172.16.11.101
 
 ##### 4-мысал: LAN желідегі құрылғыларды internet желісімен байланыстыру
 ```shell
-student@gateway:~$ ping 8.8.8.8
-student@gateway:~$ ping google.com
+student@GW:~$ ping 8.8.8.8
+student@GW:~$ ping google.com
 ```
 ```shell
 student@H1:~$ ping 8.8.8.8
@@ -223,8 +223,8 @@ $ sudo nft add rule inet filter input ct state invalid counter drop
 > $ ... ct status snat  
 
 ```shell
-student@gateway:~$ ping 8.8.8.8
-student@gateway:~$ ping google.com
+student@GW:~$ ping 8.8.8.8
+student@GW:~$ ping google.com
 ```
 ```shell
 student@H1:~$ ping 8.8.8.8
