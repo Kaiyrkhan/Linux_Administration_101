@@ -62,6 +62,10 @@ Check Current Rules
 $ sudo nft list ruleset
 ```
 ![images](images/default_filter_table.png)
+```shell
+$ cat /etc/nftables.conf
+```
+![images](images/cat_nftables.png)
 
 ```shell
 Set Default Policy to DROP (INPUT and FORWARD Chains)
