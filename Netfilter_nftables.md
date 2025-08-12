@@ -261,34 +261,32 @@ student@H2:~$ nc -w1 -u -vz 172.16.12.1 53
 ```shell
 $ sudo apt update
 $ sudo apt install elinks curl
+
+$ sudo apt install nginx
+$ sudo systemctl status nginx
 ```
 
 Allow/Open Ports (INPUT Chain) – LAN желідегі веб-сайттың контентіне рұқсат ету
 ```shell
 student@H1:~$ nc -w1 -vz 172.16.11.1 80
-Connection Timeout
-student@H1:~$ elinks http://edu.local
+student@H1:~$ elinks http://172.16.11.1
 
 $ sudo nft add rule inet filter input ip saddr 172.16.11.0/24 tcp dport { 80, 443 } ct state new counter accept
 $ sudo nft add rule inet filter input ip saddr 172.16.12.0/24 tcp dport { 80, 443 } ct state new counter accept
 
 student@H1:~$ nc -w1 -vz 172.16.11.1 80
-Connection Refused
-student@H1:~$ elinks http://edu.local
+student@H1:~$ elinks http://172.16.11.1
 ```
 
 Allow/Open Ports (FORWARD Chain) – WAN желідегі веб-сайттың контентіне рұқсат ету
 ```shell
-
 $ elinks https://qbilim.kz
-немесе
 PNETLab -> Docker -> Chrome (Browser) -> https://qbilim.kz
 
 $ sudo nft add rule inet filter forward ip saddr 172.16.11.0/24 tcp dport { 80, 443 } ct state new counter accept
 $ sudo nft add rule inet filter forward ip saddr 172.16.12.0/24 tcp dport { 80, 443 } ct state new counter accept
 
 $ elinks https://qbilim.kz
-немесе
 PNETLab -> Docker -> Chrome (Browser) -> https://qbilim.kz
 ```
 
