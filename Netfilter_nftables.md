@@ -105,7 +105,7 @@ $ cat /etc/nftables.conf
 **Қосымша ақпарат**
 
 ```shell
-$ sudo nft add rule inet filter input iifname "lo" counter accept
+$ sudo nft add rule inet filter input tcp dport 22 counter accept
 $ sudo nft list ruleset | sudo tee /etc/nftables.conf
 
 $ sudo nft list ruleset
