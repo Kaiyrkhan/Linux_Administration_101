@@ -135,7 +135,8 @@ nftables family түрлері
 | ip           | IPv4        |
 | ip6          | IPv6        |
 | inet         | IPv4 + IPv6 |
-
+| arp          |             |
+| bridge       |             |
 
 #### 1-мысал: Loopback интерфейске рұқсат ету
 ```shell
