@@ -1,9 +1,8 @@
-
 # Netfilter (Firewall, NAT)
   1) Firewall, NAT using nftables;
   2) Firewall, NAT using iptables.
 
-### 🖧 Network Topology
+#### 🖧 Network Topology
 ![Topology](Topology/Branch_Network_Topology.png)
 
 > `Web (HTTP, HTTPS)` - TCP 80,443  
@@ -33,7 +32,7 @@ $ sudo hostnamectl set-hostname H1
 $ bash
 ```
 
-## 1) Firewall, NAT using nftables
+## Firewall, NAT using nftables
 
 Пакеттің (Package) жүйеге орнатылғанын тексеру
 ```shell
