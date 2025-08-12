@@ -35,10 +35,12 @@ $ ip address
 
 ```shell
 $ sudo nano /etc/network/interfaces
+
+  # Physical interface ens3
   auto ens3
   iface ens3 inet dhcp
 
-  # Physical Interface ens4
+  # Physical interface ens4
   auto ens4
   iface ens4 inet manual
 
@@ -57,7 +59,9 @@ $ sudo nano /etc/network/interfaces
 
 ```shell
 $ sudo systemctl restart networking
+```
 немесе
+```shell
 $ sudo ifdown ens4 && sudo ifup ens4
 $ sudo ifup ens4.11
 $ sudo ifup ens4.12
