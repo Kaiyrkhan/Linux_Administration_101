@@ -35,8 +35,6 @@ $ ip address
 
 ```shell
 $ sudo nano /etc/network/interfaces
-
-  # Physical interface ens3
   auto ens3
   iface ens3 inet dhcp
 
