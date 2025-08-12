@@ -1,9 +1,9 @@
 
-## Netfilter on Debian
+# Netfilter (Firewall, NAT)
   1) Firewall, NAT using nftables;
   2) Firewall, NAT using iptables.
 
-#### 🖧 Topology
+### 🖧 Topology
 ![Topology](Topology/Topology_interVLANRouting_NAT_Linux.png)
 
 > `Web (HTTP, HTTPS)` - TCP 80,443  
@@ -13,7 +13,19 @@
 > `SAMBA` - TCP 445,139 / UDP 137,138  
 > `FTP` - TCP 21 + PASV port TCP "10090-10100"  
 
-### 1) Firewall, NAT using nftables
+### Құрылғының атауын (Device Name) өзгерту
+
+```shell
+$ sudo hostnamectl set-hostname H1
+$ sudo nano /etc/hosts
+127.0.1.1  H1
+Ctrl+O -> Enter -> Ctrl+X -> Ctrl+L
+$ bash
+```
+
+## 1) Firewall, NAT using nftables
+
+
 
 ```shell
 $ dpkg -l nftables
