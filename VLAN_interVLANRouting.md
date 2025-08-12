@@ -1,4 +1,4 @@
-# interVLAN Routing on Debian 12.x 
+# VLAN and interVLAN Routing on Debian 12.x 
 
 #### Жұмыстың орындалу қадамы: 
   1) 802.1Q VLAN құру;
