@@ -1,6 +1,9 @@
-# Netfilter (Firewall, NAT)
-  1) Firewall, NAT using nftables;
-  2) Firewall, NAT using iptables.
+# Netfilter (Firewall, NAT) using nftables
+
+#### Жұмыстың орындалу қадамы: 
+  1) [interVLAN Routing конфигурациялау](https://github.com/Kaiyrkhan/Linux_Administration_101/blob/main/VLAN_interVLANRouting.md);
+  2) Firewall, NAT using nftables;
+  3) Нәтижені тексеру.
 
 #### 🖧 Network Topology
 ![Topology](Topology/Branch_Network_Topology.png)
