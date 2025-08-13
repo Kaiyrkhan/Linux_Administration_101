@@ -270,7 +270,7 @@ $ sudo apt install nginx
 $ sudo systemctl status nginx
 ```
 
-Allow/Open Ports (INPUT Chain) – LAN желідегі веб-сайттың контентіне рұқсат ету
+Allow/Open TCP Ports: HTTP 80, HTTPS 443 (INPUT Chain) – LAN желідегі веб-сайттың контентіне рұқсат ету
 ```shell
 student@H1:~$ nc -w1 -vz 172.16.11.1 80
 student@H1:~$ elinks http://172.16.11.1
@@ -282,7 +282,7 @@ student@H1:~$ nc -w1 -vz 172.16.11.1 80
 student@H1:~$ elinks http://172.16.11.1
 ```
 
-Allow/Open Ports (FORWARD Chain) – WAN желідегі веб-сайттың контентіне рұқсат ету
+Allow/Open TCP Ports: HTTP 80, HTTPS 443 (FORWARD Chain) – WAN желідегі веб-сайттың контентіне рұқсат ету
 ```shell
 $ elinks https://qbilim.kz
 PNETLab -> Docker -> Chrome (Browser) -> https://qbilim.kz
@@ -352,14 +352,15 @@ $ sudo nft list chains inet
 $ sudo nft list chain inet filter input
 ```
 
+> `Web (HTTP, HTTPS)` - TCP 80,443  
+> `SSH` - TCP 22  
 > `NTP` - UDP 123  
 > `DHCP` - UDP 67,68  
 > `DNS` - UDP 53  
 > `SAMBA` - TCP 445,139 / UDP 137,138  
-> `Web (HTTP, HTTPS)` - TCP 80,443  
 > `FTP` - TCP 21 + PASV port TCP "10090-10100"  
 
-Allow/Open Ports for LAN
+Allow/Open TCP/UDP Ports
 ```shell
 $ sudo nft add rule inet filter input iifname "lo" counter accept
 
@@ -368,6 +369,10 @@ $ sudo nft add rule inet filter input tcp dport 22 ether saddr 5C:60:BA:58:9F:2B
 
 $ sudo nft add rule inet filter input tcp dport { 80,443,445 } ip saddr 172.16.11.0/24  counter accept
 $ sudo nft add rule inet filter input udp dport { 53,67,68,123,138 } ip saddr 172.16.11.0/24 counter accept
+```
+```shell
+$ sudo nft add rule inet filter input tcp dport 21 counter accept
+$ sudo nft add rule inet filter input tcp dport 10090-10100 counter accept
 ```
 
 ```shell
@@ -396,12 +401,11 @@ $ sudo nft add rule inet filter input ip protocol icmp limit rate 50/second burs
 $ ping 172.16.11.1 -t
 ```
 
-Allow/Open Ports for LAN and WAN
-```shell
-$ sudo nft add rule inet filter input tcp dport 21 counter accept
-$ sudo nft add rule inet filter input tcp dport 10090-10100 counter accept
-```
-
 ### References
 
 1) [Wikipedia Netfilter](https://en.wikipedia.org/wiki/Netfilter)
+
+### YouTube
+
+1) [nftables - межсетевой экран. Часть 1-3 (by Khasan)](https://www.youtube.com/watch?v=hUkZC9snX2A&list=PL7K9n9cRw5zeYjk4VIcwuWVje-RlYadkm&index=5)
+2) [Настраиваем сетевой фильтр с nftables (by OTUS)](https://youtu.be/uqtx-0-zayw)
