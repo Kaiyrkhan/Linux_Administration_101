@@ -164,3 +164,7 @@ $ sudo ip6tables-translate -A FORWARD -i eth0 -o eth2 -p udp -m multiport --dpor
 $ sudo iptables-save > save.txt
 $ sudo iptables-restore-translate -f save.txt > ruleset.nft
 ```
+
+### References
+
+1) [Wikipedia Netfilter](https://en.wikipedia.org/wiki/Netfilter)
