@@ -129,11 +129,11 @@ $ cat /etc/nftables.conf
 ```
 
 ```shell
-$ sudo nano ~/rules.nftables
-$ sudo nft -f ~/rules.nftables
+$ sudo nano ~/rules.nft
+$ sudo nft -f ~/rules.nft
 
 $ sudo nft list ruleset
-$ cat ~/rules.nftables
+$ cat ~/rules.nft
 ```
 
 nftables family түрлері
@@ -187,6 +187,8 @@ student@GW:~$ ping -c4 8.8.8.8
 
 #### 4-мысал: NAT (Network Address Translation) конфигурациялау
 
+> End Device құрылғыларды (H1, H2) internet желісімен байланыстыру үшін NAT қолданылады!  
+
 ```shell
 student@H1:~$ ping -c4 8.8.8.8
 student@H2:~$ ping -c4 8.8.8.8
@@ -202,7 +204,7 @@ Priority мәндері:
 | `srcnat`      | 100                      |
 | `security`    | 150                      |
 
-> End Device құрылғыларды (H1, H2) internet желісімен байланыстыру үшін NAT қолданылады!  
+<img src="https://raw.githubusercontent.com/Kaiyrkhan/Linux_Administration_101/main/images/nftables_filter_nat.png" width="400" height="300">
 
 ```shell
 $ sudo nft add table inet nat
