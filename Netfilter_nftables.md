@@ -204,7 +204,7 @@ Priority мәндері:
 | `srcnat`      | 100                      |
 | `security`    | 150                      |
 
-<img src="https://raw.githubusercontent.com/Kaiyrkhan/Linux_Administration_101/main/images/nftables_filter_nat.png" width="400" height="300">
+<img src="https://raw.githubusercontent.com/Kaiyrkhan/Linux_Administration_101/main/images/nftables_filter_nat_chains.png" width="400" height="300">
 
 ```shell
 $ sudo nft add table inet nat
