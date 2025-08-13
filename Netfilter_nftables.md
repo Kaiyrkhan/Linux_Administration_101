@@ -76,7 +76,6 @@ $ cat /etc/nftables.conf
 Save nftables Configuration
 ```shell
 $ sudo nft list ruleset | sudo tee /etc/nftables.conf
-$ sudo systemctl restart nftables
 ```
 
 Check Current Rules
@@ -107,6 +106,15 @@ $ cat /etc/nftables.conf
 ```shell
 $ sudo nft add rule inet filter input tcp dport 22 counter accept
 $ sudo nft list ruleset | sudo tee /etc/nftables.conf
+
+$ sudo nft list ruleset
+$ cat /etc/nftables.conf
+```
+
+```shell
+$ echo "#!/usr/sbin/nft -f" | sudo tee /etc/nftables.conf
+$ echo "flush ruleset" | sudo tee -a /etc/nftables.conf
+$ sudo nft list ruleset | sudo tee -a /etc/nftables.conf
 
 $ sudo nft list ruleset
 $ cat /etc/nftables.conf
