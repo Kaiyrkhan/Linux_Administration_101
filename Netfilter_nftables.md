@@ -419,3 +419,4 @@ $ ping 172.16.11.1 -t
 
 1) [nftables - межсетевой экран. Часть 1-3 (by Khasan)](https://www.youtube.com/watch?v=hUkZC9snX2A&list=PL7K9n9cRw5zeYjk4VIcwuWVje-RlYadkm&index=5)
 2) [Настраиваем сетевой фильтр с nftables (by OTUS)](https://youtu.be/uqtx-0-zayw)
+3) [Linux Firewall - nftables](https://www.youtube.com/playlist?list=PLr9-FQE5euK45jIVqpVv_XnazSj55-R66)
