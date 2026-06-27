@@ -196,7 +196,7 @@ VPC2> ping 192.168.1.100
 ```
 
 ```shell
-$ ip route get 10.1.1.102
+$ ip route get 172.16.1.100
 ```
 
 ## Static Route on Ubuntu
