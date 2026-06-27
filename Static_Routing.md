@@ -150,6 +150,7 @@ Debian 12.x
 $ sudo nano /etc/sysctl.conf
 net.ipv4.ip_forward=1
 $ sudo sysctl -p
+$ cat /proc/sys/net/ipv4/ip_forward
 ```
 
 Debian 13.x
