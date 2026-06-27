@@ -3,13 +3,14 @@
 ### Course Contents
 1. Static Routing  
 2. Dynamic Routing. OSPF  
-3. interVLAN Routing and NAT  
-4. Link Aggregation (LACP)  
+3. VLAN and interVLAN Routing
+4. Network Address Translation (NAT)  
+5. Link Aggregation (LACP)  
     4.1. NIC Bonding;  
     4.2. NIC Teaming.  
-5. Virtualization. Hypervisor KVM  
-6. Linux Bridge (vSwitch)  
-7. ...  
+6. Virtualization. Hypervisor KVM  
+7. Linux Bridge (vSwitch)  
+8. ...  
 
 ### References
 
