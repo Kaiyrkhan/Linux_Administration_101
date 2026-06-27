@@ -143,7 +143,7 @@ $ sudo systemctl restart networking
 $ ip route
 ```
 
-**Enable IP Packet Forwarding (R1, R2, R3)**
+**Enable IPv4 Packet Forwarding (R1, R2, R3)**
 ```shell
 $ sudo nano /etc/sysctl.conf
 net.ipv4.ip_forward=1
