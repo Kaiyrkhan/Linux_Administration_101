@@ -166,7 +166,6 @@ $ sudo sysctl -p /etc/sysctl.d/99-ip-forward.conf
 ```
 
 ```shell
-# Тексеру
 $ cat /proc/sys/net/ipv4/ip_forward
 1
 
