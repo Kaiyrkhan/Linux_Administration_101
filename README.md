@@ -6,8 +6,8 @@
 3. VLAN and interVLAN Routing
 4. Network Address Translation (NAT)  
 5. Link Aggregation (LACP)  
-    4.1. NIC Bonding;  
-    4.2. NIC Teaming.  
+    5.1. NIC Bonding;  
+    5.2. NIC Teaming.  
 6. Virtualization. Hypervisor KVM  
 7. Linux Bridge (vSwitch)  
 8. ...  
