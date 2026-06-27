@@ -7,7 +7,7 @@ Static Routing:
 ### 🖧 Topology for Default Static Route
 
 ### 🖧 Topology for Static Route
-![Topology](Topology/Topology_Static_Routing_Linux.png)  
+![Topology](Topology/Topology_Static_Routing.png)  
 [Download Link for PNETLab Topology File](Topology/Topology_Static_Routing_Linux.unl)
 
 ## Virtual PC Simulator
