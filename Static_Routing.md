@@ -99,10 +99,10 @@ $ sudo nano /etc/network/interfaces
 
   auto ens4
   iface ens4 inet static
-  address 10.2.2.102
+  address 10.1.1.105
   netmask 255.255.255.252
-  post-up ip route add 172.16.1.0/24 via 10.2.2.101
-  pre-down ip route del 172.16.1.0/24 via 10.2.2.101
+  post-up ip route add 172.16.1.0/24 via 10.1.1.106
+  pre-down ip route del 172.16.1.0/24 via 10.1.1.106
 ```
 
 ```shell
@@ -130,10 +130,10 @@ $ sudo nano /etc/network/interfaces
 
   auto ens4
   iface ens4 inet static
-  address 10.2.2.101
+  address 10.1.1.106
   netmask 255.255.255.252
-  post-up ip route add 192.168.1.0/24 via 10.2.2.102
-  pre-down ip route del 192.168.1.0/24 via 10.2.2.102
+  post-up ip route add 192.168.1.0/24 via 10.1.1.105
+  pre-down ip route del 192.168.1.0/24 via 10.1.1.105
 ```
 
 ```shell
