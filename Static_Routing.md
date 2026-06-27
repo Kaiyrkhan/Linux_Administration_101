@@ -143,11 +143,45 @@ $ sudo systemctl restart networking
 $ ip route
 ```
 
-**Enable IPv4 Packet Forwarding (R1, R2, R3)**
+**Enable IP Packet Forwarding (R1, R2, R3)**
+
+Debian 12.x
 ```shell
 $ sudo nano /etc/sysctl.conf
 net.ipv4.ip_forward=1
 $ sudo sysctl -p
+```
+
+Debian 13.x
+```shell
+$ sudo nano /etc/sysctl.d/99-ip-forward.conf
+net.ipv4.ip_forward=1                                // Enable IPv4 Packet Forwarding
+net.ipv6.conf.all.forwarding=1                       // Enable IPv6 Packet Forwarding
+```
+
+```shell
+$ sudo sysctl --system
+немесе
+$ sudo sysctl -p /etc/sysctl.d/99-ip-forward.conf
+```
+
+```shell
+# Тексеру
+$ cat /proc/sys/net/ipv4/ip_forward
+1
+
+немесе
+
+$ sudo sysctl net.ipv4.ip_forward
+net.ipv4.ip_forward=1
+```
+
+Уақытша қосу
+```shell
+$ sudo sysctl -w net.ipv4.ip_forward=1
+$ sudo sysctl -w net.ipv6.conf.all.forwarding=1
+
+$ cat /proc/sys/net/ipv4/ip_forward
 ```
 
 **Verification**
