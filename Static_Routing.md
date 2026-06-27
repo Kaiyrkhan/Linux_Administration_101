@@ -170,6 +170,7 @@ $ sudo sysctl --system
 $ sudo sysctl -p /etc/sysctl.d/99-ip-forward.conf
 ```
 
+Нәтижені тексеру
 ```shell
 $ cat /proc/sys/net/ipv4/ip_forward
 1
