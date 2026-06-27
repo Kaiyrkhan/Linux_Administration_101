@@ -1,7 +1,7 @@
 # Dynamic Routing with OSPF (FRR) on Linux
 
 ### 🖧 Topology
-![Topology](Topology/Topology_Dynamic_Routing_Linux.png)  
+![Topology](Topology/Topology_Dynamic_Routing.png)  
 [Download Link for PNETLab Topology File](Topology/Topology_Dynamic_Routing_Linux.unl)
 
 ## Virtual PC Simulator
