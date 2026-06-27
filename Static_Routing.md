@@ -158,8 +158,11 @@ Debian 13.x
 $ sudo nano /etc/sysctl.d/99-ip-forward.conf
 net.ipv4.ip_forward=1                                // Enable IPv4 Packet Forwarding
 net.ipv6.conf.all.forwarding=1                       // Enable IPv6 Packet Forwarding
+
+немесе
+
+$ echo "net.ipv4.ip_forward=1" | sudo tee /etc/sysctl.d/99-ip-forward.conf
 ```
-> $ echo "net.ipv4.ip_forward=1" | sudo tee /etc/sysctl.d/99-ip-forward.conf  
 
 ```shell
 $ sudo sysctl --system
