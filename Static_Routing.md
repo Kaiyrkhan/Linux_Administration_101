@@ -157,7 +157,7 @@ Debian 13.x
 ```shell
 $ sudo nano /etc/sysctl.d/99-ip-forward.conf
 net.ipv4.ip_forward=1                                // Enable IPv4 Packet Forwarding
-net.ipv6.conf.all.forwarding=1                       // Enable IPv6 Packet Forwarding
+net.ipv6.conf.all.forwarding=1                       // Enable IPv6 Packet Forwarding (міндетті емес)
 
 немесе
 
