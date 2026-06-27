@@ -8,7 +8,7 @@ Static Routing:
 
 ### 🖧 Topology for Static Route
 ![Topology](Topology/Topology_Static_Routing.png)  
-[Download Link for PNETLab Topology File](Topology/Topology_Static_Routing_Linux.unl)
+[Download Link for PNETLab Topology File](Topology/Topology_Static_Routing.zip)
 
 ## Virtual PC Simulator
 ```shell
